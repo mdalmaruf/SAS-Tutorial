@@ -631,6 +631,8 @@ run;
 - It creates a new variable `KgWeight` by converting `weight` from pounds to kilograms.
 - It keeps only the variables `id`, `sex`, and `kgweight` in the final data set `subset2`.
 ```
+![Subset File](screenshots/subset.JPG)
+
 ###
 
 
