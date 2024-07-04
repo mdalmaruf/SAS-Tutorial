@@ -51,5 +51,55 @@ run;
 proc print data=sasuser.cust(obs=5);
 run;
 ```
+## Creating the Required .mdb Files
+If you don't have the database files (`east.mdb` and `security.mdb`), you can create them with the following steps:
+### Tools Required
+
+To create and manipulate Microsoft Access databases, you can use:
+
+- **Microsoft Access**: If you have it installed.
+- **MDB Viewer Plus**: A free viewer for Microsoft Access database files.
+- **DB Browser for SQLite**: An open-source tool to create, design, and edit database files compatible with SQLite.
+
+### Creating the .mdb Files
+
+#### Using Microsoft Access:
+
+1. Open Microsoft Access.
+2. Create a new database and save it as `east.mdb`.
+3. Create a table named `customers` with fields such as `CustomerID`, `CustomerName`, `ContactName`, `Country`, etc.
+4. Save and close the database.
+5. Repeat the steps to create `security.mdb` if necessary.
+
+#### Using MDB Viewer Plus:
+
+1. Open MDB Viewer Plus.
+2. Create a new database and save it as `east.mdb`.
+3. Add a new table named `customers` with the required fields.
+4. Save the database.
+
+#### Using DB Browser for SQLite:
+
+1. Open DB Browser for SQLite.
+2. Create a new database and save it as `east.mdb`.
+3. Add a new table named `customers` with the required fields.
+4. Save the database.
+
+#### Sample Data
+
+Here is some sample data you can use for the `customers` table:
+
+| CustomerID | CustomerName                        | ContactName       | Country |
+|------------|-------------------------------------|-------------------|---------|
+| 1          | Alfreds Futterkiste                 | Maria Anders      | Germany |
+| 2          | Ana Trujillo Emparedados y helados  | Ana Trujillo      | Mexico  |
+| 3          | Antonio Moreno Taquería             | Antonio Moreno    | Mexico  |
+| 4          | Around the Horn                     | Thomas Hardy      | UK      |
+| 5          | Berglunds snabbköp                  | Christina Berglund| Sweden  |
+
+#### Note
+
+Ensure the file paths in the `PROC IMPORT` statements are correct and point to the location where you saved your `.mdb` files.
+
 
 ### [IBM DB2 Database](https://www.ibm.com/products/db2-database)
