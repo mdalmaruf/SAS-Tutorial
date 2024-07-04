@@ -101,47 +101,47 @@ To create and manipulate Microsoft Access databases, you can use:
 
         - The database `east.db` is already open in DB Browser for SQLite after creation.
 
-##### Step 3: Create a Table Named `customers`
+    - ##### Step 3: Create a Table Named `customers`
 
-1. In the main window, go to the `Database Structure` tab.
-2. Click on `Create Table`.
-3. Name the table `customers`.
+        1. In the main window, go to the `Database Structure` tab.
+        2. Click on `Create Table`.
+        3. Name the table `customers`.
 
-4. Add the required fields:
-    - Field Name: `CustomerID`, Field Type: `INTEGER`
-    - Field Name: `CustomerName`, Field Type: `VARCHAR(100)`
-    - Field Name: `ContactName`, Field Type: `VARCHAR(100)`
-    - Field Name: `Country`, Field Type: `VARCHAR(50)`
+        4. Add the required fields:
+            - Field Name: `CustomerID`, Field Type: `INTEGER`
+            - Field Name: `CustomerName`, Field Type: `VARCHAR(100)`
+            - Field Name: `ContactName`, Field Type: `VARCHAR(100)`
+            - Field Name: `Country`, Field Type: `VARCHAR(50)`
+        
+        5. Click `OK` to create the table.
 
-5. Click `OK` to create the table.
+    - ##### Step 4: Insert Sample Data into the Table
 
-##### Step 4: Insert Sample Data into the Table
+        1. Go to the `Browse Data` tab.
+        2. Select the `customers` table from the dropdown menu.
+        3. Click on `New Record` to add new rows and enter the following data:
+        
+            - CustomerID: `1`, CustomerName: `Alfreds Futterkiste`, ContactName: `Maria Anders`, Country: `Germany`
+            - CustomerID: `2`, CustomerName: `Ana Trujillo Emparedados y helados`, ContactName: `Ana Trujillo`, Country: `Mexico`
+            - CustomerID: `3`, CustomerName: `Antonio Moreno Taquería`, ContactName: `Antonio Moreno`, Country: `Mexico`
+            - CustomerID: `4`, CustomerName: `Around the Horn`, ContactName: `Thomas Hardy`, Country: `UK`
+            - CustomerID: `5`, CustomerName: `Berglunds snabbköp`, ContactName: `Christina Berglund`, Country: `Sweden`
+        
+        4. Click `Write Changes` to save the data into the table.
+        
+        Your SQLite database `east.db` with the `customers` table and sample data is now created and ready for use.
 
-1. Go to the `Browse Data` tab.
-2. Select the `customers` table from the dropdown menu.
-3. Click on `New Record` to add new rows and enter the following data:
+    - #### Sample Data
 
-    - CustomerID: `1`, CustomerName: `Alfreds Futterkiste`, ContactName: `Maria Anders`, Country: `Germany`
-    - CustomerID: `2`, CustomerName: `Ana Trujillo Emparedados y helados`, ContactName: `Ana Trujillo`, Country: `Mexico`
-    - CustomerID: `3`, CustomerName: `Antonio Moreno Taquería`, ContactName: `Antonio Moreno`, Country: `Mexico`
-    - CustomerID: `4`, CustomerName: `Around the Horn`, ContactName: `Thomas Hardy`, Country: `UK`
-    - CustomerID: `5`, CustomerName: `Berglunds snabbköp`, ContactName: `Christina Berglund`, Country: `Sweden`
+        Here is some sample data you can use for the `customers` table:
 
-4. Click `Write Changes` to save the data into the table.
-
-Your SQLite database `east.db` with the `customers` table and sample data is now created and ready for use.
-
-#### Sample Data
-
-Here is some sample data you can use for the `customers` table:
-
-| CustomerID | CustomerName                        | ContactName       | Country |
-|------------|-------------------------------------|-------------------|---------|
-| 1          | Alfreds Futterkiste                 | Maria Anders      | Germany |
-| 2          | Ana Trujillo Emparedados y helados  | Ana Trujillo      | Mexico  |
-| 3          | Antonio Moreno Taquería             | Antonio Moreno    | Mexico  |
-| 4          | Around the Horn                     | Thomas Hardy      | UK      |
-| 5          | Berglunds snabbköp                  | Christina Berglund| Sweden  |
+        | CustomerID | CustomerName                        | ContactName       | Country |
+        |------------|-------------------------------------|-------------------|---------|
+        | 1          | Alfreds Futterkiste                 | Maria Anders      | Germany |
+        | 2          | Ana Trujillo Emparedados y helados  | Ana Trujillo      | Mexico  |
+        | 3          | Antonio Moreno Taquería             | Antonio Moreno    | Mexico  |
+        | 4          | Around the Horn                     | Thomas Hardy      | UK      |
+        | 5          | Berglunds snabbköp                  | Christina Berglund| Sweden  |
 
 #### Note
 
