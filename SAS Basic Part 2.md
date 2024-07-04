@@ -1,131 +1,55 @@
-# Getting Started with SAS Studio and SAS Base Software
+# SAS Base Software: SAS Basic Part 2
 
-SAS (Statistical Analysis System) is a powerful software suite used for advanced analytics, business intelligence, data management, and predictive analytics. In this guide, we will walk you through the steps to set up your environment in SAS Studio, create folders, and upload files.
+## Overview
 
-## Setting Up SAS Studio
+If you have PC database files such as Microsoft Excel spreadsheets, Lotus spreadsheets, or Microsoft Access files, you can use SAS to import these files and create SAS data sets. Once you have the data in SAS data sets, you can process them as needed in SAS. You can also export SAS data to a number of PC file formats.
 
-SAS Studio is a web-based interface to SAS that enables you to write code, run programs, and visualize results. Here’s how to get started:
+To read PC database files, you use the `PROC IMPORT` procedure. `PROC IMPORT` reads the input file and writes the data to a SAS data set, with the SAS variables defined based on the input records. You control the results with options and statements that are specific to the input data source.
 
-### Accessing SAS Studio
+- `PROC IMPORT` is available only on Windows and UNIX.
+- You must have SAS/ACCESS Interface to PC Files licensed to read PC database files. However, even without SAS/ACCESS Interface to PC Files you can import and export delimited external files (files containing columns of data values that are separated by a delimiter such as a blank or a comma).
 
-1. **Login to SAS Studio**:
-   Open your browser and navigate to the SAS Studio login page [https://welcome.oda.sas.com/]. Enter your credentials to access the workspace.
+### Point-and-Click Method
 
-### Creating a Folder
+If you have SAS/ACCESS Interface to PC Files licensed, you can import PC database files using the Import Wizard:
 
-To organize your files, you need to create a folder within SAS Studio:
+1. In SAS, click **File > Import Data**.
+2. When the Import Wizard opens, follow directions for importing data.
 
-1. **Navigate to Files (Home)**:
-   On the left-hand side, under `Server Files and Folders`, locate `Files (Home)`.
+You can view and save the `PROC IMPORT` code that the Import Wizard generates.
 
-2. **Create a New Folder**:
-   Right-click on `Files (Home)` and select `New Folder`. Name your folder (e.g., `SAS24`) and click `Save`.
+## Example
 
-### Uploading Files
-
-Once your folder is created, you can upload files into it:
-
-1. **Select the Folder**:
-   Click on the newly created folder (e.g., `SAS24`).
-
-2. **Upload File**:
-   Click on the upload icon (or drag and drop your file) to upload files into the selected folder. Choose the file you want to upload (e.g., `Accounts.xls`).
-
-3. **Confirm Upload**:
-   After uploading, you should see the file listed under the folder.
-
-![Uploading Files in SAS Studio](screenshots/sas_studio_import.JPG)
-
-### Importing Data
-
-To work with the uploaded data, you need to import it into a SAS dataset:
-
-1. **Select the File**:
-   Click on the uploaded file (e.g., `Accounts.xls`).
-
-2. **Import Data**:
-   In the right pane, you will see the `Import Data` task. Configure the settings such as the worksheet name and output data set name. Click `Run` to import the data.
-
-3. **View Imported Data**:
-   Once the import is complete, you can view the data in the `OUTPUT DATA` tab.
-
-
-
-## Using SAS Base Software on Windows
-
-### Open SAS Software:
-Launch the SAS software on your Windows machine.
-
-### Create a Library Connected to a Local Folder:
-Use the LIBNAME statement to assign a library to a local directory. This will allow you to access and manage datasets stored in that directory.
+Suppose that you want to import two files, a Microsoft Excel spreadsheet and a Microsoft Access table. The following programs show you how to read the data using options specific to the given file format, create SAS data sets, and print the new data sets.
 
 ```sas
-/* Assign a library */
-libname Mylib 'C:\Users\username\SAS-Tutorial';
-```
-Replace /username/Accounts.xlsx with the correct path to your uploaded file.
-
-
-### Ensure the Excel File is Accessible:
-Save the `Accounts.xlsx` file to the directory `C:\Users\username\SAS-Tutorial`.
-
-### Import the Excel File:
-Open a new SAS program. Use the following code to import the data from the Excel file into the `MyLib` library:
-
-```sas
-
-/* Assign a library */
-libname Mylib 'C:\Users\username\SAS-Tutorial';
-
-/* Import the Excel file */
-proc import datafile="C:\Users\username\SAS-Tutorial\Accounts.xlsx"
-    out=Mylib.accounts
-    dbms=xlsx
-    replace;
+/*********************************************/
+/* import the Excel file                     */
+/*********************************************/
+proc import datafile="c:\myfiles\Accounts.xls"
+    out=sasuser.accounts;
     sheet="Prices";
-    getnames=yes;
+    getnames=no;
 run;
 
-/* Print part of the new data set */
-proc print data=Mylib.accounts(obs=10);
-title "An overview of Accounts Information";
-run;
-```
-![Uploading Files in SAS Base](screenshots/sas_base_import.JPG)
-
-### View the Dataset:
-In the SAS Explorer window, navigate to `MyLib` and double-click on the `Accounts` dataset to view it.
-
-### Saving SAS Programs:
-Saving SAS Programs in the MyLib Directory
-If you want to keep your SAS programs and datasets together in the same directory, you can save your `.sas` files to the same location you assigned to `MyLib`. However, note that the SAS libraries (`MyLib`, `Work`, etc.) in the SAS environment are not designed to store .sas program files. Instead, store these files on your local file system and reference them as needed.
-
-
-To save your SAS program:
-1. Go to `File` -> `Save As`.
-2. Navigate to the directory you assigned to `MyLib` (e.g., `C:\Users\username\SAS-Tutorial`).
-3. Provide a name for your file (e.g., `Program Import.sas`).
-4. Click `Save`.
-
-### Example SAS Program
-Here’s an example of a simple SAS program:
-
-```sas
-/* Step 1: Assign a library */
-libname mylib 'C:\Users\username\SAS-Tutorial';
-
-/* Step 2: Import the dataset into MyLib */
-proc import datafile='C:\Users\username\SAS-Tutorial\Accounts.xlsx'
-    out=Mylib.accounts
-    dbms=xlsx
-    replace;
-    sheet='Prices';
-    getnames=yes;
+/* print part of the new data set */
+proc print data=sasuser.accounts(obs=10);
 run;
 
-/* Step 3: Print the dataset to confirm the import */
-proc print data=Mylib.accounts(obs=10);
-title "An overview of Accounts Information";
+/*********************************************/
+/* import the Access file                    */
+/*********************************************/
+proc import table="customers"
+    out=sasuser.cust dbms=access;
+    uid="admin";
+    pwd="";
+    database="c:\myfiles\east.mdb";
+    wgdb="c:\winnt\system32\security.mdb";
+run;
 
+/* print part of the new data set */
+proc print data=sasuser.cust(obs=5);
 run;
 ```
+
+### [IBM DB2 Database](https://www.ibm.com/products/db2-database)
