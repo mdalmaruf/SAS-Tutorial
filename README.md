@@ -92,6 +92,10 @@ run;
 In the SAS Explorer window, navigate to `MyLib` and double-click on the `Accounts` dataset to view it.
 
 ### Saving SAS Programs:
+Saving SAS Programs in the MyLib Directory
+If you want to keep your SAS programs and datasets together in the same directory, you can save your `.sas` files to the same location you assigned to `MyLib`. However, note that the SAS libraries (`MyLib`, `Work`, etc.) in the SAS environment are not designed to store .sas program files. Instead, store these files on your local file system and reference them as needed.
+
+
 To save your SAS program:
 1. Go to `File` -> `Save As`.
 2. Navigate to the directory you assigned to `MyLib` (e.g., `C:\Users\username\SAS-Tutorial`).
