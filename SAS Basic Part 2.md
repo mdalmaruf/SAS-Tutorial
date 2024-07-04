@@ -851,6 +851,155 @@ title;
 ```
 ![Data Print](screenshots/data_print.JPG)
 
+# Creating Frequency Tables in SAS
+
+## Overview
+
+When you analyze your data, you may need to determine how variable values are distributed through the data. To do so, you can create frequency tables, which show the distribution of variable values both as percentages of a total and as counts of data.
+
+The FREQ procedure in Base SAS creates one-way frequency tables and two-way and n-way crosstabulation tables. It can also compute measures of association and of agreement, and organize output by stratification variables.
+
+## Example: Count Data
+
+Suppose that you want to create:
+
+- Simple frequency tables for selected variables in a SAS data set
+- A crosstabulation table and an output data set with frequencies, percentages, and expected cell frequencies.
+
+The following programs show you how to use PROC FREQ to perform these tasks.
+
+**Tip:** You can copy and run these programs in SAS.
+
+```sas
+/*************************************/
+/* create the input data set         */
+/*************************************/
+data color;
+   input Region Eyes $ Hair $ Count @@;
+   label eyes='Eye Color'
+         hair='Hair Color'
+         region='Geographic Region';
+   datalines;
+1 blue  fair    23  1 blue  red      7  1 blue  medium  24
+1 blue  dark    11  1 green fair    19  1 green red      7
+1 green medium  18  1 green dark    14  1 brown fair    34
+1 brown red      5  1 brown medium  41  1 brown dark    40
+1 brown black    3  2 blue  fair    46  2 blue  red     21
+2 blue  medium  44  2 blue  dark    40  2 blue  black    6
+2 green fair    50  2 green red     31  2 green medium  37
+2 green dark    23  2 brown fair    56  2 brown red     42
+2 brown medium  53  2 brown dark    54  2 brown black   13
+;
+run;
+
+/*************************************/
+/* create simple frequency tables    */
+/*************************************/
+proc freq data=color;
+   tables eyes hair;
+   title1 'Simple Frequency Tables';
+run;
+
+/*************************************/
+/* create a crosstabulation table    */
+/* and an output data set            */
+/*************************************/
+proc freq data=color;
+   weight count;
+   tables eyes*hair/out=freqcnt outexpect
+          sparse;
+   title1 'Crosstabulation Table';
+run;
+
+/*************************************/
+/* print the output data set         */
+/*************************************/
+proc print data=freqcnt noobs;
+   title2 'Output Data Set from PROC FREQ';
+run;
+
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+```
+### Explanation of Keywords and Their Uses
+
+#### `data`
+
+- **Purpose**: Creates a new data set.
+- **Usage**: `data color;` creates a temporary data set named `color`.
+
+#### `input`
+
+- **Purpose**: Defines the variables to read from the input data.
+- **Usage**: `input Region Eyes $ Hair $ Count @@;` specifies that `Region`, `Eyes`, and `Hair` are character variables and `Count` is a numeric variable.
+
+#### `label`
+
+- **Purpose**: Assigns descriptive labels to variables.
+- **Usage**: `label eyes='Eye Color'` assigns the label "Eye Color" to the `eyes` variable.
+
+#### `datalines`
+
+- **Purpose**: Provides data lines directly within the DATA step.
+- **Usage**: The lines following `datalines;` are read into the data set.
+
+#### `proc freq`
+
+- **Purpose**: Creates frequency tables.
+- **Usage**: `proc freq data=color;` generates frequency tables for the `color` data set.
+
+#### `tables`
+
+- **Purpose**: Specifies the variables for which to create frequency tables.
+- **Usage**: `tables eyes hair;` creates frequency tables for the `eyes` and `hair` variables.
+
+#### `title`
+
+- **Purpose**: Sets the title for the report.
+- **Usage**: `title1 'Simple Frequency Tables';` sets the title of the report.
+
+#### `weight`
+
+- **Purpose**: Applies a weight variable to the analysis.
+- **Usage**: `weight count;` uses the `count` variable as a weight in the analysis.
+
+#### `out`
+
+- **Purpose**: Creates an output data set.
+- **Usage**: `out=freqcnt` creates an output data set named `freqcnt`.
+
+#### `outexpect`
+
+- **Purpose**: Includes expected cell frequencies in the output data set.
+- **Usage**: `outexpect` adds expected cell frequencies to the `freqcnt` data set.
+
+#### `sparse`
+
+- **Purpose**: Includes all possible combinations of levels of the categorical variables in the output.
+- **Usage**: `sparse` ensures all combinations of `eyes` and `hair` are included in the crosstabulation table.
+
+#### `proc print`
+
+- **Purpose**: Prints the data set.
+- **Usage**: `proc print data=freqcnt noobs;` prints the `freqcnt` data set without observation numbers.
+
+#### `noobs`
+
+- **Purpose**: Removes the observation number from the report.
+- **Usage**: Used in `proc print` to suppress the printing of observation numbers.
+
+#### `title2`
+
+- **Purpose**: Sets a secondary title for the report.
+- **Usage**: `title2 'Output Data Set from PROC FREQ';` sets a secondary title for the report.
+
+#### `title`
+
+- **Purpose**: Clears any titles in effect.
+- **Usage**: `title;` clears all titles currently in effect.
+
 
 
 
