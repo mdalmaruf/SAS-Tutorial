@@ -63,6 +63,9 @@ Use the LIBNAME statement to assign a library to a local directory. This will al
 /* Assign a library */
 libname Mylib 'C:\Users\username\SAS-Tutorial';
 ```
+Replace /username/Accounts.xlsx with the correct path to your uploaded file.
+
+
 ### Ensure the Excel File is Accessible:
 Save the `Accounts.xlsx` file to the directory `C:\Users\username\SAS-Tutorial`.
 
