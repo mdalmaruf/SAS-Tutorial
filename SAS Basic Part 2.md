@@ -185,7 +185,98 @@ Note: Adjust the file paths and table names as needed to match your setup.
 
 
 
-See these online resources to learn more about how to read PC database files.
+** See these online resources to learn more about how to read PC database files.
 
 
-### [IBM DB2 Database](https://www.ibm.com/products/db2-database)
+# Simulating Remote Data Processing and Download in SAS
+
+This guide explains how to simulate remote data processing and download in SAS using local directories. Follow the steps below to create synthetic data, process it, and store it in the specified directories.
+
+## Step 1: Define Libraries
+
+First, define local and simulated remote libraries in SAS.
+
+```sas
+/*********************************************/
+/* Define a Custom Library                   */
+/*********************************************/
+options comamid=netbios remote=netpc; 
+
+/* Define Local and Simulated Remote Libraries */
+libname lhost 'C:\Users\100XXXX\SAS-Tutorial\salesdata\local';
+libname rhost 'C:\Users\100XXXX\SAS-Tutorial\salesdata\remote';
+
+/* Create directories if they do not exist */
+data _null_;
+    rc1 = dcreate('local', 'C:\Users\100XXXX\SAS-Tutorial\salesdata');
+    rc2 = dcreate('remote', 'C:\Users\100XXXX\SAS-Tutorial\salesdata');
+run;
+```
+
+### Explanation
+- `options comamid=netbios remote=netpc;` sets up communication options (commented out in this simulation).
+- `libname lhost ...` and `libname rhost ...` define local and simulated remote libraries.
+- The `data _null_` step creates the necessary directories if they do not exist.
+
+
+## Step 2: Simulate Remote Data Processing
+
+Next, simulate the creation and processing of data on the remote host.
+
+```sas
+/*************************************/
+/* Simulate creating data on the remote host */
+data rhost.master;
+    input lastname $ dept $ gross;
+    datalines;
+Smith IT 6000
+Johnson HR 4500
+Williams Finance 7000
+Brown Marketing 5500
+Jones Sales 8000
+;
+run;
+
+/* Simulate processing on the remote host */
+proc sort data=rhost.master out=rhost.sales;
+    where gross > 5000;
+    by lastname dept;
+run;
+```
+
+
+### Explanation
+- `data rhost.master` creates a dataset named master in the simulated remote library `rhost`.
+- `proc sort data=rhost.master out=rhost.sales` sorts and filters the data to include only records `where gross > 5000`.
+
+
+## Step 3: Simulate Download to Local Host
+
+Simulate the downloading of the processed data from the remote host to the local host.
+
+```sas
+/*************************************/
+/* Simulate downloading data to the local host */
+/* proc download data=rhost.sales out=lhost.sales; */
+/* run; */
+
+/* Simulate the downloaded dataset in the local library */
+data lhost.sales;
+    set rhost.sales;
+run;
+```
+
+### Explanation
+- The proc download step is commented out as it's part of the remote execution.
+- Instead, `data lhost.sales; set rhost.sales;` simulates downloading the data by copying it from the remote library to the local library.
+
+## Step 4: Print Data Set in Local Session
+Finally, print the processed data in the local session. 
+```sas
+/*************************************/
+/* print data set in local session   */
+proc print data=lhost.sales;
+run;
+```
+### Explanation
+- `proc print data=lhost.sales;` prints the sales dataset from the local library lhost.
