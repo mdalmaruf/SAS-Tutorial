@@ -51,7 +51,7 @@ run;
 proc print data=sasuser.cust(obs=5);
 run;
 ```
-## Creating the Required .mdb Files
+## Creating the Required .db or .mdb Files
 If you don't have the database files (`east.mdb` and `security.mdb`), you can create them with the following steps:
 ### Tools Required
 
