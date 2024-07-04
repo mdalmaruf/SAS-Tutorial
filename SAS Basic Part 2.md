@@ -61,7 +61,7 @@ To create and manipulate Microsoft Access databases, you can use:
 - **MDB Viewer Plus**: A free viewer for Microsoft Access database files.
 - **DB Browser for SQLite**: An open-source tool to create, design, and edit database files compatible with SQLite.
 
-### Creating the .mdb Files
+### Creating the .db or .mdb Files
 
 #### Using Microsoft Access:
 
@@ -80,10 +80,56 @@ To create and manipulate Microsoft Access databases, you can use:
 
 #### Using DB Browser for [SQLite](https://sqlitebrowser.org/dl/):
 
+1. **Download DB Browser for SQLite**:
+    - Go to the [DB Browser for SQLite website](https://sqlitebrowser.org/dl/).
+    - Download the appropriate installer for your operating system.
+
+2. **Install DB Browser for SQLite**:
+    - Follow the installation instructions for your operating system.
+    - Launch the application after installation.
+
+##### Creating a New Database and Table
+
+##### Step 1: Create a New Database
+
 1. Open DB Browser for SQLite.
-2. Create a new database and save it as `east.mdb`.
-3. Add a new table named `customers` with the required fields.
-4. Save the database.
+2. Click on `New Database`.
+3. Choose a location to save the new database file and name it `east.db`.
+4. Click `Save`.
+
+##### Step 2: Connect to the New Database
+
+- The database `east.db` is already open in DB Browser for SQLite after creation.
+
+##### Step 3: Create a Table Named `customers`
+
+1. In the main window, go to the `Database Structure` tab.
+2. Click on `Create Table`.
+3. Name the table `customers`.
+
+4. Add the required fields:
+    - Field Name: `CustomerID`, Field Type: `INTEGER`
+    - Field Name: `CustomerName`, Field Type: `VARCHAR(100)`
+    - Field Name: `ContactName`, Field Type: `VARCHAR(100)`
+    - Field Name: `Country`, Field Type: `VARCHAR(50)`
+
+5. Click `OK` to create the table.
+
+##### Step 4: Insert Sample Data into the Table
+
+1. Go to the `Browse Data` tab.
+2. Select the `customers` table from the dropdown menu.
+3. Click on `New Record` to add new rows and enter the following data:
+
+    - CustomerID: `1`, CustomerName: `Alfreds Futterkiste`, ContactName: `Maria Anders`, Country: `Germany`
+    - CustomerID: `2`, CustomerName: `Ana Trujillo Emparedados y helados`, ContactName: `Ana Trujillo`, Country: `Mexico`
+    - CustomerID: `3`, CustomerName: `Antonio Moreno Taquería`, ContactName: `Antonio Moreno`, Country: `Mexico`
+    - CustomerID: `4`, CustomerName: `Around the Horn`, ContactName: `Thomas Hardy`, Country: `UK`
+    - CustomerID: `5`, CustomerName: `Berglunds snabbköp`, ContactName: `Christina Berglund`, Country: `Sweden`
+
+4. Click `Write Changes` to save the data into the table.
+
+Your SQLite database `east.db` with the `customers` table and sample data is now created and ready for use.
 
 #### Sample Data
 
