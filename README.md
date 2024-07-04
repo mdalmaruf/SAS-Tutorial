@@ -17,6 +17,8 @@ PROC (procedure) steps are used to analyze the data. They include procedures for
 #### Output Customization
 Output customization involves setting titles, footnotes, and formatting the output to make it more readable and presentable.
 
+
+
 ### Example of a SAS Program
 
 Here's a simple example of a SAS program that reads in data, processes it, and generates a report:
@@ -63,6 +65,8 @@ SAS Studio is a web-based interface to SAS that enables you to write code, run p
 1. **Login to SAS Studio**:
    Open your browser and navigate to the SAS Studio login page [https://welcome.oda.sas.com/]. Enter your credentials to access the workspace.
 
+![Interface](screenshots/Interface.JPG)
+
 ### Creating a Folder
 
 To organize your files, you need to create a folder within SAS Studio:
@@ -72,7 +76,7 @@ To organize your files, you need to create a folder within SAS Studio:
 
 2. **Create a New Folder**:
    Right-click on `Files (Home)` and select `New Folder`. Name your folder (e.g., `SAS24`) and click `Save`.
-
+   
 ### Uploading Files
 
 Once your folder is created, you can upload files into it:
@@ -183,7 +187,9 @@ run;
 ```
 # Commonly Used Keywords and Statements in SAS with Examples
 
-Before starting to write programs in SAS, it's essential to be familiar with some commonly used keywords, syntax, and statements. Here are 25 keywords and concepts that everyone should know:
+Before starting to write programs in SAS, it's essential to be familiar with some commonly used keywords, syntax, and statements. These can be broadly categorized into three parts: Data Steps, PROC Steps, and Output Customization. Here are 25 keywords and concepts that everyone should know:
+
+## Data Steps
 
 **1. `data`: Creates a new data set.** Example: `data dataset_name;`
 
@@ -191,41 +197,45 @@ Before starting to write programs in SAS, it's essential to be familiar with som
 
 **3. `datalines`: Provides data lines directly within the DATA step.** Example: `datalines;`
 
-**4. `proc`: Initiates a procedure step.** Example: `proc print data=dataset_name;`
+**4. `set`: Reads an existing data set.** Example: `set dataset_name;`
 
-**5. `run`: Executes preceding steps or statements.** Example: `run;`
+**5. `if`: Applies a condition to select observations.** Example: `if condition then action;`
 
-**6. `quit`: Exits a procedure or cancels the current step.** Example: `quit;`
+**6. `where`: Filters data based on a condition.** Example: `where condition;`
 
-**7. `set`: Reads an existing data set.** Example: `set dataset_name;`
+**7. `keep`: Specifies variables to retain in the data set.** Example: `keep var1 var2;`
 
-**8. `if`: Applies a condition to select observations.** Example: `if condition then action;`
+**8. `drop`: Specifies variables to exclude from the data set.** Example: `drop var1 var2;`
 
-**9. `where`: Filters data based on a condition.** Example: `where condition;`
+**9. `merge`: Combines two or more data sets based on a common variable.** Example: `merge dataset1 dataset2;`
 
-**10. `format`: Assigns formats to variables for display.** Example: `format var date9.;`
+**10. `by`: Specifies the variable(s) to use for grouping.** Example: `by var;`
 
-**11. `label`: Assigns descriptive labels to variables.** Example: `label var='Label';`
+**11. `retain`: Retains the value of a variable across iterations of the DATA step.** Example: `retain var;`
 
-**12. `title`: Sets the title for the output.** Example: `title 'Title Text';`
+**12. `array`: Defines an array of variables.** Example: `array nums[3] num1-num3;`
 
-**13. `footnote`: Sets footnotes for the output.** Example: `footnote 'Footnote Text';`
+**13. `length`: Defines the length of a variable.** Example: `length var $ 10;`
 
-**14. `keep`: Specifies variables to retain in the data set.** Example: `keep var1 var2;`
+**14. `libname`: Assigns a library reference to a directory.** Example: `libname mylib 'C:\path\to\directory';`
 
-**15. `drop`: Specifies variables to exclude from the data set.** Example: `drop var1 var2;`
+## PROC Steps
 
-**16. `merge`: Combines two or more data sets based on a common variable.** Example: `merge dataset1 dataset2;`
+**15. `proc`: Initiates a procedure step.** Example: `proc print data=dataset_name;`
 
-**17. `by`: Specifies the variable(s) to use for grouping.** Example: `by var;`
+**16. `run`: Executes preceding steps or statements.** Example: `run;`
 
-**18. `retain`: Retains the value of a variable across iterations of the DATA step.** Example: `retain var;`
+**17. `quit`: Exits a procedure or cancels the current step.** Example: `quit;`
 
-**19. `array`: Defines an array of variables.** Example: `array nums[3] num1-num3;`
+**18. `format`: Assigns formats to variables for display.** Example: `format var date9.;`
 
-**20. `length`: Defines the length of a variable.** Example: `length var $ 10;`
+**19. `label`: Assigns descriptive labels to variables.** Example: `label var='Label';`
 
-**21. `libname`: Assigns a library reference to a directory.** Example: `libname mylib 'C:\path\to\directory';`
+## Output Customization
+
+**20. `title`: Sets the title for the output.** Example: `title 'Title Text';`
+
+**21. `footnote`: Sets footnotes for the output.** Example: `footnote 'Footnote Text';`
 
 **22. `infile`: Specifies an external file to read data from.** Example: `infile 'file.txt';`
 
