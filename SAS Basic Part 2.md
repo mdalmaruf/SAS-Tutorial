@@ -1062,7 +1062,134 @@ title;
 
 ![Tabuler Data](screenshots/tabulated2.JPG)
 
+# Query Data Overview
 
+Structured Query Language (SQL) is a standardized, widely used language that retrieves and updates data in tables and views based on those tables. If you're familiar with SQL, you can quickly create queries in SAS by using the SQL procedure in Base SAS.
+
+PROC SQL is the SAS implementation of SQL. When you want to examine relationships between data values, subset your data, or compute values, the SQL procedure provides an easy, flexible way to analyze your data. Using PROC SQL, you can:
+- Retrieve and manipulate data that is stored in tables or views.
+- Create tables, views, and indexes on columns in tables.
+- Create SAS macro variables that contain values from rows in a query's result.
+- Add or modify the data values in a table's columns or insert and delete rows. You can also modify the table itself by adding, modifying, or dropping columns.
+- Send DBMS-specific SQL statements to a database management system (DBMS) and retrieve DBMS data.
+
+You can use SAS language elements such as global statements, data set options, functions, informats, and formats with PROC SQL just as you can with other SAS procedures. However, because PROC SQL implements Structured Query Language, it works somewhat differently from other Base SAS procedures.
+
+This task focuses on retrieving data from a single table (data set). For details on joining tables, see Join tables.
+
+## Point-and-Click Method
+
+You can create SQL queries using a point-and-click interface:
+1. In SAS, click Tools then Query.
+2. Use the SQL Query windows to create queries.
+3. You can view and save the PROC SQL code that the SQL Query window generates.
+
+# Query Data Example
+
+Suppose that you want to create two queries of payroll information. In the first query, you want to retrieve data and calculate the number, average age, and average salary of employees in each job code. In the second, you want to create a new table of salary and bonus information for each employee. The following programs show you how to perform these tasks.
+
+**Tip:** You can copy and run these programs in SAS.
+
+```sas
+/*************************************/
+/* create the input table (data set) */
+/*************************************/
+data payroll;
+   input IdNumber $ 1-4 Sex $ 6 Jobcode $ 8-10
+         Salary 12-16 @18 Birth date7. 
+         @26 Hired date7.;
+   format birth hired mmddyy8.;
+   datalines;    
+1009 M TA1 28880 02MAR59 26MAR92
+1017 M TA3 40858 28DEC57 16OCT81
+1036 F TA3 39392 19MAY65 23OCT84
+1037 F TA1 28558 10APR64 13SEP92
+1038 F TA1 26533 09NOV69 23NOV91
+1050 M ME2 35167 14JUL63 24AUG86
+1065 M ME2 35090 26JAN44 07JAN87
+1076 M PT1 66558 14OCT55 03OCT91
+1094 M FA1 22268 02APR70 17APR91
+1100 M BCK 25004 01DEC60 07MAY88
+;
+run;
+
+/*************************************/
+/* retrieve data using a query       */
+/*************************************/
+proc sql;
+   select Jobcode,
+          count(jobcode) as number label='Number',
+          avg(int((today()-birth)/365.25)) as avgage
+             format=2. label='Average Age',
+          avg(salary) as avgsal
+             format=dollar8. label='Average Salary'
+      from payroll
+      group by jobcode
+      having avgage ge 30;
+   title1 'Summary Information for Each Job Category';
+   title2 'Average Age 30 or Over';
+quit;
+
+/*************************************/
+/* create a new table from a query   */
+/*************************************/
+proc sql;
+   create table bonus as
+      select IdNumber, Salary format=dollar8.,
+             salary*.025 as Bonus format=dollar8.
+         from payroll;
+   title 'BONUS Information';
+   select *
+      from bonus;
+quit;
+
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+```
+## Explanation
+
+**Create the Input Table**: The `data` step creates an input data set named `payroll` containing employee information such as ID number, sex, job code, salary, birth date, and hire date.
+
+**Retrieve Data Using a Query**: The first `proc sql` step retrieves data from the `payroll` data set, calculates the number of employees, average age, and average salary for each job code where the average age is 30 or over. The results are displayed with titles.
+
+**Create a New Table from a Query**: The second `proc sql` step creates a new table named `bonus` that includes the ID number, salary, and calculated bonus (2.5% of salary) for each employee. The results are displayed with the title 'BONUS Information'.
+
+**Clear Titles**: The `title;` statement clears any titles in effect.
+
+## Output
+
+The output file name specified for HTML output is `table.htm`.
+
+### Sample Output
+
+**Summary Information for Each Job Category**:
+
+```text
+Jobcode   Number   Average Age   Average Salary
+TA1       3        31            $28,057
+TA3       2        32            $40,125
+ME2       2        35            $35,129
+PT1       1        38            $66,558
+
+#### BONUS Information:
+```text
+IdNumber   Salary   Bonus
+1009       $28,880  $722
+1017       $40,858  $1,021
+1036       $39,392  $985
+1037       $28,558  $714
+1038       $26,533  $663
+1050       $35,167  $879
+1065       $35,090  $877
+1076       $66,558  $1,664
+1094       $22,268  $557
+1100       $25,004  $625
+```
+
+
+![Query Information](screenshots/querydata.JPG)
 
 ```sas
 
