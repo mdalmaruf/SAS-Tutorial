@@ -110,7 +110,7 @@ To work with the uploaded data, you need to import it into a SAS dataset:
 ## Using SAS Base Software on Windows
 
 ### Open SAS Software:
-Launch the SAS software on your Windows machine.
+Launch the SAS software on your Windows machine. Find the installation instruction from university software portal for SAS software.
 
 ### Create a Library Connected to a Local Folder:
 Use the LIBNAME statement to assign a library to a local directory. This will allow you to access and manage datasets stored in that directory.
