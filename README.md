@@ -129,110 +129,58 @@ title "An overview of Accounts Information";
 
 run;
 ```
-# Most Commonly Used Keywords in SAS with Examples
+# Commonly Used Keywords and Statements in SAS with Examples
 
-Before starting to write programs in SAS, it's essential to be familiar with some commonly used keywords, syntax, and statements. Here are 20 keywords and concepts that everyone should know:
+Before starting to write programs in SAS, it's essential to be familiar with some commonly used keywords, syntax, and statements. Here are 25 keywords and concepts that everyone should know:
 
-## 1. `data`
-- **Creates a new data set.**
-- Example: `data dataset_name;`
+**1. `data`: Creates a new data set.** Example: `data dataset_name;`
 
-## 2. `input`
-- **Defines variables to read from the input data.**
-- Example: `input var1 var2 $;`
+**2. `input`: Defines variables to read from the input data.** Example: `input var1 var2 $;`
 
-## 3. `datalines`
-- **Provides data lines directly within the DATA step.**
-- Example: `datalines;`
+**3. `datalines`: Provides data lines directly within the DATA step.** Example: `datalines;`
 
-## 4. `proc`
-- **Initiates a procedure step.**
-- Example: `proc print data=dataset_name;`
+**4. `proc`: Initiates a procedure step.** Example: `proc print data=dataset_name;`
 
-## 5. `run`
-- **Executes preceding steps or statements.**
-- Example: `run;`
+**5. `run`: Executes preceding steps or statements.** Example: `run;`
 
-## 6. `quit`
-- **Exits a procedure or cancels the current step.**
-- Example: `quit;`
+**6. `quit`: Exits a procedure or cancels the current step.** Example: `quit;`
 
-## 7. `set`
-- **Reads an existing data set.**
-- Example: `set dataset_name;`
+**7. `set`: Reads an existing data set.** Example: `set dataset_name;`
 
-## 8. `if`
-- **Applies a condition to select observations.**
-- Example: `if condition then action;`
+**8. `if`: Applies a condition to select observations.** Example: `if condition then action;`
 
-## 9. `where`
-- **Filters data based on a condition.**
-- Example: `where condition;`
+**9. `where`: Filters data based on a condition.** Example: `where condition;`
 
-## 10. `format`
-- **Assigns formats to variables for display.**
-- Example: `format var date9.;`
+**10. `format`: Assigns formats to variables for display.** Example: `format var date9.;`
 
-## 11. `label`
-- **Assigns descriptive labels to variables.**
-- Example: `label var='Label';`
+**11. `label`: Assigns descriptive labels to variables.** Example: `label var='Label';`
 
-## 12. `title`
-- **Sets the title for the output.**
-- Example: `title 'Title Text';`
+**12. `title`: Sets the title for the output.** Example: `title 'Title Text';`
 
-## 13. `footnote`
-- **Sets footnotes for the output.**
-- Example: `footnote 'Footnote Text';`
+**13. `footnote`: Sets footnotes for the output.** Example: `footnote 'Footnote Text';`
 
-## 14. `keep`
-- **Specifies variables to retain in the data set.**
-- Example: `keep var1 var2;`
+**14. `keep`: Specifies variables to retain in the data set.** Example: `keep var1 var2;`
 
-## 15. `drop`
-- **Specifies variables to exclude from the data set.**
-- Example: `drop var1 var2;`
+**15. `drop`: Specifies variables to exclude from the data set.** Example: `drop var1 var2;`
 
-## 16. `merge`
-- **Combines two or more data sets based on a common variable.**
-- Example: `merge dataset1 dataset2;`
+**16. `merge`: Combines two or more data sets based on a common variable.** Example: `merge dataset1 dataset2;`
 
-## 17. `by`
-- **Specifies the variable(s) to use for grouping.**
-- Example: `by var;`
+**17. `by`: Specifies the variable(s) to use for grouping.** Example: `by var;`
 
-## 18. `retain`
-- **Retains the value of a variable across iterations of the DATA step.**
-- Example: `retain var;`
+**18. `retain`: Retains the value of a variable across iterations of the DATA step.** Example: `retain var;`
 
-## 19. `array`
-- **Defines an array of variables.**
-- Example: `array nums[3] num1-num3;`
+**19. `array`: Defines an array of variables.** Example: `array nums[3] num1-num3;`
 
-## 20. `length`
-- **Defines the length of a variable.**
-- Example: `length var $ 10;`
+**20. `length`: Defines the length of a variable.** Example: `length var $ 10;`
 
-## Additional Syntax and Statements
+**21. `libname`: Assigns a library reference to a directory.** Example: `libname mylib 'C:\path\to\directory';`
 
-### `libname`
-- **Assigns a library reference to a directory.**
-- Example: `libname mylib 'C:\path\to\directory';`
+**22. `infile`: Specifies an external file to read data from.** Example: `infile 'file.txt';`
 
-### `infile`
-- **Specifies an external file to read data from.**
-- Example: `infile 'file.txt';`
+**23. `file`: Specifies an external file to write data to.** Example: `file 'output.txt';`
 
-### `file`
-- **Specifies an external file to write data to.**
-- Example: `file 'output.txt';`
+**24. `put`: Writes data to an external file.** Example: `put var;`
 
-### `put`
-- **Writes data to an external file.**
-- Example: `put var;`
-
-### `in`
-- **Specifies data set options for input.**
-- Example: `set dataset_name (where=(condition));`
+**25. `in`: Specifies data set options for input.** Example: `set dataset_name (where=(condition));`
 
 These keywords and statements form the foundation of SAS programming and are essential for creating, manipulating, and analyzing data sets, as well as generating reports.
