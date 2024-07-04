@@ -633,10 +633,120 @@ run;
 ```
 ![Subset File](screenshots/subset.JPG)
 
-###
+# Displaying Date, Time, and Datetime Values in SAS
 
+Suppose you want to display date, time, and datetime values as recognizable dates and times in a report. The first example below demonstrates how you can display a value as a date, a time, or a date and time. This program uses the DATETIME, DATE, and TIMEAMPM formats to display the value 86399 as a date and time, a calendar date, and a time, respectively. The MONTH function extracts the numeric month from the value of Date1 (86399).
 
-## 
+The second example reads four regional meeting dates using the MMDDYY8. informat, calculates the dates on which announcements should be mailed, and writes the dates out using the DATE9. format.
+
+**Tip:** You can copy and run these programs in SAS.
+
+## Example 1: Displaying Values as Date, Time, and Datetime
+
+### Step 1: Set System Options for Report
+
+```sas
+/*************************************/
+/* set system options for report     */
+/*************************************/
+options nodate nonumber;
+```
+
+### Step 2: Create Temporary Data Set
+```sas
+/*************************************/
+/* create temporary data set         */
+/*************************************/
+data test;
+   Time1 = 86399;
+   format Time1 datetime.;
+   Date1 = 86399;
+   format Date1 date.;
+   Time2 = 86399;
+   format Time2 timeampm.;
+   Date1Month = month(Date1);
+run;
+
+```
+### Step 3: Print Data Set
+```sas
+/*************************************/
+/* print data set                    */
+/*************************************/
+proc print data=test noobs;
+   title 'Same Number, Different SAS Values';
+   footnote1 'Time1 is a SAS DATETIME value.';
+   footnote2 'Date1 is a SAS DATE value.';
+   footnote3 'Time2 is a SAS TIME value.';
+   footnote4 'Date1Month is the numeric month for Date1.';
+run;
+
+```
+### Step 4: Clear Titles and Footnotes
+```sas
+/*************************************/
+/* clear any titles and footnotes    */
+/* in effect                         */
+/*************************************/
+title;
+footnote;
+
+```
+These are the data values from the PROC PRINT output: 
+![Data Footnote](screenshots/footnote.JPG)
+
+## Example 2: Calculating and Displaying Dates
+### Step 1: Set System Options for Report
+
+```sas
+/*************************************/
+/* set system options for report     */
+/*************************************/
+options nodate nonumber;
+
+```
+### Step 2: Create Temporary Data Set
+
+```sas
+/*************************************/
+/* create temporary data set         */
+/*************************************/
+data meeting;
+   input region $ mtg : mmddyy10.;
+   sendmail = mtg - 45;
+   datalines;
+N  11-24-99
+S  12-28-99
+E  12-03-99
+W  10-04-99
+;
+run;
+```
+### Step 3: Print Data Set
+
+```sas
+/*************************************/
+/* print data set                    */
+/*************************************/
+proc print data=meeting noobs;
+   format mtg sendmail date9.;
+   title 'When to Send Announcements';
+run;
+
+```
+### Step 4: Clear Titles
+```sas
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+
+```
+![Date annonymous send](screenshots/send_annonymous.JPG)
+
 ```sas
 
 ```
+These are the data values from the PROC PRINT output: 
+
+![Subset File](screenshots/subset.JPG)
