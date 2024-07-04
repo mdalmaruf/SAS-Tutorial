@@ -11,4 +11,5 @@ run;
 
 /* Print part of the new data set */
 proc print data=Mylib.accounts(obs=10);
+title "An overview of Accounts Information";
 run;
