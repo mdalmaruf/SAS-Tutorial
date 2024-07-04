@@ -145,3 +145,20 @@ data product_sample;
     stop;
 run;
 ```
+
+
+### Existing Dataset Access
+```sas
+   /* Verify the contents of the Sashelp library */
+   proc datasets library=sashelp;
+   run;
+   
+   /* Display the contents of the Prdsale data set */
+   proc contents data=sashelp.prdsale;
+   run;
+   
+   /* Print the first 10 observations from the Prdsale data set */
+   proc print data=sashelp.prdsale(obs=10);
+   run;
+```
+
