@@ -9,7 +9,7 @@ To read PC database files, you use the `PROC IMPORT` procedure. `PROC IMPORT` re
 - `PROC IMPORT` is available only on Windows and UNIX.
 - You must have SAS/ACCESS Interface to PC Files licensed to read PC database files. However, even without SAS/ACCESS Interface to PC Files you can import and export delimited external files (files containing columns of data values that are separated by a delimiter such as a blank or a comma).
 
-### <span style="color:orangered">Point-and-Click Method </span>
+### <span style="color:orangered">Point-and-Click Method</span>
 
 If you have SAS/ACCESS Interface to PC Files licensed, you can import PC database files using the Import Wizard:
 
