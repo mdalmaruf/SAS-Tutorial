@@ -434,4 +434,111 @@ run;
 ![Final Output](screenshots/VariableRedefine.JPG)
 
 
+# Using Conditional Statements in SAS
+
+The following programs illustrate several ways of using conditional logic in your DATA step programs.
+
+**Tip:** You can copy and run the complete DATA steps below in SAS. (You can also modify the code fragments and use them in DATA steps.)
+
+## Example 1: Conditional Logic with IF-THEN/ELSE
+
+```sas
+/*************************************/
+/* conditional logic with            */
+/* IF-THEN/ELSE                      */
+/*************************************/
+data payroll;
+   input IdNumber $ 1-4 Sex $ 6 Jobcode $ 8-10
+         Salary 12-16 @18 Birth date7. 
+         @26 Hired date7.;
+   if jobcode='ME2' then
+      Group='Mechanics'; 
+   else if jobcode='PT1' then
+        Group='Pilots';
+   format birth hired mmddyy8.;
+   datalines;    
+1009 M TA1 28880 02MAR59 26MAR92
+1017 M TA3 40858 28DEC57 16OCT81
+1036 F TA3 39392 19MAY65 23OCT84
+1037 F TA1 28558 10APR64 13SEP92
+1038 F TA1 26533 09NOV69 23NOV91
+1050 M ME2 35167 14JUL63 24AUG86
+1065 M ME2 35090 26JAN44 07JAN87
+1076 M PT1 66558 14OCT55 03OCT91
+1094 M FA1 22268 02APR70 17APR91
+1100 M BCK 25004 01DEC60 07MAY88
+;
+run;
+
+data highwage;
+   set payroll(drop=sex birth hired);
+   if salary > 60000 then
+      Category = "High";
+   else if salary < 30000 then
+        Category = "Low";
+   else Category = "Avg";
+run;
+```
+## Example 2: Other Examples of IF-THEN/ELSE (Code Fragments)
+```sas
+/*************************************/
+/* other examples of IF-THEN/ELSE    */
+/* (code fragments)                  */
+/*************************************/
+if x then delete;
+
+if status='OK' and type=3 then count + 1;
+
+if age ne agecheck then delete;
+
+if x = 0 then 
+   if y ne 0 then put 'X ZERO, Y NONZERO'; 
+   else put 'X ZERO, Y ZERO';
+else put 'X NONZERO';
+
+if answer = 9 then
+   do;
+      answer = .;
+      put 'INVALID ANSWER FOR ' id=;
+   end;
+else
+   do;
+      answer = answer10;
+      valid + 1;
+   end;
+```
+
+
+## Example 3: Conditional Logic with SELECT (Code Fragment)
+```sas
+/*************************************/
+/* conditional logic with SELECT     */
+/* (code fragment)                   */
+/*************************************/
+select (payclass);
+   when ('monthly') amt = salary;
+   when ('hourly')
+      do;
+         amt = hrlywage * min(hrs,40);
+         if hrs > 40 then put 'CHECK TIMECARD';
+      end;         /* end of do     */
+   otherwise put 'PROBLEM OBSERVATION';
+end;               /* end of select */
+```
+
+## Example 4: Conditional Logic with Subsetting IF
+
+```sas
+/*************************************/
+/* conditional logic with subsetting */
+/* IF                                */
+/*************************************/
+data mechanics;   
+   set payroll;   
+   if jobcode = 'ME2';
+run;
+
+```
+![Conditional Statement Result](screenshots/conditional_statement.JPG)
+
 
