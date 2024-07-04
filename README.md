@@ -65,7 +65,7 @@ SAS Studio is a web-based interface to SAS that enables you to write code, run p
 1. **Login to SAS Studio**:
    Open your browser and navigate to the SAS Studio login page [https://welcome.oda.sas.com/]. Enter your credentials to access the workspace.
 
-![Interface](screenshots/Interface.JPG)
+![Interface](screenshots/Interface.png)
 
 ### Creating a Folder
 
