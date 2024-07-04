@@ -431,7 +431,7 @@ data sales;
    Sale_Price = 49.99;
 run;
 ```
-
+![Final Output](screenshots/VariableRedefine.JPG)
 
 
 
