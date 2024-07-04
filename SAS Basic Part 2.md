@@ -63,20 +63,20 @@ To create and manipulate Microsoft Access databases, you can use:
 
 ### Creating the .db or .mdb Files
 
-#### Using Microsoft Access:
+- #### Using Microsoft Access:
 
-1. Open Microsoft Access.
-2. Create a new database and save it as `east.mdb`.
-3. Create a table named `customers` with fields such as `CustomerID`, `CustomerName`, `ContactName`, `Country`, etc.
-4. Save and close the database.
-5. Repeat the steps to create `security.mdb` if necessary.
+    1. Open Microsoft Access.
+    2. Create a new database and save it as `east.mdb`.
+    3. Create a table named `customers` with fields such as `CustomerID`, `CustomerName`, `ContactName`, `Country`, etc.
+    4. Save and close the database.
+    5. Repeat the steps to create `security.mdb` if necessary.
 
-#### Using MDB Viewer Plus:
+- #### Using MDB Viewer Plus:
 
-1. Open MDB Viewer Plus.
-2. Create a new database and save it as `east.mdb`.
-3. Add a new table named `customers` with the required fields.
-4. Save the database.
+    1. Open MDB Viewer Plus.
+    2. Create a new database and save it as `east.mdb`.
+    3. Add a new table named `customers` with the required fields.
+    4. Save the database.
 
 #### Using DB Browser for [SQLite](https://sqlitebrowser.org/dl/):
 
