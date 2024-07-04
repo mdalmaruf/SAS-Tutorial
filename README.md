@@ -6,18 +6,18 @@ SAS (Statistical Analysis System) is a powerful software suite used for advanced
 
 Writing a SAS program involves understanding the key components and the structure of the code. A typical SAS program consists of three main parts: Data Steps, PROC Steps, and Output Customization. Each part serves a specific purpose in the data analysis process.
 
-## Key Components of a SAS Program
+### Key Components of a SAS Program
 
-### Data Steps
+#### Data Steps
 Data steps are used to create and manipulate data sets. They allow you to read in data, modify it, and create new data sets.
 
-### PROC Steps
+#### PROC Steps
 PROC (procedure) steps are used to analyze the data. They include procedures for statistical analysis, data summarization, and reporting.
 
-### Output Customization
+#### Output Customization
 Output customization involves setting titles, footnotes, and formatting the output to make it more readable and presentable.
 
-## Example of a SAS Program
+### Example of a SAS Program
 
 Here's a simple example of a SAS program that reads in data, processes it, and generates a report:
 
@@ -50,6 +50,9 @@ proc print data=sales;
 run;
 title;
 ```
+The `data` step creates a new data set named sales and reads in data using the datalines statement.
+The `proc` means step calculates basic statistics (mean, min, max) for the Sales variable.
+The `proc print` step prints the data set sales with a custom title "Sales Report"
 
 ## Setting Up SAS Studio
 
