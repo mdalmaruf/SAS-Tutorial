@@ -639,6 +639,9 @@ Suppose you want to display date, time, and datetime values as recognizable date
 
 The second example reads four regional meeting dates using the MMDDYY8. informat, calculates the dates on which announcements should be mailed, and writes the dates out using the DATE9. format.
 
+The SAS program utilizes various keywords and their functionalities to effectively manage and present data. The `options` keyword sets system options to remove dates and page numbers from the report. The `data` keyword is used to create new data sets, while `input` defines the variables to read from the input data. `datalines` allows for data to be provided directly within the DATA step. The `format` keyword assigns display formats to variables, and the `month` function extracts the month from a date value. The `proc print` procedure prints data sets, with `title` and `footnote` used to set titles and footnotes for the report. The `noobs` option removes observation numbers from the report. The `set` keyword reads existing data sets into the DATA step, and `keep` and `drop` specify which variables to retain or exclude. `date9.` and `mmddyy10.` are formats and informats for displaying and reading dates in specific forms. The `mtg` variable, formatted using the `mmddyy10.` informat, represents meeting dates and is used to calculate mailing dates for announcements. Together, these keywords enable comprehensive data manipulation and presentation in SAS.
+
+
 **Tip:** You can copy and run these programs in SAS.
 
 ## Example 1: Displaying Values as Date, Time, and Datetime
