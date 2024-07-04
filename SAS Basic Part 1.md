@@ -14,6 +14,8 @@ Use the LIBNAME statement to define a SAS library.
 /* define SAS library */
 libname sales 'c:\salesdata\sas\2002';
 ```
+You should have this valid path (c:\salesdata\sas\2002) at your local folder.
+
 ### Create New Data Set from Raw Data
 Use a DATA step to create a new data set.
 ```sas
