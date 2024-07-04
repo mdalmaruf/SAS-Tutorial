@@ -101,5 +101,64 @@ Here is some sample data you can use for the `customers` table:
 
 Ensure the file paths in the `PROC IMPORT` statements are correct and point to the location where you saved your `.mdb` files.
 
+## Installing and Using a Database Management System
+
+To create and manage your databases, you can use either Microsoft Access or DB2. Here are the steps to install and use these tools:
+
+### Option 1: Microsoft Access
+
+#### Installation:
+
+- If you don't have Microsoft Access installed, you can purchase and download it from the Microsoft Store.
+- Follow the installation instructions provided by Microsoft.
+
+#### Creating Databases:
+
+1. Open Microsoft Access.
+2. Create a new database and save it as `east.mdb`.
+3. Create a table named `customers` with the required fields.
+4. Save and close the database.
+5. Repeat the steps to create `security.mdb` if necessary.
+
+### Option 2: IBM DB2
+
+#### Installation:
+
+- Download IBM DB2 from the IBM website.
+- Follow the installation instructions provided by IBM.
+
+#### Creating Databases:
+
+1. Open the DB2 Command Line Processor.
+2. Create a new database:
+    ```sql
+    CREATE DATABASE east;
+    ```
+3. Connect to the new database:
+    ```sql
+    CONNECT TO east;
+    ```
+4. Create a table named `customers` with the required fields:
+    ```sql
+    CREATE TABLE customers (
+        CustomerID INTEGER,
+        CustomerName VARCHAR(100),
+        ContactName VARCHAR(100),
+        Country VARCHAR(50)
+    );
+    ```
+5. Insert sample data into the table:
+    ```sql
+    INSERT INTO customers (CustomerID, CustomerName, ContactName, Country) VALUES (1, 'Alfreds Futterkiste', 'Maria Anders', 'Germany');
+    INSERT INTO customers (CustomerID, CustomerName, ContactName, Country) VALUES (2, 'Ana Trujillo Emparedados y helados', 'Ana Trujillo', 'Mexico');
+    INSERT INTO customers (CustomerID, CustomerName, ContactName, Country) VALUES (3, 'Antonio Moreno Taquería', 'Antonio Moreno', 'Mexico');
+    INSERT INTO customers (CustomerID, CustomerName, ContactName, Country) VALUES (4, 'Around the Horn', 'Thomas Hardy', 'UK');
+    INSERT INTO customers (CustomerID, CustomerName, ContactName, Country) VALUES (5, 'Berglunds snabbköp', 'Christina Berglund', 'Sweden');
+    ```
+
+## References
+
+See these online resources to learn more about how to read PC database files.
+
 
 ### [IBM DB2 Database](https://www.ibm.com/products/db2-database)
