@@ -940,7 +940,7 @@ title;
 - `noobs`: Removes the observation number from the report. Used in `proc print` to suppress the printing of observation numbers.
 - `title2`: Sets a secondary title for the report. The statement `title2 'Output Data Set from PROC FREQ';` sets a secondary title for the report.
 - `title`: Clears any titles in effect. The statement `title;` clears all titles currently in effect.
-
+![Count Data Output](screenshots/count.jpg)
 
 
 ```sas
