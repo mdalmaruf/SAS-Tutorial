@@ -88,18 +88,18 @@ To create and manipulate Microsoft Access databases, you can use:
         - Follow the installation instructions for your operating system.
         - Launch the application after installation.
 
--- ##### Creating a New Database and Table
+    - ##### Creating a New Database and Table
 
-##### Step 1: Create a New Database
+    - ##### Step 1: Create a New Database
 
-1. Open DB Browser for SQLite.
-2. Click on `New Database`.
-3. Choose a location to save the new database file and name it `east.db`.
-4. Click `Save`.
+        1. Open DB Browser for SQLite.
+        2. Click on `New Database`.
+        3. Choose a location to save the new database file and name it `east.db`.
+        4. Click `Save`.
 
-##### Step 2: Connect to the New Database
+    - ##### Step 2: Connect to the New Database
 
-- The database `east.db` is already open in DB Browser for SQLite after creation.
+        - The database `east.db` is already open in DB Browser for SQLite after creation.
 
 ##### Step 3: Create a Table Named `customers`
 
