@@ -9,7 +9,7 @@ SAS Studio is a web-based interface to SAS that enables you to write code, run p
 ### Accessing SAS Studio
 
 1. **Login to SAS Studio**:
-   Open your browser and navigate to the SAS Studio login page. Enter your credentials to access the workspace.
+   Open your browser and navigate to the SAS Studio login page [https://welcome.oda.sas.com/]. Enter your credentials to access the workspace.
 
 ### Creating a Folder
 
@@ -20,8 +20,6 @@ To organize your files, you need to create a folder within SAS Studio:
 
 2. **Create a New Folder**:
    Right-click on `Files (Home)` and select `New Folder`. Name your folder (e.g., `SAS24`) and click `Save`.
-
-![Creating a Folder in SAS Studio](path/to/your/image.png)
 
 ### Uploading Files
 
@@ -36,7 +34,7 @@ Once your folder is created, you can upload files into it:
 3. **Confirm Upload**:
    After uploading, you should see the file listed under the folder.
 
-![Uploading Files in SAS Studio](path/to/your/image.png)
+![Uploading Files in SAS Studio](screenshots/sas_studio_import.JPG)
 
 ### Importing Data
 
@@ -51,30 +49,67 @@ To work with the uploaded data, you need to import it into a SAS dataset:
 3. **View Imported Data**:
    Once the import is complete, you can view the data in the `OUTPUT DATA` tab.
 
-![Imported Data in SAS Studio](path/to/your/image.png)
 
-## Working with SAS Base Software
 
-SAS Base is the foundational software for SAS and includes essential tools for data management and analytics.
+## Using SAS Base Software on Windows
 
-### Writing SAS Programs
+### Open SAS Software:
+Launch the SAS software on your Windows machine.
 
-To create and run SAS programs, follow these steps:
+### Create a Library Connected to a Local Folder:
+Use the LIBNAME statement to assign a library to a local directory. This will allow you to access and manage datasets stored in that directory.
 
-1. **Open a New Program**:
-   In SAS Studio, click on the `New` icon and select `Program`.
+```sas
+/* Assign a library */
+libname Mylib 'C:\Users\username\SAS-Tutorial';
+```
+### Ensure the Excel File is Accessible:
+Save the `Accounts.xlsx` file to the directory `C:\Users\username\SAS-Tutorial`.
 
-2. **Write Your Code**:
-   Write your SAS code in the editor. For example, you can start with a simple data step:
+### Import the Excel File:
+Open a new SAS program. Use the following code to import the data from the Excel file into the `MyLib` library:
 
-   ```sas
-   data work.example;
-      input Name $ Age;
-      datalines;
-   John 25
-   Jane 30
-   ;
-   run;
+```sas
+/* Import the Excel file */
+proc import datafile="C:\Users\username\SAS-Tutorial\Accounts.xlsx"
+    out=Mylib.accounts
+    dbms=xlsx
+    replace;
+    sheet="Prices";
+    getnames=yes;
+run;
 
-   proc print data=work.example;
-   run;
+/* Print part of the new data set */
+proc print data=Mylib.accounts(obs=10);
+run;
+```
+### View the Dataset:
+In the SAS Explorer window, navigate to `MyLib` and double-click on the `Accounts` dataset to view it.
+
+### Saving SAS Programs:
+To save your SAS program:
+1. Go to `File` -> `Save As`.
+2. Navigate to the directory you assigned to `MyLib` (e.g., `C:\Users\username\SAS-Tutorial`).
+3. Provide a name for your file (e.g., `Program Import.sas`).
+4. Click `Save`.
+
+### Example SAS Program
+Here’s an example of a simple SAS program:
+
+```sas
+/* Step 1: Assign a library */
+libname mylib 'C:\Users\username\SAS-Tutorial';
+
+/* Step 2: Import the dataset into MyLib */
+proc import datafile='C:\Users\username\SAS-Tutorial\Accounts.xlsx'
+    out=Mylib.accounts
+    dbms=xlsx
+    replace;
+    sheet='Prices';
+    getnames=yes;
+run;
+
+/* Step 3: Print the dataset to confirm the import */
+proc print data=Mylib.accounts(obs=10);
+run;
+```
