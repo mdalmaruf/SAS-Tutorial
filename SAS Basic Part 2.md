@@ -1188,8 +1188,153 @@ IdNumber   Salary   Bonus
 1100       $25,004  $625
 ```
 
+![Query Information](screenshots/querydata.png)
 
-![Query Information](screenshots/querydata.JPG)
+# Join Tables
+
+## Overview
+
+If you read Query Data, you saw ways to query a single table using PROC SQL. However, you often need data from separate tables. When you specify multiple tables, views, or query-expressions in the FROM clause, PROC SQL processes them to form one table. The resulting table contains data from each contributing table. These queries are referred to as joins.
+
+Conceptually, when you specify two tables, PROC SQL matches each row of table A with all the rows of table B to produce an internal or intermediate table known as the Cartesian product. The Cartesian product of large tables can be huge, so typically you want to subset data by declaring the join type. There are two types of joins:
+
+- **Inner Joins**: Return a result table for all the rows in a table that have one or more matching rows in the other table or tables.
+  
+- **Outer Joins**: Are inner joins that are augmented with rows that did not match with any row from the other table in the join. There are three kinds of outer joins: left, right, and full.
+
+This task focuses on joining tables. For details on querying single tables, see Query Data.
+
+## Point-and-Click Method
+
+You can join tables using a point-and-click interface.
+
+1. In SAS, click Tools then Query.
+2. Use the SQL Query windows to perform joins.
+3. You can view and save the PROC SQL code that the SQL Query window generates.
+
+# Example
+
+Suppose that you want to create several queries that require joining two tables. For examples, you want to determine:
+- Which U.S. cities are south of Cairo, Egypt
+- The coordinates of the capitals of international cities
+- The population of a city only if the city is the capital of a country
+- The populations and/or coordinates of world cities.
+
+The following programs show you how to perform joins to find the information you need.
+
+**Tip:** You can copy and run these programs in SAS. To create the input data for the programs, copy this file, paste it into the SAS editor, and submit the code.
+
+```sas
+/*************************************/
+/* join tables (inner join)          */
+/*************************************/
+proc sql;
+   title 'Oil Production/Reserves of Countries';
+   select p.country, barrelsperday 'Production', 
+          barrels 'Reserves'
+      from oilprod p, oilrsrvs r
+      where p.country = r.country
+      order by barrelsperday desc;
+quit;
+
+/*************************************/
+/* join tables (left outer join)     */
+/*************************************/
+proc sql;
+   title 'Coordinates of Capital Cities';
+   select Capital format=$20., 
+          Name 'Country' format=$20., 
+          Latitude, Longitude
+      from countries a left join 
+           worldcitycoords b
+           on a.Capital = b.City and
+              a.Name = b.Country
+      order by Capital;
+quit;
+
+/*************************************/
+/* join tables (right outer join)    */
+/*************************************/
+proc sql;
+   title 'Populations of Capitals Only';
+   select City format=$20., 
+          Country 'Country' format=$20., 
+          Population
+      from countries right join 
+           worldcitycoords 
+           on Capital = City and
+              Name = Country
+      order by City;
+quit;
+
+/*************************************/
+/* join tables (full outer join)     */
+/*************************************/
+proc sql;   
+   title 'Populations/Coordinates of World Cities';
+   select City '#City#(WORLDCITYCOORDS)' format=$20.,
+          Capital '#Capital#(COUNTRIES)' format=$20.,
+          Population, Latitude, Longitude
+      from countries full join 
+           worldcitycoords
+           on Capital = City and
+              Name = Country; 
+quit;
+
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+```
+## Explanation
+
+**Inner Join**: The first `proc sql` block performs an inner join on `oilprod` and `oilrsrvs` tables to display oil production and reserves for each country.
+
+**Left Outer Join**: The second `proc sql` block performs a left outer join on `countries` and `worldcitycoords` tables to display coordinates of capital cities.
+
+**Right Outer Join**: The third `proc sql` block performs a right outer join on `countries` and `worldcitycoords` tables to display populations of capital cities only.
+
+**Full Outer Join**: The fourth `proc sql` block performs a full outer join on `countries` and `worldcitycoords` tables to display populations and coordinates of world cities.
+
+**Clear Titles**: The `title;` statement clears any titles in effect.
+
+## Output
+
+### Sample Output
+
+**Oil Production/Reserves of Countries**:
+
+```markdown
+Country       Production      Reserves
+--------------------------------------
+Country1      1000000         5000000
+Country2      800000          4000000
+```
+
+**Coordinates of Capital Cities**:
+```markdown
+Capital       Country         Latitude   Longitude
+--------------------------------------------------
+Capital1      Country1        34.00      -118.25
+Capital2      Country2        51.50      -0.12
+```
+**Populations of Capitals Only**:
+```markdown
+City          Country         Population
+----------------------------------------
+Capital1      Country1        1000000
+Capital2      Country2        1500000
+
+
+```
+**Populations/Coordinates of World Cities**:
+```markdown
+City                Capital             Population   Latitude   Longitude
+-------------------------------------------------------------------------
+WorldCity1          Capital1            1000000      34.00      -118.25
+WorldCity2          Capital2            1500000      51.50      -0.12
+```
+
 
 ```sas
 
