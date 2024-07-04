@@ -923,83 +923,23 @@ run;
 /*************************************/
 title;
 ```
-### Explanation of Keywords and Their Uses
 
-#### `data`
-
-- **Purpose**: Creates a new data set.
-- **Usage**: `data color;` creates a temporary data set named `color`.
-
-#### `input`
-
-- **Purpose**: Defines the variables to read from the input data.
-- **Usage**: `input Region Eyes $ Hair $ Count @@;` specifies that `Region`, `Eyes`, and `Hair` are character variables and `Count` is a numeric variable.
-
-#### `label`
-
-- **Purpose**: Assigns descriptive labels to variables.
-- **Usage**: `label eyes='Eye Color'` assigns the label "Eye Color" to the `eyes` variable.
-
-#### `datalines`
-
-- **Purpose**: Provides data lines directly within the DATA step.
-- **Usage**: The lines following `datalines;` are read into the data set.
-
-#### `proc freq`
-
-- **Purpose**: Creates frequency tables.
-- **Usage**: `proc freq data=color;` generates frequency tables for the `color` data set.
-
-#### `tables`
-
-- **Purpose**: Specifies the variables for which to create frequency tables.
-- **Usage**: `tables eyes hair;` creates frequency tables for the `eyes` and `hair` variables.
-
-#### `title`
-
-- **Purpose**: Sets the title for the report.
-- **Usage**: `title1 'Simple Frequency Tables';` sets the title of the report.
-
-#### `weight`
-
-- **Purpose**: Applies a weight variable to the analysis.
-- **Usage**: `weight count;` uses the `count` variable as a weight in the analysis.
-
-#### `out`
-
-- **Purpose**: Creates an output data set.
-- **Usage**: `out=freqcnt` creates an output data set named `freqcnt`.
-
-#### `outexpect`
-
-- **Purpose**: Includes expected cell frequencies in the output data set.
-- **Usage**: `outexpect` adds expected cell frequencies to the `freqcnt` data set.
-
-#### `sparse`
-
-- **Purpose**: Includes all possible combinations of levels of the categorical variables in the output.
-- **Usage**: `sparse` ensures all combinations of `eyes` and `hair` are included in the crosstabulation table.
-
-#### `proc print`
-
-- **Purpose**: Prints the data set.
-- **Usage**: `proc print data=freqcnt noobs;` prints the `freqcnt` data set without observation numbers.
-
-#### `noobs`
-
-- **Purpose**: Removes the observation number from the report.
-- **Usage**: Used in `proc print` to suppress the printing of observation numbers.
-
-#### `title2`
-
-- **Purpose**: Sets a secondary title for the report.
-- **Usage**: `title2 'Output Data Set from PROC FREQ';` sets a secondary title for the report.
-
-#### `title`
-
-- **Purpose**: Clears any titles in effect.
-- **Usage**: `title;` clears all titles currently in effect.
-
+## Explanations of Keyowrds
+- `data`: It creates a new data set. The statement `data color;` creates a temporary data set named `color`.
+- `input`: Defines the variables to read from the input data. The statement `input Region Eyes $ Hair $ Count @@;` specifies that `Region`, `Eyes`, and `Hair` are character variables and `Count` is a numeric variable.
+- `label`: Assigns descriptive labels to variables. The statement `label eyes='Eye Color'` assigns the label "Eye Color" to the `eyes` variable.
+- `datalines`: Provides data lines directly within the DATA step. The lines following `datalines;` are read into the data set.
+- `proc freq`: Creates frequency tables. The statement `proc freq data=color;` generates frequency tables for the `color` data set.
+- `tables`: Specifies the variables for which to create frequency tables. The statement `tables eyes hair;` creates frequency tables for the `eyes` and `hair` variables.
+- `title`: Sets the title for the report. The statement `title1 'Simple Frequency Tables';` sets the title of the report.
+- `weight`: Applies a weight variable to the analysis. The statement `weight count;` uses the `count` variable as a weight in the analysis.
+- `out`: Creates an output data set. The statement `out=freqcnt` creates an output data set named `freqcnt`.
+- `outexpect`: Includes expected cell frequencies in the output data set. The statement `outexpect` adds expected cell frequencies to the `freqcnt` data set.
+- `sparse`: Includes all possible combinations of levels of the categorical variables in the output. The statement `sparse` ensures all combinations of `eyes` and `hair` are included in the crosstabulation table.
+- `proc print`: Prints the data set. The statement `proc print data=freqcnt noobs;` prints the `freqcnt` data set without observation numbers.
+- `noobs`: Removes the observation number from the report. Used in `proc print` to suppress the printing of observation numbers.
+- `title2`: Sets a secondary title for the report. The statement `title2 'Output Data Set from PROC FREQ';` sets a secondary title for the report.
+- `title`: Clears any titles in effect. The statement `title;` clears all titles currently in effect.
 
 
 
