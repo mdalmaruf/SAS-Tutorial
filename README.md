@@ -1,6 +1,55 @@
 # Getting Started with SAS Studio and SAS Base Software
 
-SAS (Statistical Analysis System) is a powerful software suite used for advanced analytics, business intelligence, data management, and predictive analytics. In this guide, we will walk you through the steps to set up your environment in SAS Studio, create folders, and upload files.
+SAS (Statistical Analysis System) is a powerful software suite used for advanced analytics, business intelligence, data management, and predictive analytics. In this guide, we will walk you through the steps to understand SAS programm set up your environment in SAS Studio, create folders, and upload files.
+
+## Introduction to Writing a SAS Program
+
+Writing a SAS program involves understanding the key components and the structure of the code. A typical SAS program consists of three main parts: Data Steps, PROC Steps, and Output Customization. Each part serves a specific purpose in the data analysis process.
+
+## Key Components of a SAS Program
+
+### Data Steps
+Data steps are used to create and manipulate data sets. They allow you to read in data, modify it, and create new data sets.
+
+### PROC Steps
+PROC (procedure) steps are used to analyze the data. They include procedures for statistical analysis, data summarization, and reporting.
+
+### Output Customization
+Output customization involves setting titles, footnotes, and formatting the output to make it more readable and presentable.
+
+## Example of a SAS Program
+
+Here's a simple example of a SAS program that reads in data, processes it, and generates a report:
+
+```sas
+/*************************************/
+/* Step 1: Create and Read Data      */
+/*************************************/
+data sales;
+   input Region $ Sales;
+   datalines;
+North 100
+South 150
+East 200
+West 250
+;
+run;
+
+/*************************************/
+/* Step 2: Analyze Data              */
+/*************************************/
+proc means data=sales;
+   var Sales;
+run;
+
+/*************************************/
+/* Step 3: Customize Output          */
+/*************************************/
+title 'Sales Report';
+proc print data=sales;
+run;
+title;
+```
 
 ## Setting Up SAS Studio
 
