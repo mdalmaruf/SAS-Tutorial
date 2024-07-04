@@ -441,6 +441,8 @@ The following programs illustrate several ways of using conditional logic in you
 **Tip:** You can copy and run the complete DATA steps below in SAS. (You can also modify the code fragments and use them in DATA steps.)
 
 ## Example 1: Conditional Logic with IF-THEN/ELSE
+This example creates a dataset named `payroll` with various employee details, including their ID, sex, job code, salary, birth date, and hire date. It uses IF-THEN/ELSE statements to categorize employees into groups based on their job codes. The second DATA step creates a new dataset `highwage`, which categorizes employees into 'High', 'Low', or 'Avg' based on their salary.
+
 
 ```sas
 /*************************************/
@@ -480,6 +482,8 @@ data highwage;
 run;
 ```
 ## Example 2: Other Examples of IF-THEN/ELSE (Code Fragments)
+These code fragments demonstrate various uses of IF-THEN/ELSE logic, such as deleting observations, conditional incrementing of a variable, and nested IF statements with different conditions.
+
 ```sas
 /*************************************/
 /* other examples of IF-THEN/ELSE    */
@@ -510,6 +514,8 @@ else
 
 
 ## Example 3: Conditional Logic with SELECT (Code Fragment)
+This example uses the SELECT statement to execute different blocks of code based on the value of payclass. It's an alternative to using multiple IF-THEN/ELSE statements and is particularly useful for handling multiple conditions.
+
 ```sas
 /*************************************/
 /* conditional logic with SELECT     */
@@ -527,6 +533,7 @@ end;               /* end of select */
 ```
 
 ## Example 4: Conditional Logic with Subsetting IF
+This example demonstrates subsetting IF logic, which is used to include only specific observations in the new dataset. In this case, the dataset mechanics will include only employees with the job code 'ME2'.
 
 ```sas
 /*************************************/
