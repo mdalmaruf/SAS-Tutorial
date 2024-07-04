@@ -120,7 +120,7 @@ To create and manage your databases, you can use either Microsoft Access or DB2.
 4. Save and close the database.
 5. Repeat the steps to create `security.mdb` if necessary.
 
-### Option 2: IBM DB2
+### Option 2: [IBM DB2](https://www.ibm.com/products/db2-database)
 
 #### Installation:
 
