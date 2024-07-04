@@ -280,3 +280,62 @@ run;
 ```
 ### Explanation
 - `proc print data=lhost.sales;` prints the sales dataset from the local library lhost.
+
+## Full Program
+Here is the full program incorporating all the steps:
+
+
+```sas
+/*********************************************/
+/* Define a Custom Library                   */
+/*********************************************/
+options comamid=netbios remote=netpc; 
+
+/* Define Local and Simulated Remote Libraries */
+libname lhost 'C:\Users\100XXXX\SAS-Tutorial\salesdata\local';
+libname rhost 'C:\Users\100XXXX\SAS-Tutorial\salesdata\remote';
+
+/* Create directories if they do not exist */
+data _null_;
+    rc1 = dcreate('local', 'C:\Users\100XXXX\SAS-Tutorial\salesdata');
+    rc2 = dcreate('remote', 'C:\Users\100XXXX\SAS-Tutorial\salesdata');
+run;
+
+/*************************************/
+/* Simulate creating data on the remote host */
+data rhost.master;
+    input lastname $ dept $ gross;
+    datalines;
+Smith IT 6000
+Johnson HR 4500
+Williams Finance 7000
+Brown Marketing 5500
+Jones Sales 8000
+;
+run;
+
+/* Simulate processing on the remote host */
+proc sort data=rhost.master out=rhost.sales;
+    where gross > 5000;
+    by lastname dept;
+run;
+
+/*************************************/
+/* Simulate downloading data to the local host */
+/* proc download data=rhost.sales out=lhost.sales; */
+/* run; */
+
+/* Simulate the downloaded dataset in the local library */
+data lhost.sales;
+    set rhost.sales;
+run;
+
+/*************************************/
+/* print data set in local session   */
+proc print data=lhost.sales;
+run;
+
+
+```
+
+
