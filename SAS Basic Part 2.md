@@ -693,7 +693,7 @@ footnote;
 
 ```
 These are the data values from the PROC PRINT output: 
-![Data Footnote](screenshots/footnote.JPG)
+![Date Footnote](screenshots/date_footnote.JPG)
 
 ## Example 2: Calculating and Displaying Dates
 ### Step 1: Set System Options for Report
