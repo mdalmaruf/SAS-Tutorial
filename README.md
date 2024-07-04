@@ -88,6 +88,7 @@ run;
 
 /* Print part of the new data set */
 proc print data=Mylib.accounts(obs=10);
+title "An overview of Accounts Information";
 run;
 ```
 ![Uploading Files in SAS Base](screenshots/sas_base_import.JPG)
@@ -124,5 +125,7 @@ run;
 
 /* Step 3: Print the dataset to confirm the import */
 proc print data=Mylib.accounts(obs=10);
+title "An overview of Accounts Information";
+
 run;
 ```
