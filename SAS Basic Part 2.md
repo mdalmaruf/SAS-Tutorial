@@ -78,17 +78,17 @@ To create and manipulate Microsoft Access databases, you can use:
     3. Add a new table named `customers` with the required fields.
     4. Save the database.
 
-#### Using DB Browser for [SQLite](https://sqlitebrowser.org/dl/):
+- #### Using DB Browser for [SQLite](https://sqlitebrowser.org/dl/):
 
-1. **Download DB Browser for SQLite**:
-    - Go to the [DB Browser for SQLite website](https://sqlitebrowser.org/dl/).
-    - Download the appropriate installer for your operating system.
+    1. **Download DB Browser for SQLite**:
+        - Go to the [DB Browser for SQLite website](https://sqlitebrowser.org/dl/).
+        - Download the appropriate installer for your operating system.
+    
+    2. **Install DB Browser for SQLite**:
+        - Follow the installation instructions for your operating system.
+        - Launch the application after installation.
 
-2. **Install DB Browser for SQLite**:
-    - Follow the installation instructions for your operating system.
-    - Launch the application after installation.
-
-##### Creating a New Database and Table
+-- ##### Creating a New Database and Table
 
 ##### Step 1: Create a New Database
 
