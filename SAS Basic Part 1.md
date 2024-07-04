@@ -98,3 +98,50 @@ libname myorclib clear;
 libname mydblib clear;
 ```
 
+# Reading SAS Data Sets
+
+## Example
+
+When you read SAS data sets, the full power of DATA step programming is available to you. The following examples show some simple ways of using the SET statement to read an existing data set.
+
+You can copy and submit these programs in SAS. The `Mylib.ProductSales` data set was created in `Work with SAS data sets`. If you didn't create it, return to the task to define the library and create the data set before submitting the programs below.
+
+### Read a Data Set and Subset
+
+```sas
+/******************************************/
+/* read a data set and subset             */
+/******************************************/
+data canada;
+    set mylib.productsales;
+    if country='CANADA';
+run;
+```
+
+### Read a Data Set, Subset, and Create New Variables
+```sas
+/******************************************/
+/* read a data set, subset, and           */
+/* create new variables                   */
+/******************************************/
+data canada2;
+    set mylib.productsales;
+    if country='CANADA';
+    Total_Variance=actual-predict;
+    Forecast=actual*1.15;
+run;
+```
+### Read a Subset Using Direct Access
+```sas
+/******************************************/
+/* read a subset using direct access      */
+/******************************************/
+data product_sample;
+    do obsnum=1 to 100 by 2;
+        set mylib.productsales point=obsnum;
+        if _error_ then abort;
+        output;
+    end;
+    stop;
+run;
+```
