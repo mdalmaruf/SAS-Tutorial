@@ -1054,6 +1054,11 @@ ods html close;
 /*************************************/
 title;
 ```
+### Explanation: 
+- The `data` step creates two data sets, `wghtclub` and `patients`, with information about health club members and patients, respectively.
+- The `proc print` step prints the `wghtclub` data set with a title. 
+- The `proc tabulate` step creates two-dimensional tables. The first `proc tabulate` generates summary statistics for `wghtclub`, and the second generates summary statistics for `patients`, with customized style attributes specified for various elements of the table.
+- The `ods html` statement specifies HTML output for the enhanced table from the `patients` data set, which includes style customizations such as font weight, justification, font size, and background color.
 
 ![Tabuler Data](screenshots/tabulated2.JPG)
 
