@@ -73,6 +73,10 @@ Save the `Accounts.xlsx` file to the directory `C:\Users\username\SAS-Tutorial`.
 Open a new SAS program. Use the following code to import the data from the Excel file into the `MyLib` library:
 
 ```sas
+
+/* Assign a library */
+libname Mylib 'C:\Users\username\SAS-Tutorial';
+
 /* Import the Excel file */
 proc import datafile="C:\Users\username\SAS-Tutorial\Accounts.xlsx"
     out=Mylib.accounts
