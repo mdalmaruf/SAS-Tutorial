@@ -83,6 +83,8 @@ run;
 proc print data=Mylib.accounts(obs=10);
 run;
 ```
+![Uploading Files in SAS Base](screenshots/sas_base_import.JPG)
+
 ### View the Dataset:
 In the SAS Explorer window, navigate to `MyLib` and double-click on the `Accounts` dataset to view it.
 
