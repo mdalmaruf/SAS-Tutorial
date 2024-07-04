@@ -606,8 +606,8 @@ run;
 
 ```
 ### Explanation
-- This step selects observations where fee >= 124.80 and sex = 'M'.
-- It keeps only the variables id, name, age, and weight in the final data set subset1.
+- This step selects observations where `fee >= 124.80` and `sex = 'M'`.
+- It keeps only the variables `id`, `name`, `age`, and `weight` in the final data set subset1.
 
 ## Step 3: Subset Data, Perform Processing, and Subset Variables Again
 ```sas
@@ -626,10 +626,10 @@ run;
 
 ## 
 ```sas
-- This step selects observations where actlevel = 'LOW' and age > 40.
-- It drops the variables name and date from the original data set.
-- It creates a new variable KgWeight by converting weight from pounds to kilograms.
-- It keeps only the variables id, sex, and kgweight in the final data set subset2.
+- This step selects observations where `actlevel = 'LOW'` and `age > 40`.
+- It drops the variables `name` and `date` from the original data set.
+- It creates a new variable `KgWeight` by converting `weight` from pounds to kilograms.
+- It keeps only the variables `id`, `sex`, and `kgweight` in the final data set `subset2`.
 ```
 ###
 
