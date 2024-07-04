@@ -338,6 +338,100 @@ run;
 
 ```
 
+# Creating and Redefining Variables in SAS
+
+You'll probably need to create and redefine variables in a number of ways. The following DATA steps illustrate some common ways to perform these tasks.
+
+**Tip:** You can copy and run these programs in SAS.
+
+## Step 1: Create Variables with INPUT
+
+```sas
+/*************************************/
+/* create variables with INPUT       */
+/*************************************/
+data diabetes;
+   input ID $ Sex $ Age Height Weight 
+         Pulse FastGlucose PostGlucose;
+   datalines;
+2304 F 16 61 102 100 568 625
+1128 M 43 71 218  76 156 208
+4425 F 48 66 162  80 244 322
+1387 F 57 64 142  70 177 206
+9012 F 39 63 157  68 257 318
+6312 M 52 72 240  77 362 413
+5438 F 42 62 168  83 247 304
+3788 M 38 73 234  71 486 544
+9125 F 56 64 159  70 166 215
+3438 M 15 66 140  67 492 547
+1274 F 50 65 153  70 193 271
+3347 M 53 70 193  78 271 313
+2486 F 63 65 157  70 152 224
+1129 F 48 61 137  69 267 319
+9723 M 52 75 219  65 348 403
+8653 M 49 68 185  79 259 311
+4451 M 54 71 196  81 373 431
+3279 M 40 70 213  82 447 504
+4759 F 60 68 164  71 155 215
+6488 F 59 64 154  75 362 409
+;
+run;
+```
+
+## Step 2: Create and Redefine Variables with Assignment and Function
+```sas
+/*************************************/
+/* create and redefine variables     */
+/* with assignment, function         */
+/*************************************/
+data diabetes_female;   
+   set diabetes;   
+   if sex='F';   
+   GlucoseChange = postglucose - fastglucose;   
+   fastglucose = fastglucose + fastglucose * 0.10;   
+   AvgGlucose = mean(postglucose, fastglucose);
+run;  
+
+```
+
+## Step 3: Create Variables with LENGTH
+```sas
+/*************************************/
+/* create variables with LENGTH      */
+/*************************************/
+data PatientAccounts;   
+   set diabetes(keep=id sex age);   
+   length Group $ 8;   
+   if age >= 55 then group = 'Seniors';   
+   else group = 'Under 55';
+run;
+
+```
+
+## Step 4: Create Variable with FORMAT
+```sas
+/*************************************/
+/* create variable with FORMAT       */
+/*************************************/
+data sales;   
+   format Sale_Price 6.2;
+   Sale_Price = 49.99;
+run;   
+
+```
+
+## Step 5: Create Variables with ATTRIB
+```sas
+/*************************************/
+/* create variables with ATTRIB      */
+/*************************************/
+data sales;   
+   attrib Sale_Price format = 6.2 
+          label = "Sale Price";
+   Sale_Price = 49.99;
+run;
+```
+
 
 
 
