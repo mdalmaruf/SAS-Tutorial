@@ -1542,7 +1542,7 @@ title;
 
 **Interactive Overlaid Plots with Filled Areas**: An interactive plot showing both high and low Dow Jones values over the years with filled areas.
 
-![Subset File](screenshots/plot.JPG)
+![Plot Data](screenshots/plots.JPG)
 
 
 # Create Charts
@@ -1569,7 +1569,7 @@ If you have SAS/GRAPH licensed, you can create presentation-quality charts using
 3. Click the icon for the desired chart type and drop it on the workspace. Then double-click the chart object, select your data source as the data model, and specify columns, statistics, and chart options.
 4. You can view and save the `PROC GCHART` code that Graph-N-Go generates.
 
-# Example
+### Example
 
 Suppose that you want to create several graphs: a bar chart to give you a sense of your data, some pie charts to put in a report, and an interactive bar chart to use in a presentation. The following programs show you how to create these charts using `PROC CHART` and `PROC GCHART`.
 
@@ -1698,7 +1698,7 @@ title;
 
 ```
 
-## Explanation
+### Explanation
 
 **Create a Bar Chart (PROC CHART)**: This bar chart will display average `HeartRate` values on the y-axis for different `age` groups on the x-axis, grouped by `sex`.
 
@@ -1706,7 +1706,7 @@ title;
 
 **Create an Interactive Bar Chart (PROC GCHART, ODS, and ActiveX)**: This bar chart will display the frequency of different `age` groups on the x-axis, with `sex` as a subgroup.
 
-## Output
+### Output
 
 The output file name specified for HTML output is `barchart.htm`.
 
