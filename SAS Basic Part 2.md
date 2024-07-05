@@ -1355,7 +1355,7 @@ If you have SAS/GRAPH licensed, you can create presentation-quality plots using 
 3. Click the icon for the desired plot type and drop it on the workspace. Then double-click the plot object, select your data source as the data model, and specify variables and plot options.
 4. You can view and save the `PROC GPLOT` code that Graph-N-Go generates.
 
-# Example
+### Example
 
 Suppose that you want to create several plots, including:
 - A single and overlaid plot to show general trends and patterns in your data.
@@ -1427,9 +1427,9 @@ data stocks;
 run;
 ```
 
-## Creating Plots
+### Creating Plots
 
-### Create a Single Plot (PROC PLOT)
+#### Create a Single Plot (PROC PLOT)
 
 This plot will display `dowjoneshigh` values on the y-axis and `year` values on the x-axis.
 
@@ -1444,7 +1444,7 @@ proc plot data=stocks;
 run;
 quit;
 ```
-### Create Overlaid Plots (PROC PLOT)
+#### Create Overlaid Plots (PROC PLOT)
 This plot will display `dowjoneshigh` and `dowjoneslow` values on the y-axis, with `year` values on the x-axis.
 
 ```sas
@@ -1460,7 +1460,7 @@ run;
 quit;
 
 ```
-### Create a Single Plot and Connect Plot Data Points (PROC GPLOT)
+#### Create a Single Plot and Connect Plot Data Points (PROC GPLOT)
 This plot will display `dowjoneshigh` values on the y-axis and `year` values on the x-axis, with additional formatting options.
 ```sas
 /*************************************/
@@ -1486,7 +1486,7 @@ run;
 quit;
 
 ```
-### Create Interactive Overlaid Plots with Filled Areas (PROC GPLOT, ODS, and ActiveX)
+#### Create Interactive Overlaid Plots with Filled Areas (PROC GPLOT, ODS, and ActiveX)
 This plot will display `dowjoneslow` and `dowjoneshigh` values on the y-axis, with `year` values on the x-axis, using additional style elements for interactivity
 ```sas
 ### Create Interactive Overlaid Plots with Filled Areas (PROC GPLOT, ODS, and ActiveX)
