@@ -1335,10 +1335,388 @@ WorldCity1          Capital1            1000000      34.00      -118.25
 WorldCity2          Capital2            1500000      51.50      -0.12
 ```
 
+# Create Plots
+
+## Overview
+
+An effective way to examine the relationship between variables is to plot their values. To produce single or overlaid plots, you can use:
+- The `PLOT` procedure in Base SAS to visualize data quickly.
+- The `GPLOT` procedure in SAS/GRAPH software to produce presentation-quality graphics that include color and various fonts.
+
+In addition, you can create `PROC GPLOT` output using the SAS/GRAPH Control for ActiveX, which enables you to embed interactive graphs in web pages and OLE documents.
+
+The syntax for the two procedures is very similar, although `PROC GPLOT` offers a number of additional formatting capabilities. This task shows you both ways of creating various types of plots.
+
+### Point-and-Click Methods
+
+If you have SAS/GRAPH licensed, you can create presentation-quality plots using a point-and-click interface.
+1. In SAS, click Solutions then Reporting then Graph-N-Go.
+2. Click the New SAS Data Set icon and select data for the chart.
+3. Click the icon for the desired plot type and drop it on the workspace. Then double-click the plot object, select your data source as the data model, and specify variables and plot options.
+4. You can view and save the `PROC GPLOT` code that Graph-N-Go generates.
+
+# Example
+
+Suppose that you want to create several plots, including:
+- A single and overlaid plot to show general trends and patterns in your data.
+- A single plot with connected data points for a report.
+- An interactive overlaid plot with filled areas for a presentation.
+
+The following programs show you how to create the plots you need.
+
+**Tip:** You can copy and run these programs in SAS. To create the input data for the programs, copy the following file, paste it into the SAS editor, and submit the code.
+```sas
+/*************************************/
+   /* create the Stocks data set        */
+   /*************************************/
+data stocks;
+   input Year @7 DateOfHigh:date9. 
+         DowJonesHigh @26 DateOfLow:date9. 
+         DowJonesLow;
+   format LogDowHigh LogDowLow 5.2 
+          DateOfHigh DateOfLow date9.;
+   LogDowHigh=log(DowJonesHigh);
+   LogDowLow=log(DowJonesLow);
+   datalines;
+1954  31DEC1954  404.39  11JAN1954  279.87
+1955  30DEC1955  488.40  17JAN1955  388.20
+1956  06APR1956  521.05  23JAN1956  462.35
+1957  12JUL1957  520.77  22OCT1957  419.79
+1958  31DEC1958  583.65  25FEB1958  436.89
+1959  31DEC1959  679.36  09FEB1959  574.46
+1960  05JAN1960  685.47  25OCT1960  568.05
+1961  13DEC1961  734.91  03JAN1961  610.25
+1962  03JAN1962  726.01  26JUN1962  535.76
+1963  18DEC1963  767.21  02JAN1963  646.79
+1964  18NOV1964  891.71  02JAN1964  768.08
+1965  31DEC1965  969.26  28JUN1965  840.59
+1966  09FEB1966  995.15  07OCT1966  744.32
+1967  25SEP1967  943.08  03JAN1967  786.41
+1968  03DEC1968  985.21  21MAR1968  825.13
+1969  14MAY1969  968.85  17DEC1969  769.93
+1970  29DEC1970  842.00  06MAY1970  631.16
+1971  28APR1971  950.82  23NOV1971  797.97
+1972  11DEC1972 1036.27  26JAN1972  889.15
+1973  11JAN1973 1051.70  05DEC1973  788.31
+1974  13MAR1974  891.66  06DEC1974  577.60
+1975  15JUL1975  881.81  02JAN1975  632.04
+1976  21SEP1976 1014.79  02JAN1976  858.71
+1977  03JAN1977  999.75  02NOV1977  800.85
+1978  08SEP1978  907.74  28FEB1978  742.12
+1979  05OCT1979  897.61  07NOV1979  796.67
+1980  20NOV1980 1000.17  21APR1980  759.13
+1981  27APR1981 1024.05  25SEP1981  824.01
+1982  27DEC1982 1070.55  12AUG1982  776.92
+1983  29NOV1983 1287.20  03JAN1983 1027.04
+1984  06JAN1984 1286.64  24JUL1984 1086.57
+1985  16DEC1985 1553.10  04JAN1985 1184.96
+1986  02DEC1986 1955.57  22JAN1986 1502.29
+1987  25AUG1987 2722.42  19OCT1987 1738.74
+1988  21OCT1988 2183.50  20JAN1988 1879.14
+1989  09OCT1989 2791.41  03JAN1989 2144.64
+1990  16JUL1990 2999.75  11OCT1990 2365.10
+1991  31DEC1991 3168.83  09JAN1991 2470.30
+1992  01JUN1992 3413.21  09OCT1992 3136.58
+1993  29DEC1993 3794.33  20JAN1993 3241.95
+1994  31JAN1994 3978.36  04APR1994 3593.35
+1995  13DEC1995 5216.47  30JAN1995 3832.08
+1996  27DEC1996 6560.91  10JAN1996 5032.94
+1997  06AUG1997 8259.31  11APR1997 6391.69
+1998  23NOV1998 9374.27  31AUG1998 7539.07
+;
+run;
+```
+
+## Creating Plots
+
+### Create a Single Plot (PROC PLOT)
+
+This plot will display `dowjoneshigh` values on the y-axis and `year` values on the x-axis.
 
 ```sas
+/*************************************/
+/* create a single plot (PROC PLOT)  */
+/*************************************/
+proc plot data=stocks;
+   plot dowjoneshigh*year='*';
+   title 'High Dow Jones Values';
+   title2 'from 1954 to 1998';
+run;
+quit;
+```
+### Create Overlaid Plots (PROC PLOT)
+This plot will display `dowjoneshigh` and `dowjoneslow` values on the y-axis, with `year` values on the x-axis.
+
+```sas
+/*************************************/
+/* create overlaid plots (PROC PLOT) */
+/*************************************/
+proc plot data=stocks;
+   plot dowjoneshigh*year='*'
+        dowjoneslow*year='o' / overlay box;
+   title 'Plot of Highs and Lows';
+   title2 'for the Dow Jones Industrial Average';
+run;
+quit;
 
 ```
-These are the data values from the PROC PRINT output: 
+### Create a Single Plot and Connect Plot Data Points (PROC GPLOT)
+This plot will display `dowjoneshigh` values on the y-axis and `year` values on the x-axis, with additional formatting options.
+```sas
+/*************************************/
+/* create a single plot and connect  */
+/* plot data points (PROC GPLOT)     */
+/*************************************/
+proc gplot data=stocks;
+   plot dowjoneshigh*year / haxis=1955 to 1995 by 5
+                            vaxis=0 to 6000 by 1000
+                            hminor=3
+                            vminor=1
+                            vref=1000 3000 5000
+                            lvref=2
+                            cvref=blue
+                            caxis=blue
+                            ctext=red;
+   symbol1 color=red
+           interpol=join
+           value=dot
+           height=1;
+   title1 'Dow Jones Yearly Highs';
+run;
+quit;
 
-![Subset File](screenshots/subset.JPG)
+```
+### Create Interactive Overlaid Plots with Filled Areas (PROC GPLOT, ODS, and ActiveX)
+This plot will display `dowjoneslow` and `dowjoneshigh` values on the y-axis, with `year` values on the x-axis, using additional style elements for interactivity
+```sas
+### Create Interactive Overlaid Plots with Filled Areas (PROC GPLOT, ODS, and ActiveX)
+
+This plot will display `dowjoneslow` and `dowjoneshigh` values on the y-axis, with `year` values on the x-axis, using additional style elements for interactivity.
+
+```sas
+/*************************************/
+/* create interactive overlaid plots */
+/* with filled areas (PROC GPLOT,    */
+/* ODS, and ActiveX)                 */
+/*************************************/
+ods html body='plot.htm';
+goptions reset=global gunit=pct border cback=white
+         colors=(blue red) ctext=black
+         ftitle=swissb ftext=swiss htitle=6 htext=4
+         device=activex; 
+proc gplot data=stocks;
+   plot dowjoneslow*year 
+        dowjoneshigh*year / overlay
+                            haxis=axis1
+                            hminor=4
+                            vaxis=axis2
+                            vminor=1
+                            caxis=black
+                            areas=2;
+   symbol1 interpol=join;
+   axis1 order=(1955 to 1995 by 5) offset=(2,2)
+         label=none
+         major=(height=2)
+         minor=(height=1);
+   axis2 order=(0 to 6000 by 1000) offset=(0,0)
+         label=none
+         major=(height=2)
+         minor=(height=1);
+run;
+quit;
+ods html close;
+
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+
+```
+### Sample Output
+
+**Single Plot**: A plot showing high Dow Jones values from 1954 to 1998.
+
+**Overlaid Plots**: A plot showing both high and low Dow Jones values over the years.
+
+**Single Plot with Connected Data Points**: A plot showing yearly highs of Dow Jones with connected data points.
+
+**Interactive Overlaid Plots with Filled Areas**: An interactive plot showing both high and low Dow Jones values over the years with filled areas.
+
+![Subset File](screenshots/plot.JPG)
+
+
+# Create Charts
+
+## Overview
+
+You can use the `CHART` procedure in Base SAS for producing:
+- Vertical and horizontal bar charts
+- Block charts
+- Pie charts
+- Star charts
+
+These types of charts graphically display values of a variable or a statistic associated with those values. The charted variable can be numeric or character.
+
+`PROC CHART` is a useful tool to visualize data quickly, but if you need to produce presentation-quality graphics that include color and various fonts, you can use SAS/GRAPH software. The `GCHART` procedure in SAS/GRAPH produces the same types of charts as `PROC CHART` does, as well as donut charts. In addition, you can create `PROC GCHART` output using the SAS/GRAPH Control for ActiveX, which enables you to embed interactive graphs in web pages and OLE documents.
+
+As you'll see, the syntax for `PROC CHART` and `PROC GCHART` is very similar. This task shows you both ways of creating various types of charts.
+
+### Point-and-Click Method
+
+If you have SAS/GRAPH licensed, you can create presentation-quality charts using a point-and-click interface.
+1. In SAS, click Solutions then Reporting then Graph-N-Go.
+2. Click the New SAS Data Set or New MDDB icon and select data for the chart.
+3. Click the icon for the desired chart type and drop it on the workspace. Then double-click the chart object, select your data source as the data model, and specify columns, statistics, and chart options.
+4. You can view and save the `PROC GCHART` code that Graph-N-Go generates.
+
+# Example
+
+Suppose that you want to create several graphs: a bar chart to give you a sense of your data, some pie charts to put in a report, and an interactive bar chart to use in a presentation. The following programs show you how to create these charts using `PROC CHART` and `PROC GCHART`.
+
+**Tip:** You can copy and run these programs in SAS.
+
+```sas
+/*************************************/
+/* create the input data set         */
+/*************************************/
+data fitness;
+   input Age Sex $ HeartRate 
+         Exercise Aerobic;
+datalines;
+28  M  86  2   36.6
+41  M  76  3   26.7
+30  M  78  2   33.8
+39  F  90  1   13.6
+28  M  96  1   33.
+26  M  74  2   42.7
+ .  F  66  4   36.1
+48  F  72  2   22.6
+31  M  60  3   44.1
+28  F  84  2   22.1
+33  F  56  4   21.3
+37  F  78  2   30.3
+46  M  84  1   34.2
+23  M  72  2   38.1
+25  F  88  1   32.0
+37  F  72  2   43.7
+42  M  60  3   36.7
+44  F  78  3   21.6
+ .  F  70  1   22.8
+25  F  60  3   36.1
+24  F  74  2   29.9
+29  F  66  4   38.9
+27  M  62  4   44.0
+24  M  72  3   44.2
+36  F  80  1   26.2
+24  M  82  2   18.7
+23  M  54  3   70.6
+28  F  76  1   23.8
+30  F  66  2   28.9
+25  M  54  3   41.3
+48  F  72  2   28.9
+23  F  68  1   18.9
+22  F  78  2   39.0
+23  F  66  3   36.1
+46  F  54  3   28.9
+31  F  84  1   21.6
+45  M  60  2   47.8
+27  M  90  2   43.1
+26  M  66  2   28.9
+26  F  84  2     .
+24  M  72  3   50.1
+32  F  72  1   15.7
+29  M  54  3   44.8
+48  F  66  2   28.9
+36  F  66  2   33.2
+;
+run;
+
+/*************************************/
+/* create a bar chart (PROC CHART)   */
+/*************************************/
+proc chart data=fitness;
+   vbar age / type=mean
+              sumvar=heartrate
+              group=sex
+              midpoints=(20 30 40 50);
+   where exercise=1;
+   title1 'Average Heart Rate by Age and Sex';
+   title2 'for Exercise Group 1';
+run;
+quit;
+title;
+
+/*************************************/
+/* create pie charts (PROC GCHART)   */
+/*************************************/
+proc gchart data=fitness;
+   pie sex / type=mean
+             fill=solid
+             sumvar=aerobic;
+   pie3d exercise / type=mean
+                    sumvar=heartrate 
+                    group=sex
+                    discrete
+                    across=2 
+                    fill=solid
+                    ctext=blue 
+                    explode=4
+                    slice=arrow 
+                    noheading;
+run;
+quit;
+
+/*************************************/
+/* create an interactive bar chart   */
+/* (PROC GCHART, ODS, and ActiveX)   */
+/*************************************/
+ods html body='barchart.htm';
+goptions device=activex;
+proc gchart data=fitness;
+   axis1 order=(0 to 20 by 2)
+         label=('Number of People')
+         minor=(number=1)
+         offset=(0,0);   
+   axis2 label=('Age ' j=r 'Group');   
+   hbar3d age / midpoints=(20 30 40 50)
+                freq
+                freqlabel='Total in Group'
+                subgroup=sex
+                autoref
+                maxis=axis2
+                raxis=axis1
+                coutline=black;   
+   title1 'Fitness Program Participants';
+run;
+quit;
+ods html close;
+
+/*************************************/
+/* clear any titles in effect        */
+/*************************************/
+title;
+
+
+
+## Explanation
+
+**Create a Bar Chart (PROC CHART)**: This bar chart will display average `HeartRate` values on the y-axis for different `age` groups on the x-axis, grouped by `sex`.
+
+**Create Pie Charts (PROC GCHART)**: These pie charts will display mean `aerobic` values by `sex` and mean `heartrate` values by `exercise`, grouped by `sex`.
+
+**Create an Interactive Bar Chart (PROC GCHART, ODS, and ActiveX)**: This bar chart will display the frequency of different `age` groups on the x-axis, with `sex` as a subgroup.
+
+## Output
+
+The output file name specified for HTML output is `barchart.htm`.
+
+### Sample Output
+
+**Bar Chart**: A bar chart showing average heart rate by age and sex for exercise group 1.
+
+**Pie Charts**: Pie charts showing mean aerobic values by sex and mean heart rate values by exercise.
+
+**Interactive Bar Chart**: An interactive bar chart showing the frequency of different age groups, grouped by sex.
+
+
+![Bar Chart](screenshots/barsample.JPG)
