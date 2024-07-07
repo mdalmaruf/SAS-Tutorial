@@ -188,6 +188,13 @@ proc means data=ames;
 run;
 ```
 ## Understanding p-value and t-value
+### What is a Hypothesis?
+A hypothesis is a specific, testable prediction about the relationship between two or more variables. It is a statement that can be evaluated through experimentation or observation.
+
+- Null Hypothesis (H0): There is no difference in the average sale prices of houses based on the presence of a garage.
+- Alternative Hypothesis (H1): Houses with a garage have a different average sale price than houses without a garage.
+
+**Scenario**: You want to test if there is a difference in the salary of factory workers based on gender.
 
 ### Hypothesis Testing:
 Hypothesis testing involves two competing hypotheses:
