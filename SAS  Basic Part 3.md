@@ -8,7 +8,7 @@ To start, assign a library reference to the directory where the dataset is locat
 2. Go to the `Files` directory.
 3. Create a new folder named `SAS24` and upload the `ameshousing3.sas7bdat` file
 4. Create a new sas file under the same `SAS24` folder `ameshousing.sas` and set the directory `SAS24`.
-5.    
+
 ```sas
 libname mydata '/home/u639220466/SAS24';
 ```
