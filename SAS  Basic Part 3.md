@@ -141,6 +141,22 @@ proc sgplot data=ames;
     series x=Year_Built y=SalePrice;
 run;
 ```
+You will find . Therefore, you can reduce the number of data or observation.
+
+```sas
+/* Filter the first 20 observations */
+data ames_first_20;
+    set ames(obs=20);
+run;
+
+/* Create a scatter plot */
+proc sgplot data=ames_first_20;
+    series x=Year_Built y=SalePrice;
+run;
+
+```
+
+
 
 ### Pie Chart
 Create a pie chart to visualize the proportion of different categories.
