@@ -187,17 +187,17 @@ proc means data=ames;
     var SalePrice;
 run;
 ```
-### Understanding p-value and t-value
+## Understanding p-value and t-value
 
 #### p-value:
-- **Definition**: The p-value is the probability of obtaining test results at least as extreme as the observed results, under the assumption that the null hypothesis is true.
+- The p-value is the probability of obtaining test results at least as extreme as the observed results, under the assumption that the null hypothesis is true.
 - **Interpretation**:
   - A **low p-value** (≤ 0.05) indicates strong evidence against the null hypothesis, leading to its rejection.
   - A **high p-value** (> 0.05) indicates weak evidence against the null hypothesis, leading to its acceptance.
 - **Example**: A p-value of 0.001 means there is a 0.1% chance that the observed data would occur if the null hypothesis were true.
 
 #### t-value:
-- **Definition**: The t-value measures the size of the difference relative to the variation in the sample data. It is used in t-tests to determine if there is a significant difference between means.
+-The t-value measures the size of the difference relative to the variation in the sample data. It is used in t-tests to determine if there is a significant difference between means.
 - **Calculation**: 
   \[
   t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}
