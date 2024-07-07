@@ -3,7 +3,7 @@
 ## Step 1: Assign a Library Reference
 To start, assign a library reference to the directory where the dataset is located.
 ```sas
-libname mydata '/home/u63922045/SAS24';
+libname mydata '/home/u639220466/SAS24';
 ```
 ### Step 2: Read the Dataset
 Create a new dataset named ames from the uploaded ameshousing3 dataset.
@@ -63,7 +63,7 @@ run;
 Below is the full code that you can run in SAS Studio to perform the above tasks.
 ```sas
 /* Step 1: Assign a library reference */
-libname mydata '/home/u63922045/SAS24';
+libname mydata '/home/u639220466/SAS24';
 
 /* Step 2: Read the dataset */
 data ames;
