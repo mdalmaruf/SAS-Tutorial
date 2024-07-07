@@ -190,18 +190,20 @@ run;
 ## Understanding p-value and t-value
 
 ### Hypothesis Testing:
-In hypothesis testing, we start with a null hypothesis (H0), which is a statement that there is no effect or no difference. The alternative hypothesis (H1) is what you want to prove.
+Hypothesis testing involves two competing hypotheses:
+- **Null Hypothesis (H0)**: There is no effect or no difference.
+- **Alternative Hypothesis (H1)**: There is an effect or a difference.
 
 ### p-value:
-- **Definition**: The p-value is the probability of obtaining test results at least as extreme as the observed results, assuming the null hypothesis is true.
+- The p-value is the probability of obtaining test results at least as extreme as the observed results, assuming the null hypothesis is true.
 - **Interpretation**:
   - A **low p-value** (≤ 0.05) provides strong evidence against the null hypothesis, suggesting it should be rejected.
   - A **high p-value** (> 0.05) provides weak evidence against the null hypothesis, suggesting it should not be rejected.
-- **Example**: A p-value of 0.001 means there is a 0.1% chance that the observed data would occur if the null hypothesis were true.
-- **Usage**: The p-value helps determine the statistical significance of the test results. 
+- **Example**: Suppose we are testing whether a new drug is more effective than a placebo. If the p-value is 0.001, it means there is only a 0.1% chance that the observed effectiveness would occur if the drug had no effect (null hypothesis is true). Hence, we reject the null hypothesis and conclude the drug is effective.
+- **Usage**: The p-value helps determine the statistical significance of the test results.
 
 ### t-value:
-- **Definition**: The t-value measures the size of the difference relative to the variation in the sample data. It is used in t-tests to determine if there is a significant difference between means.
+- The t-value measures the size of the difference relative to the variation in the sample data. It is used in t-tests to determine if there is a significant difference between means.
 - **Calculation**:
   \[
   t = \frac{\bar{X} - \mu}{\frac{s}{\sqrt{n}}}
@@ -209,13 +211,12 @@ In hypothesis testing, we start with a null hypothesis (H0), which is a statemen
   where \(\bar{X}\) is the sample mean, \(\mu\) is the population mean, \(s\) is the sample standard deviation, and \(n\) is the sample size.
 - **Interpretation**:
   - A **large t-value** indicates a large difference between the sample mean and the population mean.
-- **Example**: A t-value of -5.74 indicates that the sample mean is 5.74 standard errors below the hypothesized population mean.
+- **Example**: In testing whether the average salary of factory workers is $50,000, a t-value of -5.74 indicates that the sample mean salary is 5.74 standard errors below $50,000. This suggests a significant difference from the hypothesized mean.
 - **Usage**: The t-value helps assess whether the observed difference is significant compared to the variability in the data.
 
 ### Summary:
 - **p-value**: Indicates the significance of the results. A small p-value (≤ 0.05) suggests rejecting the null hypothesis.
 - **t-value**: Measures the size of the difference relative to the variation in the sample data. A large absolute t-value suggests a significant difference.
-
 
 
 # Distribution, Skewness, and Kurtosis
