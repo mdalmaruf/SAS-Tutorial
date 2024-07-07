@@ -321,6 +321,11 @@ The output will provide the mean of the sample, the t-value, degrees of freedom,
 
 **Interpretation**: The mean sale price of $137,525 is significantly different from $150,000 (p-value < 0.05), indicating that the average sale price is less than $150,000.
 
+- t-value: The t-value of -5.74 indicates that the sample mean ($137,525) is 5.74 standard errors below the hypothesized mean of $150,000.
+- p-value: The p-value of <0.0001 indicates that there is less than a 0.01% chance of getting these results if the average sale price really were $150,000. Since the p-value is much less than 0.05, we reject the null hypothesis.
+- The low p-value (<0.0001) tells us that the observed average sale price is very unlikely to be $150,000, so we conclude that the average sale price is different from $150,000.
+- The negative t-value (-5.74) indicates that the observed sample mean ($137,525) is significantly lower than the hypothesized mean ($150,000).
+
 #### Distribution of SalePrice:
 
 - **Description**: The histogram shows the distribution of the `SalePrice` variable. The blue curve represents the normal distribution, and the red curve represents the kernel density estimate. The box plot below shows the spread and outliers in the data.
