@@ -182,3 +182,239 @@ run;
 ```
 
 
+# Distribution, Skewness, and Kurtosis
+
+### Explanation:
+- **Distribution**: Displays how the data points are spread across different values. A histogram is often used to visualize this.
+- **Skewness**: Measures the asymmetry of the data distribution. A skewness value close to zero indicates a symmetric distribution, while a positive value indicates right skew (tail on the right), and a negative value indicates left skew (tail on the left).
+- **Kurtosis**: Measures the "tailedness" of the data distribution. Higher kurtosis indicates more data points in the tails (outliers), while lower kurtosis indicates fewer outliers.
+
+### Example:
+```sas
+proc univariate data=ames;
+    var SalePrice;
+    histogram SalePrice / normal;
+    inset skewness kurtosis / format=5.2;
+run;
+```
+#### Importance:
+Understanding the distribution, skewness, and kurtosis helps in identifying the nature of the data. For instance, knowing whether the data is symmetric or skewed can guide further statistical analyses and the choice of appropriate models. High kurtosis might indicate the presence of outliers, which could affect the results of statistical tests and modeling.
+
+#### Graph Interpretation:
+A histogram generated from the above code will show the frequency distribution of the SalePrice variable. The inset will display the skewness and kurtosis values, helping to understand the symmetry and tailedness of the distribution. For example, if the skewness is 1.2 and the kurtosis is 3.8, it suggests that the distribution is moderately right-skewed with a moderate presence of outliers.
+
+## Actual Distribution, Skewness, and Kurtosis Analysis
+![Distribution](/screenshots/distribution.png)
+The provided output includes a histogram and several statistical measures for the `SalePrice` variable. Here’s an explanation of each part and what they mean:
+
+### Histogram:
+- **Description**: The histogram shows the distribution of the `SalePrice` variable, with the `SalePrice` on the x-axis and the percentage of occurrences on the y-axis.
+- **Overlaid Curve**: Represents the normal distribution with the same mean and standard deviation as the `SalePrice` data.
+
+### Skewness:
+- **Value**: 0.30
+- **Interpretation**: The skewness is close to zero, indicating that the distribution is fairly symmetric. A skewness value between -0.5 and 0.5 is typically considered fairly symmetric.
+
+### Kurtosis:
+- **Value**: 0.72
+- **Interpretation**: The kurtosis value indicates the presence of light tails and a flatter peak compared to a normal distribution. Kurtosis between -2 and 2 is generally considered acceptable in terms of normality.
+
+### Goodness-of-Fit Tests for Normal Distribution:
+#### Kolmogorov-Smirnov Test:
+- **Statistic**: 0.044
+- **p-Value**: >0.150
+- **Interpretation**: The high p-value suggests that the `SalePrice` distribution does not significantly deviate from a normal distribution.
+
+#### Cramer-von Mises Test:
+- **Statistic**: 0.119
+- **p-Value**: 0.064
+- **Interpretation**: The p-value is close to 0.05, indicating a borderline acceptance of the null hypothesis that the data comes from a normal distribution.
+
+#### Anderson-Darling Test:
+- **Statistic**: 0.691
+- **p-Value**: 0.074
+- **Interpretation**: The p-value is slightly above 0.05, suggesting that the data does not significantly deviate from a normal distribution.
+
+### Parameters for Normal Distribution:
+- **Mean (Mu)**: 137524.9
+- **Standard Deviation (Sigma)**: 37622.64
+
+### Quantiles for Normal Distribution:
+- **Description**: The table compares the observed quantiles of the `SalePrice` with the estimated quantiles from a normal distribution.
+- **Example**: At the 50% quantile (median), the observed `SalePrice` is 135,000, while the estimated value from the normal distribution is 137,524.9.
+
+### Important Analysis:
+- The histogram and skewness value indicate that the `SalePrice` distribution is fairly symmetric.
+- The kurtosis value shows that the distribution has light tails and a flatter peak compared to a normal distribution.
+- The goodness-of-fit tests suggest that the `SalePrice` data does not significantly deviate from a normal distribution.
+- The mean and standard deviation provide a summary of the central tendency and spread of the `SalePrice` data.
+- Focus on the p-values of the goodness-of-fit tests to determine the normality of the data. High p-values (greater than 0.05) indicate that the data can be considered normally distributed.
+
+
+# One-Sample T-Test
+
+## Explanation:
+- **One-Sample T-Test**: Tests whether the mean of a single sample is equal to a known value (null hypothesis). It helps in determining if the sample mean is significantly different from the specified value.
+
+## Example:
+```sas
+proc ttest data=ames h0=150000;
+    var SalePrice;
+run;
+```
+### Importance:
+A one-sample t-test is useful when you need to compare the mean of your sample data to a known or hypothesized population mean. For example, if you want to test whether the average sale price of houses is significantly different from $150,000, this test will provide the answer.
+
+### Statistics Interpretation:
+The output will provide the mean of the sample, the t-value, degrees of freedom, and the p-value. For example, if the mean sale price is $137,500, the t-value is -3.5, and the p-value is 0.001, it indicates that the mean sale price is significantly different from $150,000 (since p-value < 0.05).
+
+## Output Analysis:
+![one sample t-test](/screenshots/one_t-test.png)
+### T-Test Procedure:
+
+- **N**: 300 (number of observations)
+- **Mean**: $137,525
+- **Std Dev**: $37,622.6
+- **Std Err**: $2,172.1
+- **Minimum**: $35,000
+- **Maximum**: $290,000
+- **95% CL Mean**: Confidence limits for the mean range from $133,250 to $141,799
+- **t Value**: -5.74
+- **Pr > |t|**: <0.0001 (p-value)
+
+**Interpretation**: The mean sale price of $137,525 is significantly different from $150,000 (p-value < 0.05), indicating that the average sale price is less than $150,000.
+
+### Distribution of SalePrice:
+
+- **Description**: The histogram shows the distribution of the `SalePrice` variable. The blue curve represents the normal distribution, and the red curve represents the kernel density estimate. The box plot below shows the spread and outliers in the data.
+- **Interpretation**: The `SalePrice` distribution appears to be fairly symmetric, with the majority of sale prices centered around the mean. The presence of a few outliers can be observed at both ends of the distribution.
+
+### Q-Q Plot of SalePrice:
+
+- **Description**: The Q-Q plot compares the quantiles of the `SalePrice` data to the quantiles of a normal distribution.
+- **Interpretation**: The points closely follow the diagonal line, indicating that the `SalePrice` data is approximately normally distributed. Deviations at the ends suggest some outliers, but the overall fit is good.
+
+By understanding these analyses, you can conclude that the average sale price in the dataset is significantly lower than $150,000, and the `SalePrice` variable is approximately normally distributed, which is important for many parametric statistical tests and modeling techniques.
+
+
+##  Two-Sample T-Test
+
+### Explanation
+A Two-Sample T-Test compares the means of two independent groups to determine if they are significantly different from each other. The groups are specified by a categorical variable.
+
+### Example
+#### Subsetting the Data
+Subset the data to include only '1Story' and '2Story' house styles.
+```sas
+/* Step 1: Subset the data to include only '1Story' and '2Story' house styles */
+data ames_subset;
+    set ames;
+    if House_Style in ('1Story', '2Story');
+run;
+```
+#### Performing the Two-Sample T-Test
+Perform the two-sample t-test on the subsetted data.
+```sas
+/* Step 2: Perform the two-sample t-test */
+proc ttest data=ames_subset;
+    class House_Style;
+    var SalePrice;
+run;
+```
+### Importance
+A two-sample t-test is important when you need to compare the means of two different groups within your data. For example, you might want to compare the average sale prices of houses with different styles to see if the house style significantly affects the sale price.
+
+### Statistics Interpretation
+The output will show the means of the two groups, the t-value, degrees of freedom, and the p-value. For instance, if the mean sale price of 1-Story houses is $140,000 and for 2-Story houses is $160,000, with a t-value of -2.8 and a p-value of 0.01, it suggests that the difference in sale prices between these two house styles is significant (since p-value < 0.05).
+
+# Analysis of Two-Sample T-Test Output
+
+The provided output includes the results of a two-sample t-test comparing the sale prices of 1-Story and 2-Story houses in the Ames dataset.
+
+## Output Analysis
+![Two sample t-test1](/screenshots/two_t-test.JPG)
+### Descriptive Statistics:
+
+#### 1Story:
+- **N (Sample Size)**: 194
+- **Mean Sale Price**: $139,520
+- **Standard Deviation**: $41,078.7
+- **Standard Error**: $2,949.3
+- **Minimum Sale Price**: $35,000
+- **Maximum Sale Price**: $290,000
+
+#### 2Story:
+- **N (Sample Size)**: 38
+- **Mean Sale Price**: $127,489
+- **Standard Deviation**: $28,536.2
+- **Standard Error**: $4,629.2
+- **Minimum Sale Price**: $75,000
+- **Maximum Sale Price**: $176,000
+
+### Difference Between Means:
+
+- The mean difference (1-Story minus 2-Story) is $12,031.3.
+- **Pooled method**: Shows a difference of $12,031.3 with a standard error of $6,997.4.
+- **Satterthwaite method**: Shows a difference of $12,031.3 with a standard error of $5,488.9.
+
+### T-Test Results:
+
+#### Pooled:
+- **Degrees of Freedom (DF)**: 230
+- **T-Value**: 1.72
+- **P-Value**: 0.0860
+
+#### Satterthwaite:
+- **Degrees of Freedom (DF)**: 70.84
+- **T-Value**: 2.19
+- **P-Value**: 0.0317
+
+### Equality of Variances Test:
+
+#### Folded F Method:
+- **Degrees of Freedom (Num DF)**: 193
+- **Degrees of Freedom (Den DF)**: 37
+- **F-Value**: 2.07
+- **P-Value**: 0.0100
+
+## Interpretation
+
+### Descriptive Statistics:
+- The mean sale price for 1-Story houses is higher than for 2-Story houses. The standard deviation is also higher for 1-Story houses, indicating more variability in their sale prices.
+
+### T-Test Results:
+- **Pooled method**: The p-value (0.0860) is greater than 0.05, suggesting that there is no significant difference in mean sale prices between the two house styles using this method.
+- **Satterthwaite method**: The p-value (0.0317) is less than 0.05, suggesting that there is a significant difference in mean sale prices between the two house styles using this method.
+
+### Equality of Variances Test:
+- The p-value (0.0100) indicates that the variances of the two groups are significantly different, justifying the use of the Satterthwaite method, which does not assume equal variances.
+
+
+![Two sample t-test2](/screenshots/two_t-test_g1.JPG)
+
+# Visualizations
+
+## Distribution of Sale Prices:
+
+- **Description**: The histograms and kernel density plots show the distribution of sale prices for 1-Story and 2-Story houses. The box plots indicate the spread and outliers in the data.
+- **Interpretation**: For both 1-Story and 2-Story houses, the distribution appears approximately normal, but there are differences in spread and central tendency.
+![Two sample t-test3](/screenshots/two_t-test_g1.JPG)
+## Q-Q Plots:
+
+- **Description**: The Q-Q plots compare the quantiles of sale prices to a normal distribution.
+- **Interpretation**: Both 1-Story and 2-Story houses show data points that mostly fall along the 45-degree line, indicating normality. Deviations at the ends of the plots indicate potential outliers or slight deviations from normality.
+
+# Importance in Ames House Price Data Analysis
+
+## Understanding Variability:
+- Analyzing the differences in sale prices between different house styles helps understand how the market values these styles, which can be crucial for pricing strategies, real estate investment decisions, and market analysis.
+
+## Significance of Differences:
+- The t-test results indicate whether the observed differences in sale prices are statistically significant, providing insights into whether house style affects sale price.
+
+## Distribution Characteristics:
+- The visualizations help identify the spread, central tendency, and presence of outliers in sale prices, which are important for accurate data modeling and prediction.
+
+By analyzing these results, stakeholders can make informed decisions about pricing, marketing, and investment in the Ames housing market.
+
+
