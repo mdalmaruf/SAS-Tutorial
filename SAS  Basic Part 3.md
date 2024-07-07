@@ -6,14 +6,14 @@ To start, assign a library reference to the directory where the dataset is locat
 ### Instructions:
 1. Navigate to the `Server Files and Folders` section in your SAS environment.
 2. Go to the `Files` directory.
-3. Create a new folder named `SAS24` and upload the `ameshousing3.sas7bdat` file
+3. Create a new folder named `SAS24` and upload the `ameshousing3.sas7bdat` [file](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/Files/)
 4. Create a new sas file under the same `SAS24` folder `ameshousing.sas` and set the directory `SAS24`.
 
 ```sas
 libname mydata '/home/u639220466/SAS24';
 ```
 ### Step 2: Read the Dataset
-Create a new dataset named ames from the uploaded [ameshousing3](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/Files/ameshousing3.sas7bdat) dataset.
+Create a new dataset named ames from the uploaded [ameshousing3](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/Files/) dataset.
 ```sas
 data ames;
     set mydata.ameshousing3;
