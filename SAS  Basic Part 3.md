@@ -389,20 +389,20 @@ The provided output includes the results of a two-sample t-test comparing the sa
 - The p-value (0.0100) indicates that the variances of the two groups are significantly different, justifying the use of the Satterthwaite method, which does not assume equal variances.
 
 
-![Two sample t-test2](/screenshots/two_t-test_g1.JPG)
+
 
 ### Visualizations
-
+![Two sample t-test2](/screenshots/two_t-test_g1.JPG)
 #### Distribution of Sale Prices:
 
 - **Description**: The histograms and kernel density plots show the distribution of sale prices for 1-Story and 2-Story houses. The box plots indicate the spread and outliers in the data.
 - **Interpretation**: For both 1-Story and 2-Story houses, the distribution appears approximately normal, but there are differences in spread and central tendency.
-![Two sample t-test3](/screenshots/two_t-test_g2.JPG)
+
 #### Q-Q Plots:
 
 - **Description**: The Q-Q plots compare the quantiles of sale prices to a normal distribution.
 - **Interpretation**: Both 1-Story and 2-Story houses show data points that mostly fall along the 45-degree line, indicating normality. Deviations at the ends of the plots indicate potential outliers or slight deviations from normality.
-
+![Two sample t-test3](/screenshots/two_t-test_g2.JPG)
 ### Importance in Ames House Price Data Analysis
 
 #### Understanding Variability:
