@@ -141,7 +141,7 @@ proc sgplot data=ames;
     series x=Year_Built y=SalePrice;
 run;
 ```
-You will find . Therefore, you can reduce the number of data or observation.
+You will find line graph quite cluttered due to the large number of data points. Therefore, you can reduce the number of data or observation.
 
 ```sas
 /* Filter the first 20 observations */
