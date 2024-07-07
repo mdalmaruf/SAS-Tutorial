@@ -161,18 +161,16 @@ run;
 ### Pie Chart
 Create a pie chart to visualize the proportion of different categories.
 ```sas
-proc template;
-    define statgraph pie;
-    begingraph;
-        layout region;
-            piechart category=House_Style / datalabeldisplay=(all);
-        endlayout;
-    endgraph;
-end;
+/* Filter the first 20 observations */
+data ames_first_20;
+    set ames(obs=20);
 run;
 
-proc sgrender data=ames template=pie;
-run;
+/* Create a pie chart */
+proc gchart data=ames_first_20;
+    pie House_Style / sumvar=SalePrice type=percent;
+    run;
+quit;
 ```
 ### Group by Category
 Group data by a categorical variable and calculate summary statistics.
