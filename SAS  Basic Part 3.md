@@ -5,7 +5,7 @@ To start, assign a library reference to the directory where the dataset is locat
 
 ### Instructions:
 1. Navigate to the `Server Files and Folders` section in your SAS environment.
-2. Go to the `/home/u639220466/` directory.
+2. Go to the `Files` directory.
 3. Create a new folder named `SAS24`.
    
 ```sas
