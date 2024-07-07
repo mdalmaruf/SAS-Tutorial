@@ -1,4 +1,4 @@
-# Instructions to Import `ameshousing3.sas7bdat` and Perform Various Tasks in SAS Studio
+# Instructions to Import `ameshousing3`data and Perform Various Tasks in SAS Studio
 
 ## Step 1: Assign a Library Reference
 To start, assign a library reference to the directory where the dataset is located.
