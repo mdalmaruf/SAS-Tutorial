@@ -397,7 +397,7 @@ The provided output includes the results of a two-sample t-test comparing the sa
 
 - **Description**: The histograms and kernel density plots show the distribution of sale prices for 1-Story and 2-Story houses. The box plots indicate the spread and outliers in the data.
 - **Interpretation**: For both 1-Story and 2-Story houses, the distribution appears approximately normal, but there are differences in spread and central tendency.
-![Two sample t-test3](/screenshots/two_t-test_g1.JPG)
+![Two sample t-test3](/screenshots/two_t-test_g2.JPG)
 #### Q-Q Plots:
 
 - **Description**: The Q-Q plots compare the quantiles of sale prices to a normal distribution.
