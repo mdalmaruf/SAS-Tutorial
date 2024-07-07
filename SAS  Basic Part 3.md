@@ -6,7 +6,7 @@ To start, assign a library reference to the directory where the dataset is locat
 libname mydata '/home/u639220466/SAS24';
 ```
 ### Step 2: Read the Dataset
-Create a new dataset named ames from the uploaded ![ameshousing3](https://www.kaggle.com/datasets/agnihotri/ameshousing3) dataset.
+Create a new dataset named ames from the uploaded [ameshousing3](https://www.kaggle.com/datasets/agnihotri/ameshousing3) dataset.
 ```sas
 data ames;
     set mydata.ameshousing3;
