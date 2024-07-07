@@ -99,5 +99,72 @@ proc sgplot data=ames;
 run;
 ```
 
+## Additional Descriptive Statistics
+
+Here are the definitions and examples for some descriptive statistics:
+
+### Frequency
+
+- **Definition**: The number of times a particular value appears in a dataset.
+- **Example**: If the dataset contains the values [1, 2, 2, 3, 4], the frequency of 2 is 2 because it appears twice.
+
+### Mean
+
+- **Definition**: The average of a dataset.
+- **Example**: For the numbers 1, 2, 3, 4, 5, the mean is (1+2+3+4+5)/5 = 3.
+
+### Median
+
+- **Definition**: The middle value when the data is sorted.
+- **Example**: For the numbers 1, 2, 3, 4, 5, the median is 3.
+
+### Mode
+
+- **Definition**: The number that occurs most often in a data set.
+- **Example**: In the dataset [1, 2, 2, 3, 4], the mode is 2 because it appears most frequently.
+
+### Standard Deviation
+
+- **Definition**: Measures the spread of data points.
+- **Example**: In a dataset where most values are near the mean, the standard deviation is low.
+
+By following these instructions, you can successfully import the `ameshousing3.sas7bdat` file into SAS Studio and perform various descriptive statistical analyses and visualizations.
+
+## Additional Analyses and Visualizations
+
+### Line Graph
+
+Create a line graph to visualize trends over time or other continuous variables.
+
+```sas
+proc sgplot data=ames;
+    series x=Year_Built y=SalePrice;
+run;
+```
+
+### Pie Chart
+Create a pie chart to visualize the proportion of different categories.
+```sas
+proc template;
+    define statgraph pie;
+    begingraph;
+        layout region;
+            piechart category=House_Style / datalabeldisplay=(all);
+        endlayout;
+    endgraph;
+end;
+run;
+
+proc sgrender data=ames template=pie;
+run;
+```
+### Group by Category
+Group data by a categorical variable and calculate summary statistics.
+```sas
+proc means data=ames;
+    class House_Style;
+    var SalePrice;
+run;
+```
 
 
