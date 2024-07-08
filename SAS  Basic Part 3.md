@@ -18,7 +18,7 @@ libname mydata '/home/u639220466/SAS24';
 /*     out=mydata.cars */
 /*     dbms=csv */
 /*     replace; */
-/*     getnames=yes; */
+/*     getnames=no; */
 /* run; */
 ```
 
