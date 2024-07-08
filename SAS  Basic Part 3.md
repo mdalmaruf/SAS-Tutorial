@@ -12,6 +12,16 @@ To start, assign a library reference to the directory where the dataset is locat
 ```sas
 libname mydata '/home/u639220466/SAS24';
 ```
+```sas
+/* If this csv file/*
+/* proc import datafile='/home/u63922045/SAS24/CARS.csv' */
+/*     out=mydata.cars */
+/*     dbms=csv */
+/*     replace; */
+/*     getnames=yes; */
+/* run; */
+```
+
 ### Step 2: Read the Dataset
 Create a new dataset named ames from the uploaded [ameshousing3](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/Files/) dataset.
 ```sas
@@ -72,12 +82,7 @@ Below is the full code that you can run in SAS Studio to perform the above tasks
 /* Step 1: Assign a library reference */
 libname mydata '/home/u639220466/SAS24';
 
-/* proc import datafile='/home/u63922045/SAS24/CARS.csv' */
-/*     out=mydata.cars */
-/*     dbms=csv */
-/*     replace; */
-/*     getnames=yes; */
-/* run; */
+
 
 /* Step 2: Read the dataset */
 data ames;
