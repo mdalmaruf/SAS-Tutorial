@@ -72,6 +72,13 @@ Below is the full code that you can run in SAS Studio to perform the above tasks
 /* Step 1: Assign a library reference */
 libname mydata '/home/u639220466/SAS24';
 
+/* proc import datafile='/home/u63922045/SAS24/CARS.csv' */
+/*     out=mydata.cars */
+/*     dbms=csv */
+/*     replace; */
+/*     getnames=yes; */
+/* run; */
+
 /* Step 2: Read the dataset */
 data ames;
     set mydata.ameshousing3;
