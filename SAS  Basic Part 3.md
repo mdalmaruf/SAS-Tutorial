@@ -14,8 +14,8 @@ libname mydata '/home/u639220466/SAS24';
 ```
 ```sas
 /* If this csv file/*
-/* proc import datafile='/home/u63922045/SAS24/CARS.csv' */
-/*     out=mydata.cars */
+/* proc import datafile='/home/u63922045/SAS24/Ameshousing3.csv' */
+/*     out=mydata.ameshousing3 */
 /*     dbms=csv */
 /*     replace; */
 /*     getnames=yes; */
