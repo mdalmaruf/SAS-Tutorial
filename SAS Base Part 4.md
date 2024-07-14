@@ -95,6 +95,101 @@ quit;
 
 The ANOVA table provides the F-statistic and the p-value to determine if there are significant differences between the group means. If the p-value is less than 0.05, we reject the null hypothesis, indicating significant differences in mean Sale Prices across Heating Quality levels.
 
+### Explanation of the Results
+
+#### One-Way ANOVA for Sale Prices Across Heating Quality Levels
+
+The One-Way ANOVA test is used to compare the means of Sale Prices across different levels of Heating Quality (`Heating_QC`). The results include F-statistics and p-values to determine if there are significant differences between the group means.
+
+**Dependent Variable:** Sale Price  
+**Independent Variable:** Heating Quality (`Heating_QC`)
+
+**ANOVA Table:**
+| Source | DF | Sum of Squares | Mean Square | F Value | Pr > F |
+|--------|----|----------------|-------------|---------|--------|
+| Model  | 3  | 66835556221    | 22278518740 | 18.50   | <.0001 |
+| Error  | 296| 356387963289   | 1204013389.5|         |        |
+| Corrected Total | 299| 423223519511  |             |         |        |
+
+**Model Summary:**
+- **R-Square:** 0.157920
+- **Coeff Var:** 25.23100
+- **Root MSE:** 34698.90
+- **Mean SalePrice:** 137524.9
+
+**Type I and Type III Sum of Squares:**
+| Source      | DF | Type I SS      | Mean Square     | F Value | Pr > F  |
+|-------------|----|----------------|-----------------|---------|---------|
+| Heating_QC  | 3  | 66835556221    | 22278518740     | 18.50   | <.0001  |
+
+**Levene's Test for Homogeneity of Variance:**
+| Source     | DF | Sum of Squares  | Mean Square     | F Value | Pr > F  |
+|------------|----|-----------------|-----------------|---------|---------|
+| Heating_QC | 3  | 5.931E18        | 1.977E18        | 0.58    | 0.6305  |
+| Error      | 296| 1.014E21        | 3.426E18        |         |         |
+
+**Group Means:**
+| Level of Heating_QC | N  | SalePrice Mean | Std Dev      |
+|---------------------|----|----------------|--------------|
+| Ex                  | 107| 154919.187     | 36822.8795   |
+| Fa                  | 16 | 97118.750      | 37423.5437   |
+| Gd                  | 58 | 130844.086     | 34912.5027   |
+| TA                  | 119| 130573.529     | 32177.4508   |
+
+#### Interpretation of the Results
+
+- **ANOVA Table:** The p-value for the `Heating_QC` is less than 0.0001, indicating that there are significant differences in Sale Prices across the different levels of Heating Quality. The F Value of 18.50 is relatively high, reinforcing the significance.
+- **R-Square:** 0.157920 indicates that approximately 15.79% of the variability in Sale Prices can be explained by Heating Quality.
+- **Levene's Test:** The p-value of 0.6305 indicates that we fail to reject the null hypothesis of equal variances, suggesting that the assumption of homogeneity of variances is met.
+- **Group Means:** The means and standard deviations for Sale Prices across the different levels of Heating Quality (`Ex`, `Fa`, `Gd`, `TA`) provide insight into how the Sale Prices differ across these groups.
+
+#### Box Plot Explanation
+
+The box plot provides a visual representation of the distribution of Sale Prices across different Heating Quality levels:
+
+- **Boxes:** Each box represents the interquartile range (IQR) of the Sale Prices (the range between the 25th and 75th percentiles).
+- **Lines Inside Boxes:** The horizontal line inside each box represents the median Sale Price for that Heating Quality level.
+- **Whiskers:** The vertical lines (whiskers) extend from the boxes to the minimum and maximum values within 1.5 times the IQR from the quartiles.
+- **Outliers:** Points outside the whiskers are considered outliers and are plotted individually.
+- **Diamonds:** The diamonds represent the mean Sale Price for each Heating Quality level.
+
+The box plot shows that the `Ex` (Excellent) level of Heating Quality has the highest median Sale Price, followed by `TA` (Typical/Average), `Gd` (Good), and `Fa` (Fair). The spread of the data (IQR) and the presence of outliers are also visible, providing additional context to the ANOVA results.
+
+#### Visuals Generated
+
+![ANOVA Table](screenshots/onewayAnova.png)
+![Box Plot](screenshots/onewayAnova2.png)
+
+### Visualizing the Results
+
+#### Interaction Plot
+
+We use the `PROC SGPLOT` procedure to visualize the interaction between Heating Quality and Season Sold.
+
+**SAS Code:**
+```sas
+/* Step 1: Assign a library reference */
+libname mydata '/home/u63922XXX/SAS24';
+
+/* Step 2: Read the dataset */
+data ames;
+    set mydata.ameshousing3;
+run;
+
+/* Step 3: Interaction Plot */
+proc sgplot data=ames;
+    scatter x=Season_Sold y=SalePrice / group=Heating_QC;
+    series x=Season_Sold y=SalePrice / group=Heating_QC lineattrs=(pattern=solid);
+    xaxis label="Season Sold";
+    yaxis label="Sale Price";
+    title "Interaction Plot for Sale Price by Heating Quality and Season Sold";
+run;
+```
+
+
+
+
+
 ## Two-Way ANOVA: Evaluating SalePrice Based on Heating Quality and Season Sold
 
 ### Hypothesis
