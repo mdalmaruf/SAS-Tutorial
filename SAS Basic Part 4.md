@@ -90,6 +90,13 @@ proc glm data=ames;
     title "One-Way ANOVA for Sale Prices across Heating Quality Levels";
 run;
 quit;
+
+/*
+- proc glm: This statement calls the General Linear Model (GLM) procedure in SAS, which is used for fitting general linear models. It can handle a variety of statistical analyses, including ANOVA.
+- model: This statement specifies the model to be fitted. It defines the dependent variable and the independent variables (predictors)
+- SalePrice = Heating_QC: Indicates that Sale Price is the dependent variable, and Heating Quality is the independent variable. The procedure will analyze the effect of Heating Quality on Sale Price
+- hovtest=levene: Requests the Levene's test for homogeneity of variances. This test checks whether the variances are equal across the different groups of Heating Quality.
+/*
 ```
 ## Interpretation
 
