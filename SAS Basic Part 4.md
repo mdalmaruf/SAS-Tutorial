@@ -93,6 +93,7 @@ quit;
 
 /*
 - proc glm: This statement calls the General Linear Model (GLM) procedure in SAS, which is used for fitting general linear models. It can handle a variety of statistical analyses, including ANOVA.
+- class: This statement is used to specify categorical variables in the model. The GLM procedure needs to know which variables are categorical to treat them appropriately in the analysis. Heating_QC: The categorical variable representing Heating Quality, which has different levels (e.g., Ex, Fa, Gd, TA).
 - model: This statement specifies the model to be fitted. It defines the dependent variable and the independent variables (predictors)
 - SalePrice = Heating_QC: Indicates that Sale Price is the dependent variable, and Heating Quality is the independent variable. The procedure will analyze the effect of Heating Quality on Sale Price
 - hovtest=levene: Requests the Levene's test for homogeneity of variances. This test checks whether the variances are equal across the different groups of Heating Quality.
