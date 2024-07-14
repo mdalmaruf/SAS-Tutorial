@@ -6,17 +6,26 @@ Analysis of Variance (ANOVA) is a statistical method used to test if there are s
 
 ## Types of ANOVA
 
-1. **One-Way ANOVA**
-   - **Purpose:** Compares the means of three or more independent groups based on one independent variable.
-   - **Example:** Comparing sale prices across different heating quality levels.
+### One-Way ANOVA
 
-2. **Two-Way ANOVA**
-   - **Purpose:** Examines the effect of two independent variables on one dependent variable, including the interaction effect between the two variables.
-   - **Example:** Evaluating sale prices based on heating quality and the season sold.
+- **Purpose:** Compares the means of three or more independent groups based on one independent variable.
+- **Example:** Comparing sale prices across different heating quality levels.
+  - **Dependent Variable:** Sale Price
+  - **Independent Variable:** Heating Quality
 
-3. **Repeated Measures ANOVA**
-   - **Purpose:** Compares means across multiple measurements of the same individuals or subjects.
-   - **Example:** Comparing test scores of students at multiple points in time.
+### Two-Way ANOVA
+
+- **Purpose:** Examines the effect of two independent variables on one dependent variable, including the interaction effect between the two variables.
+- **Example:** Evaluating sale prices based on heating quality and the season sold.
+  - **Dependent Variable:** Sale Price
+  - **Independent Variables:** Heating Quality, Season Sold
+
+### Repeated Measures ANOVA
+
+- **Purpose:** Compares means across multiple measurements of the same individuals or subjects.
+- **Example:** Comparing test scores of students at multiple points in time.
+  - **Dependent Variable:** Test Scores
+  - **Independent Variable:** Time (multiple measurements)
 
 ## Differences Between Types of ANOVA
 
