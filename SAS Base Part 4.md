@@ -110,6 +110,12 @@ The One-Way ANOVA test is used to compare the means of Sale Prices across differ
 | Model  | 3  | 66835556221    | 22278518740 | 18.50   | <.0001 |
 | Error  | 296| 356387963289   | 1204013389.5|         |        |
 | Corrected Total | 299| 423223519511  |             |         |        |
+- Model: Represents the variation explained by the Heating Quality variable.
+- Error: Represents the unexplained variation or residual error.
+- Corrected Total: The total variation in the Sale Prices.
+- F Value: 18.50
+- Pr > F: <.0001
+
 
 **Model Summary:**
 - **R-Square:** 0.157920
@@ -162,29 +168,40 @@ The box plot shows that the `Ex` (Excellent) level of Heating Quality has the hi
 
 ### Visualizing the Results
 
-#### Interaction Plot
+### Interpretation
 
-We use the `PROC SGPLOT` procedure to visualize the interaction between Heating Quality and Season Sold.
+#### Median Sale Prices:
+- **Ex (Excellent):** The median Sale Price is the highest among the four categories.
+- **Fa (Fair):** The median Sale Price is the lowest.
+- **Gd (Good) and TA (Typical/Average):** The median Sale Prices are similar and fall between those of Ex and Fa.
 
-**SAS Code:**
-```sas
-/* Step 1: Assign a library reference */
-libname mydata '/home/u63922XXX/SAS24';
+#### Mean Sale Prices (Diamonds):
+- The mean Sale Prices generally follow the same trend as the medians.
+- **Ex:** Highest mean Sale Price.
+- **Fa:** Lowest mean Sale Price.
+- **Gd and TA:** Means are close and lie between those of Ex and Fa.
 
-/* Step 2: Read the dataset */
-data ames;
-    set mydata.ameshousing3;
-run;
+#### Spread of Data (IQR):
+- **Ex:** The IQR is relatively large, indicating a wider spread of Sale Prices.
+- **Fa:** The IQR is the smallest, indicating a more compact distribution of Sale Prices.
+- **Gd and TA:** The IQRs are moderate, suggesting a moderate spread of Sale Prices.
 
-/* Step 3: Interaction Plot */
-proc sgplot data=ames;
-    scatter x=Season_Sold y=SalePrice / group=Heating_QC;
-    series x=Season_Sold y=SalePrice / group=Heating_QC lineattrs=(pattern=solid);
-    xaxis label="Season Sold";
-    yaxis label="Sale Price";
-    title "Interaction Plot for Sale Price by Heating Quality and Season Sold";
-run;
-```
+#### Outliers:
+- Outliers are present in all categories, but their number and position vary.
+- **Ex:** Outliers above the box plot, indicating higher Sale Prices.
+- **Fa, Gd, TA:** Outliers also present, indicating variability in Sale Prices.
+
+#### F-Statistic and P-Value:
+- **F Value:** 18.50
+- **Pr > F:** <.0001
+- The F-statistic and p-value indicate that there are significant differences in Sale Prices across the different levels of Heating Quality. A p-value less than 0.0001 means that the differences observed are highly unlikely to be due to chance.
+
+### Key Takeaways
+- **Significant Differences:** The ANOVA results (with a p-value < 0.0001) indicate that the differences in Sale Prices across Heating Quality levels are statistically significant.
+- **Higher Sale Prices for Excellent Quality:** Homes with excellent heating quality (Ex) have significantly higher Sale Prices compared to the other categories.
+- **Variation in Sale Prices:** There is considerable variation in Sale Prices within each category, as indicated by the IQR and the presence of outliers.
+- **Comparative Analysis:** The typical/average (TA) and good (Gd) categories have similar Sale Prices, which are higher than those in the fair (Fa) category but lower than those in the excellent (Ex) category.
+
 
 
 
