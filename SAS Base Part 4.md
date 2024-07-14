@@ -115,6 +115,7 @@ The One-Way ANOVA test is used to compare the means of Sale Prices across differ
 - Corrected Total: The total variation in the Sale Prices.
 - F Value: 18.50
 - Pr > F: <.0001
+- DF (Degrees of Freedom): The number of independent values or quantities that can be assigned to a statistical distribution. In the ANOVA table, DF represents the number of levels minus one for the model and the number of observations minus the number of groups for the error.
 
 
 **Model Summary:**
