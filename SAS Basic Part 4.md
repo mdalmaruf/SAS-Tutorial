@@ -335,7 +335,6 @@ This table shows the least squares means (LSMeans) for the interaction of Heatin
 
 #### LS-Means Interaction Plot
 
-![LS-Means Interaction Plot](file-BWeGZbljIKEyhnEjbAwzfFyb)
 
 The LS-Means interaction plot visualizes the interaction effect of Heating Quality and Season Sold on Sale Prices. Each point represents the LSMean for a specific combination of Heating Quality and Season Sold.
 
@@ -362,8 +361,39 @@ The table provides pairwise comparisons of the LSMeans for each combination of H
 
 
 
+![Interaction Plot](/screenshots/twowayAnova3.png)
 
 
+### Interpretation of the Results
+
+#### SalePrice Comparisons for Heating_Q*Season_Sold
+
+1. **Comparison Plot:**
+   - The plot shows pairwise comparisons of Sale Prices for different combinations of Heating Quality (Heating_QC) and Season Sold (Season_Sold).
+   - **Red Lines:** Significant differences in Sale Prices (Tukey-Kramer adjustment for multiple comparisons).
+   - **Blue Lines:** Non-significant differences in Sale Prices.
+   - The plot highlights which specific comparisons between groups are statistically significant.
+
+2. **Two-Way ANOVA for Sale Prices by Heating Quality and Season Sold (Least Squares Means):**
+
+   | Heating_QC | DF  | Sum of Squares | Mean Square | F Value | Pr > F |
+   |------------|-----|----------------|-------------|---------|--------|
+   | Ex         | 3   | 1759608339     | 586536113   | 0.51    | 0.6769 |
+   | Fa         | 3   | 1231882722     | 410629574   | 3.58    | 0.0143 |
+   | Gd         | 3   | 1450806418     | 483585472   | 2.29    | 0.0780 |
+   | TA         | 3   | 2134918198     | 711639399   | 0.82    | 0.6021 |
+
+3. **ANOVA Table Explanation:**
+   - **Ex (Excellent):** The p-value (0.6769) indicates no significant difference in Sale Prices across different seasons sold.
+   - **Fa (Fair):** The p-value (0.0143) indicates a significant difference in Sale Prices across different seasons sold.
+   - **Gd (Good):** The p-value (0.0780) suggests a marginally non-significant difference in Sale Prices across different seasons sold.
+   - **TA (Typical/Average):** The p-value (0.6021) indicates no significant difference in Sale Prices across different seasons sold.
+
+### Findings
+- The pairwise comparison plot visualizes significant and non-significant differences in Sale Prices for different combinations of Heating Quality and Season Sold.
+- The ANOVA table shows that significant differences in Sale Prices are observed for homes with fair heating quality across different seasons sold, while other categories do not show significant seasonal differences.
+
+This analysis highlights the importance of both heating quality and the season in which a house is sold in determining its sale price, with some combinations showing more significant effects than others.
 
 
 
