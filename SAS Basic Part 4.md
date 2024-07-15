@@ -250,10 +250,124 @@ proc glm data=ames;
     title "Two-Way ANOVA for Sale Prices by Heating Quality and Season Sold";
 run;
 quit;
+
+/*
+Class: Specifies the categorical variables Heating_QC and Season_Sold.
+Model: Defines the dependent variable SalePrice and the independent variables Heating_QC, Season_Sold, and their interaction Heating_QC*Season_Sold.
+LSMeans: Least-squares means, used for comparing means when there are unequal sample sizes.
+Slice: Used to make comparisons within levels of another factor.
+Pdiff: Requests p-values for pairwise differences.
+Adjust=Tukey: Adjusts for multiple comparisons using the Tukey method
+/*
 ```
 ## Interpretation
 
 The Two-Way ANOVA table provides F-statistics and p-values for the main effects of Heating Quality and Season Sold, as well as their interaction effect. A significant interaction effect indicates that the effect of Heating Quality on Sale Prices depends on the Season Sold.
+
+![ANOVA Table Two Way](screenshots/twowayAnova.png)
+
+## Explanation of the Results
+#### ANOVA Table
+
+**ANOVA Table:**
+| Source                | DF  | Sum of Squares | Mean Square   | F Value | Pr > F  |
+|-----------------------|-----|----------------|---------------|---------|---------|
+| Model                 | 15  | 97080974155    | 650729494.37  | 5.68    | <.0001  |
+| Error                 | 284 | 325613643565   | 1148528902.03 |         |         |
+| Corrected Total       | 299 | 423223519511   |               |         |         |
+
+**Model Summary:**
+| R-Square | Coeff Var | Root MSE | SalePrice Mean |
+|----------|-----------|----------|----------------|
+| 0.230834 | 24.82130  | 33860.40 | 137524.9       |
+
+**Type I and Type III Sum of Squares:**
+| Source                | DF  | Type I SS       | Mean Square   | F Value | Pr > F  |
+|-----------------------|-----|-----------------|---------------|---------|---------|
+| Heating_QC            | 3   | 66835556221     | 22278518740   | 19.43   | <.0001  |
+| Season_Sold           | 3   | 6399529845      | 1979973282    | 1.73    | 0.1611  |
+| Heating_QC*Season_Sold| 9   | 23850580889     | 2758953432    | 2.41    | 0.0121  |
+
+### Model Fit:
+- **R-Square:** The value of 0.230834 indicates that approximately 23.08% of the variability in Sale Prices can be explained by the model, which includes Heating Quality, Season Sold, and their interaction.
+- **Coefficient of Variation (Coeff Var):** The value is 24.82130, which gives a sense of the relative amount of variability in the Sale Prices.
+- **Root Mean Square Error (Root MSE):** The value is 33860.40, representing the standard deviation of the residuals.
+
+### ANOVA Results:
+- **Heating_QC:** The p-value (<.0001) indicates that there are significant differences in Sale Prices across the different Heating Quality levels. The F Value of 19.43 is high, confirming the significance.
+- **Season_Sold:** The p-value (0.1611) suggests that there are no significant differences in Sale Prices across the different seasons sold. The F Value of 1.73 supports this.
+- **Heating_QC*Season_Sold:** The p-value (0.0121) indicates that there is a significant interaction effect between Heating Quality and Season Sold on Sale Prices. The F Value of 2.41 confirms the significance of the interaction.
+
+### Interaction Plot:
+- The interaction plot shows how Sale Prices vary across different levels of Heating Quality and Season Sold.
+  - **Non-Parallel Lines:** The lines for the different seasons sold (1, 2, 3, 4) are not parallel, indicating an interaction effect. This means that the effect of Heating Quality on Sale Prices depends on the season sold.
+
+### Visual Trends:
+- **Ex (Excellent):** Sale Prices are generally higher across all seasons.
+- **Fa (Fair):** Sale Prices are the lowest across all seasons.
+- **Gd (Good) and TA (Typical/Average):** Sale Prices show varying trends across seasons but are generally higher than Fa and lower than Ex.
+This Two-Way ANOVA analysis demonstrates that Heating Quality has a significant impact on Sale Prices, while the season sold does not independently affect Sale Prices significantly. However, the interaction between Heating Quality and Season Sold is significant, suggesting that the effect of Heating Quality on Sale Prices varies depending on the season sold. 
+
+
+![Anova Plot Two way](screenshots/twowayAnova2.png)
+
+#### Least Squares Means Table
+
+| Heating_QC | Season_Sold | SalePrice LSMEAN | LSMEAN Number |
+|------------|-------------|------------------|---------------|
+| Ex         | 1           | 145853.333       | 1             |
+| Ex         | 2           | 153765.244       | 2             |
+| Ex         | 3           | 151079.462       | 3             |
+| Ex         | 4           | 163729.933       | 4             |
+| Fa         | 1           | 98657.143        | 5             |
+| Fa         | 2           | 128800.000       | 6             |
+| Fa         | 3           | 45000.000        | 7             |
+| Fa         | 4           | 45000.000        | 8             |
+| Gd         | 1           | 124330.000       | 9             |
+| Gd         | 2           | 149169.833       | 10            |
+| Gd         | 3           | 113727.273       | 11            |
+| Gd         | 4           | 143812.500       | 12            |
+| TA         | 1           | 121312.500       | 13            |
+| TA         | 2           | 129404.412       | 14            |
+| TA         | 3           | 134046.552       | 15            |
+| TA         | 4           | 129345.455       | 16            |
+
+This table shows the least squares means (LSMeans) for the interaction of Heating Quality and Season Sold. Each combination of Heating Quality and Season Sold has an associated LSMean value for SalePrice.
+
+#### LS-Means Interaction Plot
+
+![LS-Means Interaction Plot](file-BWeGZbljIKEyhnEjbAwzfFyb)
+
+The LS-Means interaction plot visualizes the interaction effect of Heating Quality and Season Sold on Sale Prices. Each point represents the LSMean for a specific combination of Heating Quality and Season Sold.
+
+#### Key Observations from the LS-Means Plot
+
+1. **Ex (Excellent):**
+   - Sale Prices are generally higher for all seasons.
+   - The highest Sale Prices are observed in Season 4.
+
+2. **Fa (Fair):**
+   - Sale Prices are the lowest for all seasons.
+   - The Sale Prices for Seasons 3 and 4 are particularly low.
+
+3. **Gd (Good):**
+   - Sale Prices show variability across seasons but are generally higher than Fa.
+   - Season 2 shows the highest Sale Prices for Gd.
+
+4. **TA (Typical/Average):**
+   - Sale Prices are generally moderate and show less variability across seasons compared to other categories.
+
+#### Least Squares Means Comparison Table
+
+The table provides pairwise comparisons of the LSMeans for each combination of Heating Quality and Season Sold. The p-values indicate whether the differences between the LSMeans are statistically significant.
+
+
+
+
+
+
+
+
 
 ## Visualizing the Results
 
