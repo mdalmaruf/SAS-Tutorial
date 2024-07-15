@@ -361,12 +361,13 @@ The table provides pairwise comparisons of the LSMeans for each combination of H
 
 
 
-![Interaction Plot](/screenshots/twowayAnova3.png)
 
-
-### Interpretation of the Results
 
 #### SalePrice Comparisons for Heating_Q*Season_Sold
+
+
+![Interaction Plot](/screenshots/twowayAnova3.png)
+
 
 1. **Comparison Plot:**
    - The plot shows pairwise comparisons of Sale Prices for different combinations of Heating Quality (Heating_QC) and Season Sold (Season_Sold).
