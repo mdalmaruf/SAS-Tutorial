@@ -267,7 +267,6 @@ The Two-Way ANOVA table provides F-statistics and p-values for the main effects 
 ![ANOVA Table Two Way](screenshots/twowayAnova.png)
 
 ## Explanation of the Results
-#### ANOVA Table
 
 **ANOVA Table:**
 | Source                | DF  | Sum of Squares | Mean Square   | F Value | Pr > F  |
