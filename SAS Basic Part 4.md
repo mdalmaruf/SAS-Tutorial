@@ -6,21 +6,21 @@ Analysis of Variance (ANOVA) is a statistical method used to test if there are s
 
 ## Types of ANOVA
 
-### One-Way ANOVA
+### 1. One-Way ANOVA
 
 - **Purpose:** Compares the means of three or more independent groups based on one independent variable.
 - **Example:** Comparing sale prices across different heating quality levels.
   - **Dependent Variable:** Sale Price
   - **Independent Variable:** Heating Quality
 
-### Two-Way ANOVA
+### 2. Two-Way ANOVA
 
 - **Purpose:** Examines the effect of two independent variables on one dependent variable, including the interaction effect between the two variables.
 - **Example:** Evaluating sale prices based on heating quality and the season sold.
   - **Dependent Variable:** Sale Price
   - **Independent Variables:** Heating Quality, Season Sold
 
-### Repeated Measures ANOVA
+### 3. Repeated Measures ANOVA
 
 - **Purpose:** Compares means across multiple measurements of the same individuals or subjects.
 - **Example:** Comparing test scores of students at multiple points in time.
@@ -54,7 +54,7 @@ Analysis of Variance (ANOVA) is a statistical method used to test if there are s
 
 ## Applying ANOVA on AmesHousing3 Dataset
 
-### One-Way ANOVA: Comparing Sale Prices Across Different Heating Quality Levels
+### 1. One-Way ANOVA: Comparing Sale Prices Across Different Heating Quality Levels
 
 #### Hypothesis
 
@@ -216,7 +216,7 @@ The box plot shows that the `Ex` (Excellent) level of Heating Quality has the hi
 
 
 
-## Two-Way ANOVA: Evaluating SalePrice Based on Heating Quality and Season Sold
+## 2. Two-Way ANOVA: Evaluating SalePrice Based on Heating Quality and Season Sold
 
 ### Hypothesis
 
