@@ -370,10 +370,11 @@ The table provides pairwise comparisons of the LSMeans for each combination of H
 
 
 1. **Comparison Plot:**
-   - The plot shows pairwise comparisons of Sale Prices for different combinations of Heating Quality (Heating_QC) and Season Sold (Season_Sold).
-   - **Red Lines:** Significant differences in Sale Prices (Tukey-Kramer adjustment for multiple comparisons).
-   - **Blue Lines:** Non-significant differences in Sale Prices.
+  - The plot shows pairwise comparisons of Sale Prices for different combinations of Heating Quality (Heating_QC) and Season Sold (Season_Sold).
+   - **Red Lines:** Non-significant differences in Sale Prices (Tukey-Kramer adjustment for multiple comparisons).
+   - **Blue Lines:** Significant differences in Sale Prices.
    - The plot highlights which specific comparisons between groups are statistically significant.
+
 
 2. **Two-Way ANOVA for Sale Prices by Heating Quality and Season Sold (Least Squares Means):**
 
