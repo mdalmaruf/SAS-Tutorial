@@ -1,4 +1,17 @@
 # Analysis of Variance (ANOVA) on AmesHousing3 Dataset
+```sas
+PROC GLM DATA=students;
+    CLASS StudyMethod;
+    MODEL TestScore = StudyMethod;
+    MEANS StudyMethod / hovtest=levene;
+    LSMEANS StudyMethod / pdiff=all;
+    OUTPUT OUT=results p=predicted r=residual;
+    TITLE "One-Way ANOVA for Test Scores across Study Methods";
+RUN;
+QUIT;
+
+```
+
 
 ## Introduction
 
