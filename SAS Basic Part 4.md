@@ -211,6 +211,8 @@ The box plot shows that the `Ex` (Excellent) level of Heating Quality has the hi
 - **Higher Sale Prices for Excellent Quality:** Homes with excellent heating quality (Ex) have significantly higher Sale Prices compared to the other categories.
 - **Variation in Sale Prices:** There is considerable variation in Sale Prices within each category, as indicated by the IQR and the presence of outliers.
 - **Comparative Analysis:** The typical/average (TA) and good (Gd) categories have similar Sale Prices, which are higher than those in the fair (Fa) category but lower than those in the excellent (Ex) category.
+- **The ANOVA test results:** indicate significant differences in Sale Prices across different Heating Quality levels, with an F Value of 18.50 and a p-value of <.0001. This means that at least one group mean is different from the others.
+- **Assumption Test:** Levene's test for homogeneity of variances, with an F Value of 0.58 and a p-value of 0.6305, shows no significant difference in variances among the groups, meeting the assumption of equal variances required for ANOVA. Therefore, we can confidently state that the observed differences in Sale Prices are significant and the assumption of homogeneity of variances is satisfied.
 
 
 
