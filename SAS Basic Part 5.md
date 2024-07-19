@@ -4,14 +4,6 @@
 
 Post Hoc tests are statistical analyses that are conducted after an ANOVA test when the null hypothesis is rejected. They are used to determine exactly which means are significantly different from each other. This blog post will guide you through a scenario using the `ameshousing3` dataset, explaining when and why Post Hoc tests are necessary, and providing detailed steps and SAS code for conducting these tests.
 
-# Key Values and Their Importance
-
-| Term              | Description                                                                                 |
-|-------------------|---------------------------------------------------------------------------------------------|
-| **p-value**       | Indicates if there are significant differences among group means.                           |
-| **F Value**       | Ratio of between-group variance to within-group variance. Higher F values indicate greater variance among group means. |
-| **Confidence Interval** | Range within which the true difference between group means lies, with a specified level of confidence (e.g., 95%). |
-| **Difference**    | The estimated difference between group means.                                               |
 
 
 ## Task Scenario
@@ -45,6 +37,37 @@ proc glm data=ames;
 run;
 quit;
 ```
+# Explanation of the One-Way ANOVA Results
+
+## Key Values to Focus On
+
+| Term           | Description                                                                                 |
+|----------------|---------------------------------------------------------------------------------------------|
+| **F Value**    | Ratio of between-group variance to within-group variance. Higher F values indicate greater variance among group means. |
+| **p-value**    | Indicates if there are significant differences among group means.                           |
+| **R-Square**   | Proportion of variance in the dependent variable that can be explained by the independent variable. |
+| **Mean Square**| Average of the squares of the differences between each observation and the overall mean.     |
+| **Sum of Squares** | Total variation within the data.                                                       |
+
+## Sample ANOVA Table
+
+| Source           | DF | Sum of Squares | Mean Square    | F Value | Pr > F |
+|------------------|----|----------------|----------------|---------|--------|
+| **Model**        | 3  | 66835556221    | 22278518740    | 18.50   | <.0001 |
+| **Error**        | 296| 356387963289   | 1204013389.5   |         |        |
+| **Corrected Total** | 299 | 423223519511 |              |         |        |
+
+## Interpretation
+
+- **F Value**: 18.50 indicates a significant effect of Heating Quality on Sale Prices.
+- **p-value (<.0001)**: Suggests that the differences among Heating Quality levels are statistically significant.
+- **R-Square (0.157920)**: Indicates that approximately 15.79% of the variability in Sale Prices can be explained by Heating Quality.
+
+## When to Apply Post Hoc Tests
+
+Apply Post Hoc tests when the p-value from the ANOVA is less than 0.05, indicating significant differences among group means.
+
+
 
 # Post Hoc Tests
 
