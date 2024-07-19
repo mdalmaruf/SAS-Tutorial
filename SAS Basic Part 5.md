@@ -86,6 +86,9 @@ Post Hoc tests are follow-up tests to ANOVA, used to identify which specific gro
 - **Tukey's HSD (Honestly Significant Difference)**: Controls for Type I error and is suitable for pairwise comparisons.
 - **Bonferroni Correction**: Adjusts the significance level based on the number of comparisons.
 - **Scheffé's Test**: More conservative and can be used for any number of comparisons.
+## Example Scenario and SAS Code for Post Hoc Tests
+### Example Scenario
+Suppose the One-Way ANOVA on the ameshousing3 dataset indicates significant differences in sale prices across different heating quality levels. You need to determine which specific heating quality levels (e.g., Excellent, Fair, Good, Typical/Average) have significant differences in sale prices. This is where Post Hoc tests come into play.
 
 ## SAS Code for Post Hoc Tests
 
@@ -121,6 +124,8 @@ quit;
 - **Interaction Plot**: Visualize the interaction between heating quality and season sold on sale prices.
 - **Tukey's HSD**: Examine the pairwise comparisons for significant differences within and between groups.
 
+### Example Results Interpretation
+After running the One-Way ANOVA with Post Hoc tests, you might get results indicating that the sale prices for houses with "Excellent" heating quality are significantly higher than those with "Fair" heating quality, but not significantly different from those with "Good" or "Typical/Average" heating quality. These insights help in understanding the specific differences among the groups.
 ## Conclusion
 
 In this tutorial, we covered the importance and application of Post Hoc tests following ANOVA. By using the ameshousing3 dataset, we demonstrated how to identify significant differences in sale prices across different heating quality levels and the interaction between heating quality and season sold. Post Hoc tests are essential for pinpointing specific group differences after identifying overall significance with ANOVA.
