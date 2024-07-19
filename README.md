@@ -2,8 +2,8 @@
 
 Welcome to the SAS Tutorials repository. Below are the links to various SAS tutorial chapters:
 
-- **Tutorial 1: SAS Base Part 1 [Syntax]**  
-  [Syntax](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%201.md)
+- **Tutorial 1: SAS Base Part 1 [Dataset Creation]**  
+  [Data](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%201.md)
   
 - **Tutorial 2: SAS Base Part 2 [Load Local data/ PC files]**  
   [Load Local data/ PC files](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%202.md)
