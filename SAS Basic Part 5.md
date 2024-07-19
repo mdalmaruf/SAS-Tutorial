@@ -192,6 +192,45 @@ After running the One-Way ANOVA with Post Hoc tests, you might get results indic
 - Significant differences were found between the mean sale prices of houses with Excellent heating quality and those with Fair, Good, and Average heating quality.
 - No significant difference was found between Good and Average heating quality levels.
 
+# One-Way ANOVA with Tukey Post Hoc Test Results
+
+The results of the One-Way ANOVA with Tukey Post Hoc Test for sale prices across heating quality levels indicate the following:
+
+## ANOVA Results
+
+- **F Value**: 18.50
+- **p-value**: <.0001
+
+These values show that there are significant differences in sale prices across the different heating quality levels. The p-value being less than 0.05 indicates that we reject the null hypothesis, which states that there is no difference in sale prices across heating quality levels.
+
+## Levene’s Test for Homogeneity of Variance
+
+- **F Value**: 0.58
+- **p-value**: 0.6305
+
+This test indicates that the assumption of equal variances across groups is met, as the p-value is greater than 0.05.
+
+## Tukey's HSD Test Results
+![ANOVA Post Hoc Tests](screenshots/posthocAnova.JPG)
+This test identifies which specific groups' means are significantly different from each other.
+Significant Comparisons (marked with ***):
+- **Ex - Fa**: Difference of 57800 with confidence limits [33770, 81831]
+- **Ex - Gd**: Difference of 24075 with confidence limits [9457, 38788]
+- **Ex - TA**: Difference of 24346 with confidence limits [12402, 36289]
+- **Fa - Gd**: Difference of -33725 with confidence limits [-50404, -17047]
+- **Fa - TA**: Difference of -33455 with confidence limits [-50727, -9683]
+
+These comparisons show that:
+- Homes with excellent heating quality (Ex) have significantly higher sale prices compared to homes with fair (Fa), good (Gd), and typical/average (TA) heating quality.
+- Homes with fair heating quality (Fa) have significantly lower sale prices compared to good (Gd) and typical/average (TA) heating quality.
+
+## Interpretation
+
+- The ANOVA test revealed significant differences in sale prices across heating quality levels.
+- The Tukey Post Hoc Test pinpointed that homes with excellent heating quality command significantly higher prices, while those with fair heating quality fetch significantly lower prices.
+- These results are crucial for understanding how heating quality impacts property values, allowing stakeholders to make informed decisions based on the specific heating quality categories.
+
+
 
 
 ## Conclusion
