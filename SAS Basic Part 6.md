@@ -8,7 +8,7 @@ Pearson Correlation is a statistical measure that calculates the strength and di
 
 ### Scenario: Evaluating the Relationship Between SalePrice and GrLivArea
 
-You are tasked with analyzing the `ameshousing3` dataset to determine if there is a significant linear relationship between the sale price of houses (`SalePrice`) and the ground living area (`GrLivArea`).
+You are tasked with analyzing the `ameshousing3` dataset to determine if there is a significant linear relationship between the sale price of houses (`SalePrice`) and the ground living area (`Gr_Liv_Area`).
 
 ### Approach to Analysis
 
@@ -28,8 +28,8 @@ run;
 
 /* Step 3: Calculate Pearson Correlation */
 proc corr data=ames;
-    var SalePrice GrLivArea;
-    title "Pearson Correlation Between SalePrice and GrLivArea";
+    var SalePrice Gr_Liv_Area;
+    title "Pearson Correlation Between SalePrice and Gr_Liv_Area";
 run;
 ```
 
@@ -67,7 +67,7 @@ Simple Linear Regression is a statistical method that models the relationship be
 
 ### Scenario: Predicting SalePrice Based on GrLivArea
 
-You are tasked with analyzing the ameshousing3 dataset to develop a model that predicts the sale price of houses (SalePrice) based on the ground living area (GrLivArea).
+You are tasked with analyzing the ameshousing3 dataset to develop a model that predicts the sale price of houses (SalePrice) based on the ground living area (Gr_Liv_Area).
 
 ## Approach to Analysis
 
@@ -87,8 +87,8 @@ run;
 
 /* Step 3: Fit a Simple Linear Regression Model */
 proc reg data=ames;
-    model SalePrice = GrLivArea;
-    title "Simple Linear Regression for SalePrice based on GrLivArea";
+    model SalePrice = Gr_Liv_Area;
+    title "Simple Linear Regression for SalePrice based on Gr_Liv_Area";
 run;
 quit;
 ```
