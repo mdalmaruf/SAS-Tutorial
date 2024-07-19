@@ -59,9 +59,9 @@ quit;
 
 ## Interpretation
 
-- **F Value**: 18.50 indicates a significant effect of Heating Quality on Sale Prices.
-- **p-value (<.0001)**: Suggests that the differences among Heating Quality levels are statistically significant.
-- **R-Square (0.157920)**: Indicates that approximately 15.79% of the variability in Sale Prices can be explained by Heating Quality.
+- **F Value (18.50):** Indicates a significant effect of Heating Quality on Sale Prices. A higher F value suggests that the variability between group means is much larger than within group variances.
+- **p-value (<.0001):** Suggests that the differences among Heating Quality levels are statistically significant. Since the p-value is less than 0.05, we reject the null hypothesis and conclude that there are significant differences in Sale Prices across Heating Quality levels.
+- **R-Square (0.157920):** Indicates that approximately 15.79% of the variability in Sale Prices can be explained by Heating Quality.
 
 ## When to Apply Post Hoc Tests
 
