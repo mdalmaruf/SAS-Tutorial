@@ -111,7 +111,19 @@ proc glm data=ames;
 run;
 quit;
 ```
+### Explanation of SAS Code
 
+- **proc glm**: Calls the General Linear Model procedure in SAS.
+- **class**: Specifies categorical variables (e.g., Heating_QC, Season_Sold).
+- **model**: Defines the dependent variable and the independent variables (predictors).
+- **means**: Requests means for the specified variables and applies Post Hoc tests.
+- **tukey**: Requests Tukey's Honestly Significant Difference test.
+- **cldiff**: Requests confidence limits for differences.
+- **lsmeans**: Requests least-squares means for specified variables.
+- **slice**: Requests slicing of interactions for specific levels.
+- **pdiff**: Requests p-values for differences.
+- **adjust=tukey**: Applies Tukey's adjustment for multiple comparisons.
+  
 ## Interpreting the Results
 
 ### One-Way ANOVA with Tukey Post Hoc Test
@@ -126,6 +138,29 @@ quit;
 
 ### Example Results Interpretation
 After running the One-Way ANOVA with Post Hoc tests, you might get results indicating that the sale prices for houses with "Excellent" heating quality are significantly higher than those with "Fair" heating quality, but not significantly different from those with "Good" or "Typical/Average" heating quality. These insights help in understanding the specific differences among the groups.
+
+
+
+# Sample Results Interpretation
+
+## One-Way ANOVA with Tukey Post Hoc Test
+
+| Comparison          | Difference  | Confidence Interval           | p-value |
+|---------------------|-------------|-------------------------------|---------|
+| Excellent vs. Fair  | 57700.43    | [35000.12, 80400.74]          | <.0001  |
+| Excellent vs. Good  | 24075.10    | [5000.89, 43149.31]           | 0.0150  |
+| Excellent vs. Average | 24345.66  | [7500.78, 41190.54]           | 0.0078  |
+| Good vs. Fair       | 33625.33    | [10000.50, 57250.16]          | 0.0015  |
+| Average vs. Fair    | 33355.77    | [11500.12, 55211.42]          | 0.0012  |
+| Good vs. Average    | 267.56      | [-10432.77, 10967.89]         | 0.9600  |
+
+### Interpretation:
+
+- Significant differences were found between the mean sale prices of houses with Excellent heating quality and those with Fair, Good, and Average heating quality.
+- No significant difference was found between Good and Average heating quality levels.
+
+
+
 ## Conclusion
 
 In this tutorial, we covered the importance and application of Post Hoc tests following ANOVA. By using the ameshousing3 dataset, we demonstrated how to identify significant differences in sale prices across different heating quality levels and the interaction between heating quality and season sold. Post Hoc tests are essential for pinpointing specific group differences after identifying overall significance with ANOVA.
