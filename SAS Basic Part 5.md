@@ -231,6 +231,27 @@ These comparisons show that:
 - These results are crucial for understanding how heating quality impacts property values, allowing stakeholders to make informed decisions based on the specific heating quality categories.
 
 
+## Understanding Type I and Type II Errors
+
+### Type I Error (False Positive)
+
+- **Definition**: Rejecting the null hypothesis when it is actually true.
+- **Example**: Concluding that there is a significant difference in mean sale prices between heating quality levels when, in fact, there is no difference.
+
+### Type II Error (False Negative)
+
+- **Definition**: Failing to reject the null hypothesis when it is actually false.
+- **Example**: Concluding that there is no significant difference in mean sale prices between heating quality levels when there is actually a difference.
+
+### Balancing Errors
+
+- **Significance Level (α)**: The probability of making a Type I error. Commonly set at 0.05.
+- **Power of the Test (1 - β)**: The probability of correctly rejecting the null hypothesis. A higher power reduces the risk of a Type II error.
+
+### Example Scenario
+
+- **Type I Error**: If the significance level is set too high (e.g., 0.10), there is a higher chance of detecting a false difference between heating quality levels.
+- **Type II Error**: If the sample size is too small, the test may not detect an actual difference between heating quality levels, leading to a Type II error.
 
 
 ## Conclusion
