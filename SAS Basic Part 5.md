@@ -4,6 +4,16 @@
 
 Post Hoc tests are statistical analyses that are conducted after an ANOVA test when the null hypothesis is rejected. They are used to determine exactly which means are significantly different from each other. This blog post will guide you through a scenario using the `ameshousing3` dataset, explaining when and why Post Hoc tests are necessary, and providing detailed steps and SAS code for conducting these tests.
 
+# Key Values and Their Importance
+
+| Term              | Description                                                                                 |
+|-------------------|---------------------------------------------------------------------------------------------|
+| **p-value**       | Indicates if there are significant differences among group means.                           |
+| **F Value**       | Ratio of between-group variance to within-group variance. Higher F values indicate greater variance among group means. |
+| **Confidence Interval** | Range within which the true difference between group means lies, with a specified level of confidence (e.g., 95%). |
+| **Difference**    | The estimated difference between group means.                                               |
+
+
 ## Task Scenario
 
 ### Scenario 1: Determining Differences in Sale Prices Across Heating Quality Levels
