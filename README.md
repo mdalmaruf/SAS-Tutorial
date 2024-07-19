@@ -1,6 +1,17 @@
 
+# SAS Tutorials
 
+- **Tutorial 1: SAS Base Part 1**  [Dataset Creation](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%201.md)
+  
+- **Tutorial 2: SAS Base Part 2**[Load Local data/ PC files](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%202.md)
+  
+- **Tutorial 3:**[Descriptive Data Analysis SAS Studio](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%203.md)
+  
+- **Tutorial 4:**[ANOVA on AmesHousing3 Dataset](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%204.md)
+  
+- **Tutorial 5:**[Post Hoc Test](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%205.md)
 
+Feel free to navigate through these tutorials to enhance your understanding of SAS and its applications.
 
 # Getting Started with SAS Studio and SAS Base Software
 
@@ -245,27 +256,6 @@ Before starting to write programs in SAS, it's essential to be familiar with som
 
 **23. `file`: Specifies an external file to write data to.** Example: `file 'output.txt';`
 
-
-# SAS Tutorials
-
-Welcome to the SAS Tutorials repository. Below are the links to various SAS tutorial chapters:
-
-- **Tutorial 1: SAS Base Part 1 [Dataset Creation]**  
-  [Data](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%201.md)
-  
-- **Tutorial 2: SAS Base Part 2 [Load Local data/ PC files]**  
-  [Load Local data/ PC files](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%202.md)
-  
-- **Tutorial 3: Descriptive Data Analysis SAS Studio**  
-  [Descriptive Data Analysis SAS Studio](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%203.md)
-  
-- **Tutorial 4: Analysis of Variance (ANOVA) on AmesHousing3 Dataset**  
-  [ANOVA on AmesHousing3 Dataset](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%204.md)
-  
-- **Tutorial 5: Post Hoc Test**  
-  [Post Hoc Test](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%205.md)
-
-Feel free to navigate through these tutorials to enhance your understanding of SAS and its applications.
 
 **24. `put`: Writes data to an external file.** Example: `put var;`
 
