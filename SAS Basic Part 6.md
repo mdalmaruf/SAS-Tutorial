@@ -107,18 +107,19 @@ quit;
 
 ### Sample Regression Output
 
-| Parameter | Estimate | Standard Error | t Value | p-value  |
-|-----------|----------|----------------|---------|----------|
-| **Intercept** | 50000    | 2000           | 25.00   | <.0001   |
-| **GrLivArea** | 150      | 10             | 15.00   | <.0001   |
-| **R-Square**  | 0.501    |                |         |          |
+| Parameter      | Estimate   | Standard Error | t Value | p-value |
+|----------------|------------|----------------|---------|---------|
+| **Intercept**  | 18583      | 8213.43837     | 2.26    | 0.0244  |
+| **GrLivArea**  | 105.18902  | 7.11522        | 14.78   | <.0001  |
+| **R-Square**   | 0.4231     |                |         |         |
 
 ### Interpretation
 
-- **Intercept (50000)**: When the ground living area is zero, the expected sale price of a house is $50,000.
-- **Slope (150)**: For every additional square foot of ground living area, the sale price is expected to increase by $150.
-- **R-Square (0.501)**: Approximately 50.1% of the variability in SalePrice can be explained by GrLivArea.
+- **Intercept (18583)**: When the ground living area is zero, the expected sale price of a house is $18,583.
+- **Slope (105.18902)**: For every additional square foot of ground living area, the sale price is expected to increase by $105.19.
+- **R-Square (0.4231)**: Approximately 42.31% of the variability in SalePrice can be explained by GrLivArea.
 - **p-value (<.0001)**: Indicates that the relationship between SalePrice and GrLivArea is statistically significant.
+
 
 
 ## Model Output Interpretation
