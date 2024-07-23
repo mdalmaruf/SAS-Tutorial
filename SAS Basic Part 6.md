@@ -189,7 +189,7 @@ run;
 
 Given the intercept (18583) and slope (105.188), the predicted sale price for a house with 1000 sq ft of living area is calculated as:
 $$
-\text{new\_SalePrice} = 18583 + 105.188 \times 1000 = 18583 + 105188 = 123771
+new\_SalePrice = 18583 + 105.188 \times 1000 = 18583 + 105188 = 123771
 $$
 
 Thus, the predicted sale price for the house is $123,771.
