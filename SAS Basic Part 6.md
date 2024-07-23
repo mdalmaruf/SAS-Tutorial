@@ -120,6 +120,57 @@ quit;
 - **R-Square (0.501)**: Approximately 50.1% of the variability in SalePrice can be explained by GrLivArea.
 - **p-value (<.0001)**: Indicates that the relationship between SalePrice and GrLivArea is statistically significant.
 
+
+## Model Output Interpretation
+
+### Regression Equation
+
+The regression equation derived from the model is:
+$$ \hat{y} = b_0 + b_1 x $$
+
+Where:
+
+- \( \hat{y} \) is the predicted sale price.
+- \( b_0 \) is the intercept.
+- \( b_1 \) is the slope (coefficient for GrLivArea).
+
+From the regression output, we get:
+
+- Intercept (\( b_0 \)): 18583
+- Slope (\( b_1 \)): 105.188
+
+So the equation becomes:
+$$ \hat{y} = 18583 + 105.188 \times \text{GrLivArea} $$
+
+### Step 4: Predicting SalePrice for a New House
+
+We use the regression model to predict the sale price for a new house with 1000 sq ft of living area.
+
+```sas
+/* Example: Predicting SalePrice for a new house with 1000 sq ft of living area */
+data new_data;
+    input Gr_Liv_Area;
+    datalines;
+1000
+;
+run;
+
+proc reg data=ames outest=est;
+    model SalePrice = Gr_Liv_Area;
+run;
+
+data prediction;
+    set est;
+    new_SalePrice = Intercept + 105.188 * 1000;
+run;
+
+proc print data=prediction;
+    var new_SalePrice;
+run;
+```
+
+
+
 ### Conclusion
 
 The Simple Linear Regression analysis on the ameshousing3 dataset shows a significant positive relationship between SalePrice and GrLivArea. This model helps in predicting the sale price of houses based on their ground living area, providing valuable insights for real estate analysis.
