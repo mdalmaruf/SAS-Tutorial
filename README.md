@@ -10,6 +10,7 @@
 - **Tutorial 4:** [ANOVA on AmesHousing3 Dataset](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%204.md)
   
 - **Tutorial 5:** [Post Hoc Test](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%205.md)
+- **Tutorial 6:** [Linear Regression](https://github.com/mdalmaruf/SAS-Tutorial/blob/main/SAS%20Basic%20Part%206.md)
 
 Feel free to navigate through these tutorials to enhance your understanding of SAS and its applications.
 
