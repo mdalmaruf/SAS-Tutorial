@@ -122,6 +122,9 @@ quit;
 
 
 ## Model Output Interpretation
+![Linear Regression Table](screenshots/linear_table.JPG)
+![Linear Regression Prediction](screenshots/linear_prediction.JPG)
+
 
 ### Regression Equation
 
@@ -168,6 +171,28 @@ proc print data=prediction;
     var new_SalePrice;
 run;
 ```
+## Explanation of the Code
+
+- `data new_data;`: Creates a new dataset named `new_data`.
+- `input Gr_Liv_Area;`: Specifies the variable `Gr_Liv_Area`.
+- `datalines;`: Starts the inline data input.
+- `1000`: Represents the ground living area for prediction.
+- `proc reg data=ames outest=est;`: Fits the regression model and saves the coefficients in `est`.
+- `model SalePrice = Gr_Liv_Area;`: Defines the regression model.
+- `data prediction;`: Creates a new dataset named `prediction`.
+- `set est;`: Reads in the estimated coefficients.
+- `new_SalePrice = Intercept + 105.188 * 1000;`: Calculates the predicted sale price.
+- `proc print data=prediction;`: Prints the predicted sale price.
+- `var new_SalePrice;`: Specifies the variable to print.
+
+## Predicted Sale Price Calculation
+
+Given the intercept (18583) and slope (105.188), the predicted sale price for a house with 1000 sq ft of living area is calculated as:
+$$
+\text{new\_SalePrice} = 18583 + 105.188 \times 1000 = 18583 + 105188 = 123771
+$$
+
+Thus, the predicted sale price for the house is $123,771.
 
 
 
