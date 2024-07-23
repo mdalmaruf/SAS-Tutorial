@@ -129,21 +129,21 @@ quit;
 ### Regression Equation
 
 The regression equation derived from the model is:
-$$ \hat{y} = b_0 + b_1 x $$
+$$ y = b_0 + b_1 x $$
 
 Where:
 
-- \( \hat{y} \) is the predicted sale price.
-- \( b_0 \) is the intercept.
-- \( b_1 \) is the slope (coefficient for GrLivArea).
+- (y) is the predicted sale price.
+- (b_0) is the intercept.
+- (b_1) is the slope (coefficient for GrLivArea).
 
 From the regression output, we get:
 
-- Intercept (\( b_0 \)): 18583
-- Slope (\( b_1 \)): 105.188
+- Intercept (b_0): 18583
+- Slope (b_1): 105.188
 
 So the equation becomes:
-$$ \hat{y} = 18583 + 105.188 \times \text{GrLivArea} $$
+$$ y = 18583 + 105.188 * Gr_Liv_Area $$
 
 ### Step 4: Predicting SalePrice for a New House
 
@@ -189,7 +189,7 @@ run;
 
 Given the intercept (18583) and slope (105.188), the predicted sale price for a house with 1000 sq ft of living area is calculated as:
 $$
-new\_SalePrice = 18583 + 105.188 \times 1000 = 18583 + 105188 = 123771
+new\_SalePrice = 18583 + 105.188 * 1000 = 18583 + 105188 = 123771
 $$
 
 Thus, the predicted sale price for the house is $123,771.
