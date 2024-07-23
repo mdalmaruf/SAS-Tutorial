@@ -148,14 +148,14 @@ $$ y = 18583 + 105.188 * Gr_Liv_Area $$
 
 ### Step 4: Predicting SalePrice for a New House
 
-We use the regression model to predict the sale price for a new house with 1000 sq ft of living area.
+We use the regression model to predict the sale price for a new house with 2000 sq ft of living area.
 
 ```sas
 /* Example: Predicting SalePrice for a new house with 1000 sq ft of living area */
 data new_data;
     input Gr_Liv_Area;
     datalines;
-1000
+2000
 ;
 run;
 
@@ -165,7 +165,7 @@ run;
 
 data prediction;
     set est;
-    new_SalePrice = Intercept + 105.188 * 1000;
+    new_SalePrice = Intercept + 105.188 * 2000;
 run;
 
 proc print data=prediction;
@@ -182,7 +182,7 @@ run;
 - `model SalePrice = Gr_Liv_Area;`: Defines the regression model.
 - `data prediction;`: Creates a new dataset named `prediction`.
 - `set est;`: Reads in the estimated coefficients.
-- `new_SalePrice = Intercept + 105.188 * 1000;`: Calculates the predicted sale price.
+- `new_SalePrice = Intercept + 105.188 * 2000;`: Calculates the predicted sale price.
 - `proc print data=prediction;`: Prints the predicted sale price.
 - `var new_SalePrice;`: Specifies the variable to print.
 
@@ -190,10 +190,10 @@ run;
 
 Given the intercept (18583) and slope (105.188), the predicted sale price for a house with 1000 sq ft of living area is calculated as:
 $$
-new\_SalePrice = 18583 + 105.188 * 1000 = 18583 + 105188 = 123771
+new\_SalePrice = 18583 + 105.18802×2000=232959.02
 $$
 
-Thus, the predicted sale price for the house is $123,771.
+Thus, the predicted sale price for the house is $232,959.02.
 
 
 
