@@ -16,6 +16,7 @@ Choose k initial centroids randomly from the data points. Let's say we randomly 
 
 - **Centroid 1**: (1, 1)
 - **Centroid 2**: (5, 4)
+![K-Means Sample](screenshots/Kmeans_sample.JPG)
 
 ## Step 2: Assignment
 Assign each data point to the nearest centroid based on the Euclidean distance.
