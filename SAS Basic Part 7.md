@@ -90,3 +90,82 @@ data Poverty;
 ;
 ```
 
+## Clustering Analysis
+
+### Step 1: Principal Component Analysis (PCA) using PROC ACECLUS
+
+```sas
+proc aceclus data=Poverty out=Ace p=.03 noprint;
+   var Birth Death InfantDeath;
+run;
+```
+
+**Explanation:**
+
+- **PROC ACECLUS:** Performs a principal component analysis (PCA) on the variables Birth, Death, and InfantDeath to reduce dimensionality.
+- **out=Ace:** Saves the output dataset as Ace.
+- **p=.03:** Specifies the proportion of the data to be used for the analysis.
+- **noprint:** Suppresses the output.
+
+### Step 2: Hierarchical Clustering using PROC CLUSTER
+
+```sas
+ods graphics on;
+
+proc cluster data=Ace method=ward ccc pseudo print=15 out=tree
+   plots=den(height=rsq);
+   var can1-can3;
+   id Country;
+run;
+
+ods graphics off;
+```
+**Explanation:**
+
+- **PROC CLUSTER:** Performs hierarchical clustering on the data.
+- **method=ward:** Specifies Ward's minimum variance method for clustering.
+- **ccc pseudo print=15:** Requests the cubic clustering criterion and pseudo statistics for the first 15 clusters.
+- **out=tree:** Saves the clustering results as tree.
+- **plots=den(height=rsq):** Creates a dendrogram with height based on the R-squared value.
+- **var can1-can3:** Uses the first three canonical variables for clustering.
+- **id Country:** Uses Country as the identifier for each observation.
+
+### Step 3: Creating Clusters using PROC TREE
+
+```sas
+proc tree data=tree out=new nclusters=3 noprint;
+   height _rsq_;
+   copy can1 can2;
+   id Country;
+run;
+```
+
+**Explanation:**
+
+- **PROC TREE:** Creates clusters from hierarchical clustering results.
+- **data=tree:** Uses the dataset from the hierarchical clustering step.
+- **out=new:** Saves the new dataset with cluster assignments.
+- **nclusters=3:** Specifies the number of clusters to create.
+- **noprint:** Suppresses the output.
+- **height _rsq_:** Uses the R-squared value as the height criterion for clustering.
+- **copy can1 can2:** Copies the specified canonical variables to the new dataset.
+- **id Country:** Uses Country as the identifier for each observation.
+
+## Step 4: Visualizing Clusters using PROC SGPLOT
+
+```sas
+proc sgplot data=new;
+   scatter y=can2 x=can1 / group=cluster;
+run;
+```
+**Explanation:**
+
+- **PROC SGPLOT:** Generates plots for data visualization.
+- **data=new:** Uses the dataset with cluster assignments.
+- **scatter y=can2 x=can1 / group=cluster:** Creates a scatter plot of the canonical variables, grouped by clusters.
+
+## Conclusion
+This tutorial provided an overview of supervised and unsupervised learning and demonstrated examples of classification, regression, and clustering using SAS. The Poverty dataset was used to perform clustering, illustrating the steps and analysis involved in such tasks.
+
+
+
