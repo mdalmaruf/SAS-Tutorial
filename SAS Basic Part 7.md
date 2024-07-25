@@ -18,6 +18,8 @@ Unsupervised learning involves training a model on data without labeled response
 **Examples:**
 - **Clustering:** Grouping similar data points together (e.g., customer segmentation).
 - **Dimensionality Reduction:** Reducing the number of features in the dataset while retaining essential information (e.g., PCA).
+- **Association:** It is about finding relationships between variables in large datasets. You remember the “customers who bought this also bought these” prompt, right?
+
 
 ## Differences between Classification, Regression, and Clustering
 
