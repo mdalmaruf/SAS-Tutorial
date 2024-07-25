@@ -90,7 +90,78 @@ data Poverty;
 ;
 ```
 
-## Clustering Analysis
+# K-Means Clustering in SAS
+
+## Introduction to K-Means Clustering
+K-means clustering is an unsupervised learning algorithm that partitions data into k distinct clusters based on distance metrics. The goal is to minimize the variance within each cluster. Each cluster is represented by its centroid, which is the mean of the points in that cluster.
+
+## How K-Means Clustering Works
+1. **Initialization:** Choose k initial centroids randomly from the data points.
+2. **Assignment:** Assign each data point to the nearest centroid based on the Euclidean distance.
+3. **Update:** Recalculate the centroids as the mean of all data points assigned to each cluster.
+4. **Repeat:** Repeat the assignment and update steps until the centroids no longer change or a maximum number of iterations is reached.
+
+### Centroid and Distance
+- **Centroid:** The center of a cluster, calculated as the mean of all points in the cluster.
+- **Distance:** Typically, the Euclidean distance is used to measure the distance between a point and a centroid.
+
+## Performing K-Means Clustering in SAS
+
+### Step 1: Standardizing the Data
+Standardizing the data ensures that each variable contributes equally to the distance calculations.
+
+```sas
+proc standard data=Poverty mean=0 std=1 out=Poverty_std;
+   var Birth Death InfantDeath;
+run;
+```
+## Step 2: K-Means Clustering using PROC FASTCLUS
+
+The PROC FASTCLUS procedure in SAS performs the K-means clustering.
+
+```sas
+proc fastclus data=Poverty_std maxclusters=3 out=Clusters;
+   var Birth Death InfantDeath;
+   id Country;
+run;
+```
+**Explanation:**
+
+- **PROC FASTCLUS:** Performs K-means clustering.
+- **data=Poverty_std:** Uses the standardized dataset.
+- **maxclusters=3:** Specifies the number of clusters.
+- **out=Clusters:** Saves the output dataset with cluster assignments.
+- **var Birth Death InfantDeath:** Specifies the variables used for clustering.
+- **id Country:** Identifies each observation by the country name.
+
+## Step 3: Visualizing the Clusters
+
+To visualize the clusters, we use the PROC SGPLOT procedure.
+
+```sas
+proc sgplot data=Clusters;
+   scatter x=Birth y=Death / group=Cluster markerattrs=(symbol=CircleFilled size=12);
+   title "K-Means Clustering of Poverty Data";
+run;
+```
+
+**Explanation:**
+
+- **PROC SGPLOT:** Generates plots for data visualization.
+- **data=Clusters:** Uses the dataset with cluster assignments.
+- **scatter x=Birth y=Death / group=Cluster:** Creates a scatter plot of the Birth and Death variables, grouped by clusters.
+- **markerattrs=(symbol=CircleFilled size=12):** Customizes the appearance of the markers.
+- **title "K-Means Clustering of Poverty Data":** Adds a title to the plot.
+
+## Example Output
+
+The output will show a scatter plot of the Birth and Death rates for each country, with different colors or symbols representing the different clusters. This visualization helps to see how the countries are grouped based on their poverty indicators.
+
+
+
+
+# Extra Task
+## Clustering Analysis PCA
 
 ### Step 1: Principal Component Analysis (PCA) using PROC ACECLUS
 
