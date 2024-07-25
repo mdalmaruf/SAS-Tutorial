@@ -1,7 +1,7 @@
 # Data Analysis with SAS: Supervised and Unsupervised Learning
 
 ## Introduction
-In this tutorial, we will cover two fundamental types of machine learning techniques: Supervised Learning and Unsupervised Learning. We will use the SASHELP library datasets to demonstrate these techniques using SAS.
+In this tutorial, we will cover two fundamental types of machine learning techniques: Supervised Learning and Unsupervised Learning. We will use the `Poverty` dataset to perform clustering using SAS.
 
 ## Supervised vs Unsupervised Learning
 
