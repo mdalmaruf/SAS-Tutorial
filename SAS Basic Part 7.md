@@ -166,6 +166,8 @@ The output will show a scatter plot of the Birth and Death rates for each countr
 ## Interpretation of K-Means Clustering Results
 
 The results obtained from the K-Means clustering using the Poverty dataset are detailed in various tables and plots. Let's go through each part of the results to interpret the clustering and evaluate the model's performance.
+![K-Means Statistics1](screenshots/Kmeans_stat1.JPG)
+
 
 ### Initial Seeds
 The initial seeds are the starting points for each cluster:
@@ -183,7 +185,7 @@ The initial seeds are the starting points for each cluster:
 - **Cluster 2**: 46 observations, RMS Std Deviation = 0.4568, Max Distance = 2.0865
 - **Cluster 3**: 16 observations, RMS Std Deviation = 0.5877, Max Distance = 2.3033
   - The Maximum Distance from Seed to Observation gives an idea of how tightly the points are clustered around the centroid. Lower values indicate tighter clusters.
-
+![K-Means Statistics2](screenshots/Kmeans_stat2.JPG)
 ### Statistics for Variables
 - **R-Square values**: Birth (0.792889), Death (0.640643), InfantDeath (0.816188)
 - **Pseudo F Statistic**: 140.93
@@ -202,7 +204,7 @@ The initial seeds are the starting points for each cluster:
 - **Cluster 2**: Birth (0.43), Death (0.64), InfantDeath (0.19)
 - **Cluster 3**: Birth (0.41), Death (0.66), InfantDeath (0.65)
   - The standard deviations show the spread of data points within each cluster.
-
+![K-Means Statistics](screenshots/Kmeans_cluster.JPG)
 ### Visualizing Clusters
 The scatter plot visualizes the clusters based on Birth and Death rates. Each point represents a country, colored by its cluster assignment.
 
