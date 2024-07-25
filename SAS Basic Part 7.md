@@ -163,6 +163,62 @@ run;
 ## Example Output
 
 The output will show a scatter plot of the Birth and Death rates for each country, with different colors or symbols representing the different clusters. This visualization helps to see how the countries are grouped based on their poverty indicators.
+## Interpretation of K-Means Clustering Results
+
+The results obtained from the K-Means clustering using the Poverty dataset are detailed in various tables and plots. Let's go through each part of the results to interpret the clustering and evaluate the model's performance.
+
+### Initial Seeds
+The initial seeds are the starting points for each cluster:
+
+- **Cluster 1**: Birth (1.42), Death (0.16), InfantDeath (0.26)
+- **Cluster 2**: Birth (-1.30), Death (0.55), InfantDeath (-0.87)
+- **Cluster 3**: Birth (1.41), Death (3.05), InfantDeath (1.63)
+
+### Criterion Based on Final Seeds
+- **Criterion value**: 0.5121
+  - This value helps determine the optimal number of clusters. A lower value generally indicates a better clustering.
+
+### Cluster Summary
+- **Cluster 1**: 35 observations, RMS Std Deviation = 0.5269, Max Distance = 1.3732
+- **Cluster 2**: 46 observations, RMS Std Deviation = 0.4568, Max Distance = 2.0865
+- **Cluster 3**: 16 observations, RMS Std Deviation = 0.5877, Max Distance = 2.3033
+  - The Maximum Distance from Seed to Observation gives an idea of how tightly the points are clustered around the centroid. Lower values indicate tighter clusters.
+
+### Statistics for Variables
+- **R-Square values**: Birth (0.792889), Death (0.640643), InfantDeath (0.816188)
+- **Pseudo F Statistic**: 140.93
+- **Approximate Expected Over-All R-Squared**: 0.46629
+- **Cubic Clustering Criterion**: 18.602
+  - The R-Square values indicate the proportion of variance explained by the clusters. Higher values suggest better clustering. The Pseudo F Statistic is used to test the null hypothesis that the clusters have the same centroid.
+
+### Cluster Means
+- **Cluster 1**: Birth (0.67), Death (-0.21), InfantDeath (0.47)
+- **Cluster 2**: Birth (-0.92), Death (-0.46), InfantDeath (-0.87)
+- **Cluster 3**: Birth (1.16), Death (1.77), InfantDeath (1.49)
+  - These values represent the average standardized scores for each variable in each cluster.
+
+### Cluster Standard Deviations
+- **Cluster 1**: Birth (0.52), Death (0.53), InfantDeath (0.53)
+- **Cluster 2**: Birth (0.43), Death (0.64), InfantDeath (0.19)
+- **Cluster 3**: Birth (0.41), Death (0.66), InfantDeath (0.65)
+  - The standard deviations show the spread of data points within each cluster.
+
+### Visualizing Clusters
+The scatter plot visualizes the clusters based on Birth and Death rates. Each point represents a country, colored by its cluster assignment.
+
+### Evaluation of the Model
+- **R-Squared Values**: Indicate a good fit for Birth and InfantDeath, but less so for Death.
+- **Pseudo F Statistic**: A higher value suggests better cluster separation.
+- **Cluster Sizes**: Cluster 2 is the largest, Cluster 3 is the smallest. Small clusters can be more sensitive to outliers.
+
+### Insights
+- **Cluster 1**: Countries with moderate birth rates, slightly lower death rates, and moderate infant death rates.
+- **Cluster 2**: Countries with lower birth and death rates, and lower infant death rates.
+- **Cluster 3**: Countries with higher birth rates, higher death rates, and higher infant death rates.
+
+The K-Means clustering effectively grouped countries based on their poverty indicators. The evaluation metrics suggest a reasonably good clustering, with clear distinctions between clusters. Further analysis can focus on the characteristics and policies of countries within each cluster to understand commonalities and differences.
+
+
 
 
 
