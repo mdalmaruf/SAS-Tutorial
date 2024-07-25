@@ -101,6 +101,7 @@ K-means clustering is an unsupervised learning algorithm that partitions data in
 3. **Update:** Recalculate the centroids as the mean of all data points assigned to each cluster.
 4. **Repeat:** Repeat the assignment and update steps until the centroids no longer change or a maximum number of iterations is reached.
 
+[Check the Example for Calculation] (https://github.com/mdalmaruf/SAS-Tutorial/blob/main/Clustering%20Example.md)
 ### Centroid and Distance
 - **Centroid:** The center of a cluster, calculated as the mean of all points in the cluster.
 - **Distance:** Typically, the Euclidean distance is used to measure the distance between a point and a centroid.
