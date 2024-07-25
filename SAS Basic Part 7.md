@@ -115,6 +115,12 @@ proc standard data=Poverty mean=0 std=1 out=Poverty_std;
    var Birth Death InfantDeath;
 run;
 ```
+**Explanation:**
+
+- PROC STANDARD: Standardizes the variables to have a mean of 0 and a standard deviation of 1.
+- out=Poverty_std: Saves the standardized dataset as Poverty_std.
+- var Birth Death InfantDeath: Specifies the variables to standardize
+
 ## Step 2: K-Means Clustering using PROC FASTCLUS
 
 The PROC FASTCLUS procedure in SAS performs the K-means clustering.
